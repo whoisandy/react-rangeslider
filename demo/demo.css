@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#demo {
+  width: 600px;
+  margin: 40px auto 0;
+  padding: 0;
+  position: relative;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #123120;
+}
+
+#demo h1 {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
