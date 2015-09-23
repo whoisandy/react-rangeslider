@@ -1,2 +1,2 @@
 # react-rangeslider
-A simple range-slider component built with and for React
+A simple, dumb & configurable range-slider component built with and for React.

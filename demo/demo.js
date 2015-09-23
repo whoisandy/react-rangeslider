@@ -43,7 +43,7 @@ class Demo extends Component {
     return (
       <div className="rangeslider__demo">
         <h1>React RangeSlider</h1>
-        <p>Simple rangeslider component as a polyfill for input['range'] written using React.</p>
+        <p>A simple, dumb & configurable range-slider component built with and for React.</p>
 
         <h4>Horizontal Slider</h4>
         <div>Value: {hor}</div>
