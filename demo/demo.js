@@ -88,7 +88,6 @@ class Demo extends Component {
           <hr/>
 
           <h4>Orientation &amp; Custom Styles</h4>
-          <div>Value: {ver}</div>
           <Slider
             min={0}
             max={5}
