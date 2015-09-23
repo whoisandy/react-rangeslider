@@ -4,7 +4,6 @@ var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 
-var ExtractPlugin = require('extract-text-webpack-plugin');
 var HtmlPlugin = require('html-webpack-plugin');
 
 var TARGET = process.env.npm_lifecycle_event;
@@ -24,7 +23,7 @@ var common = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.less'],
   }
 };
 
@@ -68,9 +67,9 @@ function start() {
           include: [paths.demo, paths.src],
         },
         {
-          test: /\.css$/,
+          test: /\.less$/,
           exclude: /node_modules/,
-          loaders: ['style', 'css'],
+          loaders: ['style', 'css', 'less'],
         },
       ]
     },
@@ -84,7 +83,6 @@ function start() {
       new HtmlPlugin({
         title: 'React Rangeslider'
       }),
-      new ExtractPlugin(),
       new webpack.NoErrorsPlugin(),
       new webpack.HotModuleReplacementPlugin(),
     ],

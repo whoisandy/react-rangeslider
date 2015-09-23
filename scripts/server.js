@@ -7,9 +7,10 @@ var config = require('../webpack.config');
 new WebpackDevServer(webpack(config), {
   contentBase: __dirname,
   hot: true,
+  inline: true,
   stats: {
     colors: true,
-  }
+  },
 }).listen(config.port, config.ip, function (err) {
   if (err) {
     console.log(err);
