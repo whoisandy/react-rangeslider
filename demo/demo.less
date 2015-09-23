@@ -1,0 +1,90 @@
+*,
+*:before,
+*:after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333333;
+}
+
+#demo {
+  width: 580px;
+  margin: 20px auto 0;
+  padding: 20px;
+  position: relative;
+  h1 {
+    margin: 0 auto 20px;
+    text-align: center;
+    font-weight: 200;
+  }
+  p{
+    margin-bottom: 40px;
+  }
+}
+
+.rangeslider {
+  margin: 20px 0;
+  position: relative;
+  background: #e6e6e6;
+  .rangeslider__fill, .rangeslider__handle {
+    position: absolute;
+  }
+  &, .rangeslider__fill {
+    display: block;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    // border-radius: 10px;
+  }
+  .rangeslider__handle {
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+  }
+}
+
+// Horizontal slider
+.rangeslider-horizontal {
+  height: 20px;
+  border-radius: 10px;
+  .rangeslider__fill {
+    height: 100%;
+    background: #27ae60;
+    border-radius: 10px;
+    top: 0;
+  }
+  .rangeslider__handle {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    top: -10px;
+  }
+}
+
+// Vertical slider
+.rangeslider-vertical {
+  margin: 0 auto;
+  height: 150px;
+  max-width: 10px;
+  border-radius: none;
+  .rangeslider__fill {
+    width: 100%;
+    background: #27ae60;
+    bottom: 0;
+  }
+  .rangeslider__handle {
+    width: 30px;
+    height: 10px;
+    left: -10px;
+  }
+}
