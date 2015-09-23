@@ -22,16 +22,33 @@ body {
   margin: 20px auto 0;
   padding: 20px;
   position: relative;
+  hr {
+    height: 1px;
+    margin: 40px 0;
+    background: #ddd;
+    border: none;
+  }
   h1 {
     margin: 0 auto 20px;
     text-align: center;
     font-weight: 200;
+    font-size: 32px;
   }
-  p{
+  h2 {
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  p {
     margin-bottom: 40px;
+  }
+  section > div {
+    font-size: 20px;
+    font-weight: bold;
   }
 }
 
+// Rangeslider styles
 .rangeslider {
   margin: 20px 0;
   position: relative;
@@ -42,14 +59,16 @@ body {
   &, .rangeslider__fill {
     display: block;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
-    // border-radius: 10px;
   }
   .rangeslider__handle {
-    background: white;
+    background: #fff;
     border: 1px solid #ccc;
     cursor: pointer;
     display: inline-block;
     position: absolute;
+    &:active {
+      background: #ddd;
+    }
   }
 }
 
@@ -73,10 +92,10 @@ body {
 
 // Vertical slider
 .rangeslider-vertical {
-  margin: 0 auto;
+  margin: 20px auto;
   height: 150px;
   max-width: 10px;
-  border-radius: none;
+  border-radius: 0;
   .rangeslider__fill {
     width: 100%;
     background: #27ae60;

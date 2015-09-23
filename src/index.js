@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 
-function ucfirst(str) {
+function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.substr(1);
 }
 
@@ -51,9 +51,10 @@ class Slider extends Component {
     grab: null,
   }
 
+  // Add window resize event listener here
   componentDidMount() {
     let { orientation } = this.props;
-    let dimension = ucfirst(constants.orientation[orientation].dimension);
+    let dimension = capitalize(constants.orientation[orientation].dimension);
     const sliderPos = findDOMNode(this.refs.slider)['offset' + dimension];
     const handlePos = findDOMNode(this.refs.handle)['offset' + dimension]
     this.setState({
@@ -119,12 +120,12 @@ class Slider extends Component {
   }
 
   position = (e) => {
-    let { orientation } = this.props;
     let pos, value, { grab } = this.state;
+    let { orientation } = this.props;
     const node = findDOMNode(this.refs.slider);
     const coordinateStyle = constants.orientation[orientation].coordinate;
     const directionStyle = constants.orientation[orientation].direction;
-    const coordinate = e['client' + ucfirst(coordinateStyle)];
+    const coordinate = e['client' + capitalize(coordinateStyle)];
     const direction = node.getBoundingClientRect()[directionStyle];
 
     pos = coordinate - direction - grab;
