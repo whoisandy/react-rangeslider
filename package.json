@@ -1,15 +1,16 @@
 {
   "name": "react-rangeslider",
-  "version": "0.0.7",
+  "version": "1.0.7",
   "description": "A simple range-slider component built with and for React",
   "main": "index.js",
   "scripts": {
     "start": "node scripts/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whoisandie/react-rangeslider.git"
+    "url": "https://github.com/whoisandie/react-rangeslider.git"
   },
   "keywords": [
     "rangeslider",
@@ -38,6 +39,7 @@
     "less": "^2.5.1",
     "less-loader": "^2.2.1",
     "react-hot-loader": "^1.3.0",
+    "semantic-release": "^4.3.5",
     "style-loader": "^0.12.3",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.11.0",
