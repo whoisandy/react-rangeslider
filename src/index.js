@@ -1,5 +1,5 @@
-import cx from 'classnames';
-import React from 'react';
+import React, { PropTypes, Component, findDOMNode } from 'react';
+import joinClasses from 'react/lib/joinClasses';
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.substr(1);
@@ -11,7 +11,6 @@ function maxmin(pos, min, max) {
   return pos;
 }
 
-const { PropTypes, Component, findDOMNode } = React;
 const constants = {
   orientation: {
     horizontal: {
@@ -170,7 +169,7 @@ class Slider extends Component {
     return (
       <div
         ref="slider"
-        className={cx('rangeslider', 'rangeslider-' + orientation, className)}
+        className={joinClasses('rangeslider ', 'rangeslider-' + orientation, className)}
         onMouseDown={this.handleSliderMouseDown}
         onClick={this.handleNoop}>
         <div
