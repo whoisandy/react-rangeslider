@@ -1,5 +1,5 @@
 # React Rangeslider
-> A dumb react component that acts as an input range slider polyfill
+> A dumb lightweight react component that acts as a HTML5 input range slider polyfill
 
 Check out examples.
 
