@@ -5,16 +5,16 @@ var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config');
 
 new WebpackDevServer(webpack(config), {
-  contentBase: __dirname,
-  hot: true,
-  inline: true,
-  stats: {
-    colors: true,
-  },
+	contentBase: __dirname,
+	hot: true,
+	stats: {
+		chunkModules: false,
+		colors: true,
+	},
 }).listen(config.port, config.ip, function (err) {
-  if (err) {
-    console.log(err);
-  }
+	if (err) {
+		console.log(err);
+	}
 
-  console.log('Listening at ' + config.ip + ':' + config.port);
+	console.log('Listening at ' + config.ip + ':' + config.port);
 });

@@ -1,49 +1,49 @@
 'use strict';
 
 module.exports = function(config) {
-  config.set({
-    port: 9876,
+	config.set({
+		port: 9876,
 
-    colors: true,
+		colors: true,
 
-    singleRun: true,
+		singleRun: true,
 
-    reporters: ['mocha'],
+		reporters: ['mocha'],
 
-    browsers: ['PhantomJS'],
+		browsers: ['PhantomJS'],
 
-    frameworks: ['chai', 'mocha'],
+		frameworks: ['chai', 'mocha'],
 
-    files: [
-      'src/tests/**/*Spec.js'
-    ],
+		files: [
+		'src/tests/**/*Spec.js'
+		],
 
-    preprocessors: {
-      'src/tests/index.js': ['webpack']
-    },
+		preprocessors: {
+			'src/tests/index.js': ['webpack']
+		},
 
-    plugins: [
-      'karma-chai',
-      'karma-mocha',
-      'karma-webpack',
-      'karma-mocha-reporter',
-      'karma-phantomjs-launcher',
-    ],
+		plugins: [
+		'karma-chai',
+		'karma-mocha',
+		'karma-webpack',
+		'karma-mocha-reporter',
+		'karma-phantomjs-launcher',
+		],
 
-    webpack: {
-      module: {
-        loaders: [
-          {
-            exclude: /node_modules/,
-            loader: 'babel?stage=0',
-            test: /\.js?$/
-          }
-        ],
-      }
-    },
+		webpack: {
+			module: {
+				loaders: [
+				{
+					exclude: /node_modules/,
+					loader: 'babel?stage=0',
+					test: /\.js?$/
+				}
+				],
+			}
+		},
 
-    webpackServer: {
-      noInfo: true
-    },
-  });
+		webpackServer: {
+			noInfo: true
+		},
+	});
 };
