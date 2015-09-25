@@ -168,22 +168,22 @@ class Slider extends Component {
 
   	return (
   		<div
-  		ref="slider"
-  		className={joinClasses('rangeslider ', 'rangeslider-' + orientation, className)}
-  		onMouseDown={this.handleSliderMouseDown}
-  		onClick={this.handleNoop}>
-  		<div
-  		ref="fill"
-  		className="rangeslider__fill"
-  		style={fillStyle} />
-  		<div
-  		ref="handle"
-  		className="rangeslider__handle"
-  		onMouseDown={this.handleKnobMouseDown}
-  		onClick={this.handleNoop}
-  		style={handleStyle} />
+	  		ref="slider"
+	  		className={joinClasses('rangeslider ', 'rangeslider-' + orientation, className)}
+	  		onMouseDown={this.handleSliderMouseDown}
+	  		onClick={this.handleNoop}>
+	  		<div
+		  		ref="fill"
+		  		className="rangeslider__fill"
+		  		style={fillStyle} />
+	  		<div
+		  		ref="handle"
+		  		className="rangeslider__handle"
+		  		onMouseDown={this.handleKnobMouseDown}
+		  		onClick={this.handleNoop}
+		  		style={handleStyle} />
   		</div>
-  		);
+		);
   }
 }
 
