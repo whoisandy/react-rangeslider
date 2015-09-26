@@ -1,61 +1,65 @@
 {
-	"name": "react-rangeslider",
-	"version": "1.0.0",
-	"description": "A lightweight react component that acts as a HTML5 input range slider polyfill",
-	"main": "index.js",
-	"scripts": {
-		"start": "node scripts/server.js",
-		"test": "karma start"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/whoisandie/react-rangeslider.git"
-	},
-	"keywords": [
-		"rangeslider",
-		"react-rangeslider",
-		"input",
-		"range",
-		"react"
-	],
-	"author": "whoisandie",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/whoisandie/react-rangeslider/issues"
-	},
-	"homepage": "https://github.com/whoisandie/react-rangeslider#readme",
-	"devDependencies": {
-		"babel": "^5.8.23",
-		"babel-core": "^5.8.24",
-		"babel-eslint": "^4.1.2",
-		"babel-loader": "^5.3.2",
-		"chai": "^3.3.0",
-		"css-loader": "^0.18.0",
-		"es5-shim": "^4.1.13",
-		"eslint": "^1.4.3",
-		"eslint-loader": "^1.0.0",
-		"eslint-plugin-react": "^3.3.2",
-		"extract-text-webpack-plugin": "^0.8.2",
-		"gh-pages": "^0.4.0",
-		"html-webpack-plugin": "^1.6.1",
-		"karma": "^0.13.10",
-		"karma-chai": "^0.1.0",
-		"karma-chai-plugins": "^0.6.0",
-		"karma-mocha": "^0.2.0",
-		"karma-mocha-reporter": "^1.1.1",
-		"karma-phantomjs-launcher": "^0.2.1",
-		"karma-webpack": "^1.7.0",
-		"less": "^2.5.1",
-		"less-loader": "^2.2.1",
-		"mocha": "^2.3.3",
-		"phantomjs": "^1.9.18",
-		"react-hot-loader": "^1.3.0",
-		"style-loader": "^0.12.3",
-		"webpack": "^1.12.1",
-		"webpack-dev-server": "^1.11.0",
-		"webpack-merge": "^0.2.0"
-	},
-	"dependencies": {
-		"react": "^0.13.3"
-	}
+  "name": "react-rangeslider",
+  "version": "1.0.0",
+  "description": "A lightweight react component that acts as a HTML5 input range slider polyfill",
+  "main": "lib/index",
+  "scripts": {
+    "start": "node server.js",
+    "build": "scripts/build.sh",
+    "deploy": "scripts/deploy.sh",
+    "lint": "eslint src",
+    "test": "npm run lint && karma start",
+    "prepublish": "npm test && npm run build",
+    "postpublish": "npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whoisandie/react-rangeslider.git"
+  },
+  "keywords": [
+    "rangeslider",
+    "react-rangeslider",
+    "input",
+    "range",
+    "react"
+  ],
+  "author": "whoisandie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/whoisandie/react-rangeslider/issues"
+  },
+  "homepage": "https://github.com/whoisandie/react-rangeslider#readme",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.24",
+    "babel-eslint": "^4.1.2",
+    "babel-loader": "^5.3.2",
+    "chai": "^3.3.0",
+    "css-loader": "^0.19.0",
+    "es5-shim": "^4.1.13",
+    "eslint": "^1.4.3",
+    "eslint-loader": "^1.0.0",
+    "eslint-plugin-react": "^3.3.2",
+    "gh-pages": "^0.4.0",
+    "html-webpack-plugin": "^1.6.1",
+    "karma": "^0.13.10",
+    "karma-chai": "^0.1.0",
+    "karma-chai-plugins": "^0.6.0",
+    "karma-mocha": "^0.2.0",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-webpack": "^1.7.0",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.1",
+    "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.12.1",
+    "webpack-dev-server": "^1.11.0",
+    "webpack-merge": "^0.2.0"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
 }
