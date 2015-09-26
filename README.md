@@ -94,14 +94,14 @@ Rangeslider is bundled with a single dumb component, that accepts data and callb
 
 ### Props
 
-Prop   	 			 |  Value
----------   	 |  ------
-`min`     		 |  minimum value the slider can hold (default: 0)
-`max`    			 |  maximum value the slider can hold (default: 100)
-`step` 				 |  step in which increments/decrements have to be made (default: 1)
-`orientation`  |  orientation of the slider (default: horizontal)
-`value`  			 |  current value of the slider
-`onChange`  	 |  function the slider takes, current value of the slider as the first parameter
+Prop   	 			 |  Default      |  Description
+---------   	 |  -------      |  -----------
+`min`     		 |  0				   	 |  minimum value the slider can hold
+`max`    			 |  100				   |  maximum value the slider can hold
+`step` 				 |  1          	 |  step in which increments/decrements have to be made
+`orientation`  |  horizontal   |  orientation of the slider
+`value`  			 |  -            |  current value of the slider
+`onChange`  	 |  -            |  function the slider takes, current value of the slider as the first parameter
 
 
 ## Bug Reports & Feature Requests
