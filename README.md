@@ -78,11 +78,14 @@ export default Volume extends Component {
 ```
 
 ## API
-Rangeslider is bundled with a single dumb component, that accepts data and callbacks only as `props`.
+Rangeslider is bundled with a single component, that accepts data and callbacks only as `props`.
 
-### Pure Component
+### Component
 
 ```js
+var Slider = require('react-rangeslider');
+
+// inside render
 <Slider
 	min={String or Number}
 	max={String or Number}
