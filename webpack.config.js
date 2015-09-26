@@ -13,15 +13,11 @@ var config;
 var paths = {
 	src: path.join(ROOT_PATH, 'src'),
 	demo: path.join(ROOT_PATH, 'demo'),
-	dist: path.join(ROOT_PATH, 'dist'),
 };
 
 var common = {
 	entry: path.resolve(paths.demo, 'index'),
-	output: {
-		path: __dirname,
-		filename: 'bundle.js'
-	},
+
 	resolve: {
 		extensions: ['', '.js', '.less'],
 	}
@@ -29,6 +25,10 @@ var common = {
 
 if (TARGET === 'start' || !TARGET) {
 	config = start();
+} else if (TARGET === 'build' || !TARGET) {
+	config = build();
+} else if (TARGET === 'deploy' || !TARGET) {
+	config = deploy();
 }
 
 function start() {
@@ -41,10 +41,15 @@ function start() {
 		devtool: 'eval-source-map',
 
 		entry: [
-		'webpack-dev-server/client?http://' + IP + ':' + PORT,
-		'webpack/hot/only-dev-server',
-		path.join(paths.demo, 'index'),
+			'webpack-dev-server/client?http://' + IP + ':' + PORT,
+			'webpack/hot/only-dev-server',
+			path.join(paths.demo, 'index'),
 		],
+
+		output: {
+			path: __dirname,
+			filename: 'bundle.js'
+		},
 
 		resolve: {
 			alias: {
@@ -54,23 +59,23 @@ function start() {
 
 		module: {
 			preLoaders: [
-			{
-				test: /\.js$/,
-				loaders: ['eslint'],
-				include: [paths.demo, paths.src],
-			}
+				{
+					test: /\.js$/,
+					loaders: ['eslint'],
+					include: [paths.demo, paths.src],
+				}
 			],
 			loaders: [
-			{
-				test: /\.js?$/,
-				loaders: ['react-hot', 'babel?stage=0'],
-				include: [paths.demo, paths.src],
-			},
-			{
-				test: /\.less$/,
-				exclude: /node_modules/,
-				loaders: ['style', 'css', 'less'],
-			},
+				{
+					test: /\.js?$/,
+					loaders: ['react-hot', 'babel?stage=0'],
+					include: [paths.demo, paths.src],
+				},
+				{
+					test: /\.less$/,
+					exclude: /node_modules/,
+					loaders: ['style', 'css', 'less'],
+				},
 			]
 		},
 
@@ -81,11 +86,89 @@ function start() {
 			}
 		}),
 		new HtmlPlugin({
-			title: 'React Rangeslider'
+			title: 'React Rangeslider',
+			inject: true,
 		}),
 		new webpack.NoErrorsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		],
+	});
+}
+
+function build() {
+	return merge(common, {
+		entry: path.resolve(paths.src, 'index'),
+
+	  output: {
+	    library: 'ReactRangeslider',
+	    libraryTarget: 'umd'
+	  },
+
+	  module: {
+	    loaders: [
+	      {
+	        test: /\.js?$/,
+	        exclude: /node_modules/,
+	        loader: 'babel?stage=0',
+	      }
+	    ]
+	  },
+
+	  externals: [
+	    {
+	      "react": {
+	        root: "React",
+	        commonjs2: "react",
+	        commonjs: "react",
+	        amd: "react"
+	      }
+	    }
+	  ]
+	});
+}
+
+function deploy() {
+	return merge(common, {
+		entry: path.resolve(paths.demo, 'index'),
+
+		output: {
+			path: 'deploy',
+			filename: 'bundle.js'
+		},
+
+		resolve: {
+			alias: {
+				'react-rangeslider$': paths.src,
+			},
+		},
+
+		module: {
+	    loaders: [
+	      {
+	        test: /\.js?$/,
+	        exclude: /node_modules/,
+	        loaders: ['babel?stage=0'],
+	      },
+	      {
+	        test: /\.less$/,
+	        exclude: /node_modules/,
+	        loaders: ['style', 'css', 'less']
+	      }
+	    ]
+	  },
+
+	  plugins: [
+	    new HtmlPlugin({
+				title: 'React Rangeslider',
+				inject: true,
+			}),
+	    new webpack.optimize.UglifyJsPlugin({
+	      compress: {
+	        warnings: false
+	      }
+	    }),
+	    new webpack.optimize.OccurenceOrderPlugin(),
+	  ]
 	});
 }
 
