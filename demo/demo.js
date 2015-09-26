@@ -1,3 +1,5 @@
+import './demo.less';
+
 import React, { Component } from 'react';
 import Slider from 'react-rangeslider';
 
@@ -42,7 +44,7 @@ class Demo extends Component {
 			<div className="wrapper">
 				<header>
 					<h1>React Rangeslider</h1>
-					<p>A dumb lightweight react component that acts as a HTML5 input range slider polyfill. Shown below are just examples, please refer <a href="#">Github</a> for docs.</p>
+					<p>A lightweight react component that acts as a HTML5 input range slider polyfill. Shown below are just examples, please refer <a href="#">Github</a> for docs.</p>
 				</header>
 
 				<section id="examples">
