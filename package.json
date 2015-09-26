@@ -1,7 +1,7 @@
 {
 	"name": "react-rangeslider",
 	"version": "1.0.0",
-	"description": "A simple range-slider component built with and for React",
+	"description": "A lightweight react component that acts as a HTML5 input range slider polyfill",
 	"main": "index.js",
 	"scripts": {
 		"start": "node scripts/server.js",
