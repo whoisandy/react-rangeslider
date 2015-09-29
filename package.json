@@ -8,9 +8,7 @@
     "build": "scripts/build.sh",
     "deploy": "scripts/deploy.sh",
     "lint": "eslint src",
-    "test": "npm run lint && karma start",
-    "prepublish": "npm test && npm run build",
-    "postpublish": "npm run deploy"
+    "test": "npm run lint && karma start"
   },
   "repository": {
     "type": "git",
