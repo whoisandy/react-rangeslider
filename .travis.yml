@@ -10,6 +10,6 @@ node_js:
 before_install:
   - npm i -g npm@^2.0.0
 script:
-	- npm test
+	- npm run test
 before_script:
   - npm prune
