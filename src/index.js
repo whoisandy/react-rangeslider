@@ -1,5 +1,5 @@
 import React, { PropTypes, Component, findDOMNode } from 'react';
-import joinClasses from 'react/lib/joinClasses';
+import classNames from 'classNames';
 
 function capitalize(str) {
 	return str.charAt(0).toUpperCase() + str.substr(1);
@@ -169,7 +169,7 @@ class Slider extends Component {
   	return (
   		<div
 	  		ref="slider"
-	  		className={joinClasses('rangeslider ', 'rangeslider-' + orientation, className)}
+	  		className={classNames('rangeslider ', 'rangeslider-' + orientation, className)}
 	  		onMouseDown={this.handleSliderMouseDown}
 	  		onClick={this.handleNoop}>
 	  		<div
