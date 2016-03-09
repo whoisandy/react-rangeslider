@@ -13,10 +13,10 @@
   "rules": {
     "strict": 0,
     "quotes": [2, "single"],
+    "jsx-quotes": [2, "prefer-double"],
     "no-underscore-dangle": 0,
     "no-unused-vars": 1,
     "no-unused-expressions": 0,
-    "react/jsx-no-undef": 2,
     "new-cap": 0,
     "yoda": 0,
     "no-extra-boolean-cast": 0,
