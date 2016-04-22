@@ -101,7 +101,9 @@ function build() {
 
 	  output: {
 	    library: 'ReactRangeslider',
-	    libraryTarget: 'umd'
+	    libraryTarget: 'umd',
+		path: __dirname,
+		filename: 'bundle.js'
 	  },
 
 	  module: {
