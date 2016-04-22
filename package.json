@@ -4,8 +4,8 @@
   "description": "A lightweight react component that acts as a HTML5 input range slider polyfill",
   "main": "lib/index",
   "scripts": {
-    "start": "node server.js",
-    "build": "scripts/build.sh",
+    "start": "webpack && node server.js",
+    "build": "webpack",
     "lint": "eslint src",
     "test": "npm run lint && karma start"
   },
