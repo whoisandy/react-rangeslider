@@ -14,6 +14,10 @@ class Demo extends Component {
 		};
 	}
 
+	handleDragEnd = (value) => {
+		console.log(`Finished dragging. Value is ${value}`)
+	}
+
 	handleChangeHor = (value) => {
 		this.setState({
 			hor: value
@@ -55,7 +59,8 @@ class Demo extends Component {
 						min={0}
 						max={100}
 						value={hor}
-						onChange={this.handleChangeHor} />
+						onChange={this.handleChangeHor}
+						onDragEnd={this.handleDragEnd} />
 					<div className="value">Value: {hor}</div>
 					<hr/>
 
