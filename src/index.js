@@ -34,6 +34,7 @@ class Slider extends Component {
 		value: PropTypes.number,
 		orientation: PropTypes.string,
 		onChange: PropTypes.func,
+  	onDragEnd: PropTypes.func,
 		className: PropTypes.string,
 	}
 
@@ -83,9 +84,16 @@ class Slider extends Component {
   	onChange && onChange(value);
   }
 
-  handleDragEnd = () => {
+  handleDragEnd = (e) => {
   	document.removeEventListener('mousemove', this.handleDrag);
   	document.removeEventListener('mouseup', this.handleDragEnd);
+
+    const { onDragEnd } = this.props;
+    if (!onDragEnd) {
+      return;
+    } 
+    const value = this.position(e);
+    onDragEnd(value);
   }
 
   handleNoop = (e) => {

@@ -26,6 +26,12 @@ var Volume = React.createClass({
 		};
 	}
 
+  // Will be called once and the end of dragging the slider
+  handleDragEnd: function(value) {
+    // Do something with value here
+  }
+
+  // Will be called on every change while draggin the slider
 	handleChange: function(value) {
 		this.setState({
 			value: value,
@@ -37,7 +43,8 @@ var Volume = React.createClass({
 			<Slider
         value={value}
         orientation="vertical"
-        onChange={this.handleChange} />
+        onChange={this.handleChange} 
+        onDragEnd={this.handleDragEnd} />
 		);
 	}
 });
@@ -59,6 +66,12 @@ export default Volume extends Component {
     };
   }
 
+  // Will be called once and the end of dragging the slider
+  handleDragEnd(value) {
+    // Do something with value here
+  }
+
+  // Will be called on every change while draggin the slider
   handleChange(value) {
     this.setState({
       value: value
@@ -70,7 +83,8 @@ export default Volume extends Component {
       <Slider
         value={value}
         orientation="vertical"
-        onChange={this.handleChange} />
+        onChange={this.handleChange} 
+        onDragEnd={this.handleDragEnd} />
     );
   }
 }
@@ -92,7 +106,8 @@ var Slider = require('react-rangeslider');
 	step={String or Number}
 	orientation={String}
   value={Number}
-  onChange={Function} />
+  onChange={Function} 
+  onDragEnd={Function} />
 ```
 
 ### Props
@@ -104,7 +119,8 @@ Prop   	 			 |  Default      |  Description
 `step` 				 |  1          	 |  step in which increments/decrements have to be made
 `orientation`  |  horizontal   |  orientation of the slider
 `value`  			 |  -            |  current value of the slider
-`onChange`  	 |  -            |  function the slider takes, current value of the slider as the first parameter
+`onChange`  	 |  -            |  function the slider takes, current value of the slider as the first parameter. Will be called on every value change during the drag.
+`onDragEnd`    |  -            |  function the slider takes, current value of the slider as the first parameter. Will be called once on the end of the drag.
 
 
 ## Issues
