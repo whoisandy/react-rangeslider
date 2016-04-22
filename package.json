@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node server.js",
     "build": "scripts/build.sh",
-    "deploy": "scripts/deploy.sh",
     "lint": "eslint src",
     "test": "npm run lint && karma start"
   },
