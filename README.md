@@ -75,7 +75,7 @@ export default Volume extends Component {
   }
 }
 ```
-There's also a umd version available at `lib/umd`. The component is available on `window.ReactRangeslider`.
+There's also a umd version available at `lib/umd`. The component is available on `window.ReactRangeslider`. To style the slider, please refer the rangeslider styles in `demo/demo.less` file.
 
 ## API
 Rangeslider is bundled with a single component, that accepts data and callbacks only as `props`.
@@ -109,6 +109,11 @@ Prop   	 			 |  Default      |  Description
 
 ## Issues
 Feel free to contribute. Submit a Pull Request or open an issue for further discussion.
+
+
+## Todo
+- Ship styles along with component
+- Tests using Enzyme
 
 ## License
 MIT &copy; [whoisandie](http://whoisandie.com)
