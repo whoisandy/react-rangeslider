@@ -126,7 +126,7 @@ function deploy() {
 		entry: path.resolve(paths.demo, 'index'),
 
 		output: {
-			path: 'deploy/static',
+			path: 'deploy',
 			filename: 'bundle.js'
 		},
 
