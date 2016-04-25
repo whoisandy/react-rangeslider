@@ -4,6 +4,7 @@ var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 
+var TARGET = process.env.npm_lifecycle_event;
 var ROOT_PATH = path.resolve(__dirname);
 
 var config;
@@ -114,13 +115,7 @@ function build() {
 	        commonjs2: "react",
 	        commonjs: "react",
 	        amd: "react"
-	      },
-				"react-dom": {
-					root: 'ReactDOM',
-					commonjs2: "react-dom",
-					commonjs: "react-dom",
-					amd: "react-dom"
-				}
+	      }
 	    }
 	  ]
 	});
@@ -131,7 +126,7 @@ function deploy() {
 		entry: path.resolve(paths.demo, 'index'),
 
 		output: {
-			path: 'deploy',
+			path: 'deploy/static',
 			filename: 'bundle.js'
 		},
 
@@ -157,8 +152,15 @@ function deploy() {
 	  },
 
 	  plugins: [
+			new webpack.DefinePlugin({
+				'process.env': {
+					'NODE_ENV': JSON.stringify('production')
+				}
+			}),
 	    new webpack.optimize.UglifyJsPlugin({
 	      compress: {
+					unused: true,
+					dead_code: true,
 	        warnings: false
 	      }
 	    }),
