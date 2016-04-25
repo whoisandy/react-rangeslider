@@ -1,13 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Demo from './demo';
 
-main();
-function main() {
-	let app;
-
-	app = document.createElement('div');
-	app.setAttribute('id', 'demo');
-	document.body.appendChild(app);
-
-	React.render(<Demo />, app);
+function render() {
+	let mount = document.getElementById('mount');
+	ReactDOM.render(<Demo />, mount);
 }
+
+render();

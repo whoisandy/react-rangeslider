@@ -1,5 +1,6 @@
-import React, { PropTypes, Component, findDOMNode } from 'react';
-import joinClasses from 'react/lib/joinClasses';
+import React, { PropTypes, Component } from 'react';
+import { findDOMNode } from 'react-dom';
+import cx from 'classnames';
 
 function capitalize(str) {
 	return str.charAt(0).toUpperCase() + str.substr(1);
@@ -93,6 +94,10 @@ class Slider extends Component {
   	e.preventDefault();
   }
 
+	handleTouchMove = (e) => {
+		this.handleDrag(e);
+	}
+
   getPositionFromValue = (value) => {
   	let percentage, pos;
   	let { limit } = this.state;
@@ -124,7 +129,9 @@ class Slider extends Component {
   	const node = findDOMNode(this.refs.slider);
   	const coordinateStyle = constants.orientation[orientation].coordinate;
   	const directionStyle = constants.orientation[orientation].direction;
-  	const coordinate = e['client' + capitalize(coordinateStyle)];
+  	const coordinate = !e.touches
+			? e['client' + capitalize(coordinateStyle)]
+			: e.touches[0]['client' + capitalize(coordinateStyle)];
   	const direction = node.getBoundingClientRect()[directionStyle];
 
   	pos = coordinate - direction - grab;
@@ -169,7 +176,7 @@ class Slider extends Component {
   	return (
   		<div
 	  		ref="slider"
-	  		className={joinClasses('rangeslider ', 'rangeslider-' + orientation, className)}
+	  		className={cx('rangeslider ', 'rangeslider-' + orientation, className)}
 	  		onMouseDown={this.handleSliderMouseDown}
 	  		onClick={this.handleNoop}>
 	  		<div
@@ -179,8 +186,9 @@ class Slider extends Component {
 	  		<div
 		  		ref="handle"
 		  		className="rangeslider__handle"
-		  		onMouseDown={this.handleKnobMouseDown}
-		  		onClick={this.handleNoop}
+					onMouseDown={this.handleKnobMouseDown}
+					onTouchMove={this.handleTouchMove}
+					onClick={this.handleNoop}
 		  		style={handleStyle} />
   		</div>
 		);
