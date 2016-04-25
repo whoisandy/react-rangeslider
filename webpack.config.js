@@ -82,10 +82,6 @@ function start() {
 				'NODE_ENV': JSON.stringify('development'),
 			}
 		}),
-		new HtmlPlugin({
-			title: 'React Rangeslider',
-			inject: true,
-		}),
 		new webpack.NoErrorsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		],
