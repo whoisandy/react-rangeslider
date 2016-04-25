@@ -4,9 +4,6 @@ var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 
-var HtmlPlugin = require('html-webpack-plugin');
-
-var TARGET = process.env.npm_lifecycle_event;
 var ROOT_PATH = path.resolve(__dirname);
 
 var config;
@@ -164,10 +161,6 @@ function deploy() {
 	  },
 
 	  plugins: [
-	    new HtmlPlugin({
-				title: 'React Rangeslider',
-				inject: true,
-			}),
 	    new webpack.optimize.UglifyJsPlugin({
 	      compress: {
 	        warnings: false
