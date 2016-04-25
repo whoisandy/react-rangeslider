@@ -15,11 +15,11 @@ module.exports = function(config) {
 		frameworks: ['chai', 'mocha'],
 
 		files: [
-		'src/tests/**/*Spec.js'
+		'tests/**/*Spec.js'
 		],
 
 		preprocessors: {
-			'src/tests/index.js': ['webpack']
+			'tests/index.js': ['webpack']
 		},
 
 		plugins: [
