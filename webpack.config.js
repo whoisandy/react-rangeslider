@@ -166,7 +166,7 @@ function deploy() {
 	        warnings: false
 	      }
 	    }),
-	    new webpack.optimize.OccurenceOrderPlugin(),
+	    new webpack.optimize.OccurenceOrderPlugin()
 	  ]
 	});
 }
