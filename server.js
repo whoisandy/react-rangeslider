@@ -1,19 +1,23 @@
 var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('./webpack.config');
 
-new WebpackDevServer(webpack(config), {
-	contentBase: __dirname,
-	hot: true,
-	inline: true,
-	stats: {
-		chunkModules: false,
-		colors: true,
-	},
-}).listen(config.port, config.ip, function (err) {
-	if (err) {
-		console.log(err);
-	}
+var app = new (require('express'));
+var port = 3000;
 
-	console.log('Listening at ' + config.ip + ':' + config.port);
+var compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+app.use(webpackHotMiddleware(compiler));
+
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + '/index.html');
+});
+
+app.listen(port, function(err) {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log('Listening on port %s', port);
+	}
 });

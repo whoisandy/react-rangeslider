@@ -38,16 +38,16 @@ function start() {
 	return merge(common, {
 		ip: IP,
 		port: PORT,
-		devtool: 'eval-source-map',
+		devtool: '#cheap-eval-source-map',
 
 		entry: [
-			'webpack-dev-server/client?http://' + IP + ':' + PORT,
-			'webpack/hot/only-dev-server',
+			'webpack-hot-middleware/client?http://' + IP + ':' + PORT,
 			path.join(paths.demo, 'index'),
 		],
 
 		output: {
 			path: __dirname,
+			publicPath: '/static/',
 			filename: 'bundle.js'
 		},
 
