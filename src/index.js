@@ -46,9 +46,13 @@ class Slider extends Component {
 		orientation: 'horizontal',
 	}
 
-	state = {
-		limit: 0,
-		grab: 0,
+	constructor(props) {
+		super(props);
+		
+		this.state = {
+			limit: 0,
+			grab: 0,
+		}
 	}
 
   // Add window resize event listener here
@@ -189,7 +193,9 @@ class Slider extends Component {
 					onMouseDown={this.handleKnobMouseDown}
 					onTouchMove={this.handleTouchMove}
 					onClick={this.handleNoop}
-		  		style={handleStyle} />
+		  		style={handleStyle}>
+		  			{this.props.children}
+		  		</div>
   		</div>
 		);
   }
