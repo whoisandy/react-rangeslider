@@ -9,6 +9,8 @@ pages=node_modules/.bin/gh-pages
 
 clean
 NODE_ENV=production $webpack
+cp -R $PWD/index.html deploy/index.html
+sed -i -e 's/\/static\/bundle.js/bundle.js/' deploy/index.html
 NODE_ENV=production $pages -d deploy
 rm -rf lib
 clean

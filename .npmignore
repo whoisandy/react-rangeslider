@@ -6,7 +6,9 @@
 karma.conf.js
 server.js
 webpack.config.js
+index.html
 
 demo
 scripts
 src
+tests

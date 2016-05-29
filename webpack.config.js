@@ -4,8 +4,6 @@ var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 
-var HtmlPlugin = require('html-webpack-plugin');
-
 var TARGET = process.env.npm_lifecycle_event;
 var ROOT_PATH = path.resolve(__dirname);
 
@@ -85,10 +83,6 @@ function start() {
 				'NODE_ENV': JSON.stringify('development'),
 			}
 		}),
-		new HtmlPlugin({
-			title: 'React Rangeslider',
-			inject: true,
-		}),
 		new webpack.NoErrorsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		],
@@ -158,16 +152,19 @@ function deploy() {
 	  },
 
 	  plugins: [
-	    new HtmlPlugin({
-				title: 'React Rangeslider',
-				inject: true,
+			new webpack.DefinePlugin({
+				'process.env': {
+					'NODE_ENV': JSON.stringify('production')
+				}
 			}),
 	    new webpack.optimize.UglifyJsPlugin({
 	      compress: {
+					unused: true,
+					dead_code: true,
 	        warnings: false
 	      }
 	    }),
-	    new webpack.optimize.OccurenceOrderPlugin(),
+	    new webpack.optimize.OccurenceOrderPlugin()
 	  ]
 	});
 }
