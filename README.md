@@ -1,5 +1,5 @@
 # React Rangeslider [![NPM Package][npm_img]][npm_site]
-> A lightweight react component that acts as a HTML5 input range slider polyfill
+> A lightweight responsive react range slider component.
 
 Check out [examples](https://whoisandie.github.io/react-rangeslider).
 
@@ -83,7 +83,7 @@ Rangeslider is bundled with a single component, that accepts data and callbacks 
 ### Component
 
 ```js
-var Slider = require('react-rangeslider');
+import Slider from 'react-rangeslider'
 
 // inside render
 <Slider
