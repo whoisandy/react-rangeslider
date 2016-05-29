@@ -53,6 +53,11 @@ class Slider extends Component {
 
   // Add window resize event listener here
   componentDidMount() {
+		window.addEventListener('resize', this.handleUpdate);
+		this.handleUpdate();
+  }
+
+  handleUpdate = () => {
   	let { orientation } = this.props;
   	let dimension = capitalize(constants.orientation[orientation].dimension);
   	const sliderPos = findDOMNode(this.refs.slider)['offset' + dimension];
@@ -63,20 +68,13 @@ class Slider extends Component {
   	});
   }
 
-  handleSliderMouseDown = (e) => {
-  	let value, { onChange } = this.props;
-  	if (!onChange) return;
-
-  	value = this.position(e);
-  	onChange && onChange(value);
-  }
-
-  handleKnobMouseDown = () => {
+  handleStart = () => {
   	document.addEventListener('mousemove', this.handleDrag);
-  	document.addEventListener('mouseup', this.handleDragEnd);
+  	document.addEventListener('mouseup', this.handleEnd);
   }
 
   handleDrag = (e) => {
+  	this.handleNoop(e);
   	let value, { onChange } = this.props;
   	if (!onChange) return;
 
@@ -84,19 +82,15 @@ class Slider extends Component {
   	onChange && onChange(value);
   }
 
-  handleDragEnd = () => {
+  handleEnd = () => {
   	document.removeEventListener('mousemove', this.handleDrag);
-  	document.removeEventListener('mouseup', this.handleDragEnd);
+  	document.removeEventListener('mouseup', this.handleEnd);
   }
 
   handleNoop = (e) => {
   	e.stopPropagation();
   	e.preventDefault();
   }
-
-	handleTouchMove = (e) => {
-		this.handleDrag(e);
-	}
 
   getPositionFromValue = (value) => {
   	let percentage, pos;
@@ -177,7 +171,7 @@ class Slider extends Component {
   		<div
 	  		ref="slider"
 	  		className={cx('rangeslider ', 'rangeslider-' + orientation, className)}
-	  		onMouseDown={this.handleSliderMouseDown}
+	  		onMouseDown={this.handleDrag}
 	  		onClick={this.handleNoop}>
 	  		<div
 		  		ref="fill"
@@ -186,8 +180,8 @@ class Slider extends Component {
 	  		<div
 		  		ref="handle"
 		  		className="rangeslider__handle"
-					onMouseDown={this.handleKnobMouseDown}
-					onTouchMove={this.handleTouchMove}
+					onMouseDown={this.handleStart}
+					onTouchMove={this.handleDrag}
 					onClick={this.handleNoop}
 		  		style={handleStyle} />
   		</div>
