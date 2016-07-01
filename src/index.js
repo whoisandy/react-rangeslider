@@ -57,6 +57,11 @@ class Slider extends Component {
 		this.handleUpdate();
   }
 
+  // remove window resize event listener here
+  componentWillUnmount() {
+		window.removeEventListener('resize', this.handleUpdate);
+  }
+
   handleUpdate = () => {
   	let { orientation } = this.props;
   	let dimension = capitalize(constants.orientation[orientation].dimension);
