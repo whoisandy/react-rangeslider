@@ -55,6 +55,7 @@ class Demo extends Component {
 						min={0}
 						max={100}
 						value={hor}
+						fill={35}
 						onChange={this.handleChangeHor} />
 					<div className="value">Value: {hor}</div>
 					<hr/>
