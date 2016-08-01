@@ -87,7 +87,12 @@ class Slider extends Component {
   	onChange && onChange(value);
   }
 
-  handleEnd = () => {
+  handleEnd = (e) => {
+	if(this.props.onMouseUp){
+		let value = this.position(e);
+		this.props.onMouseUp(value);
+	}
+
   	document.removeEventListener('mousemove', this.handleDrag);
   	document.removeEventListener('mouseup', this.handleEnd);
   }
@@ -95,6 +100,13 @@ class Slider extends Component {
   handleNoop = (e) => {
   	e.stopPropagation();
   	e.preventDefault();
+  }
+
+  handleSliderMouseUp = (e) =>{
+	  if(this.props.onSliderMouseUp){
+		  let value = this.position(e);
+		  this.props.onSliderMouseUp(value);
+	  }
   }
 
   getPositionFromValue = (value) => {
@@ -154,7 +166,7 @@ class Slider extends Component {
   	}
 
   	return {
-  		fill: fillPos,
+  		fill: (this.props.fill >= 0) ? (this.getPositionFromValue(this.props.fill)) : fillPos,
   		handle: handlePos,
   	};
   }
@@ -177,7 +189,8 @@ class Slider extends Component {
 	  		ref="slider"
 	  		className={cx('rangeslider ', 'rangeslider-' + orientation, className)}
 	  		onMouseDown={this.handleDrag}
-	  		onClick={this.handleNoop}>
+	  		onClick={this.handleNoop}
+	        onMouseUp={this.handleSliderMouseUp}>
 	  		<div
 		  		ref="fill"
 		  		className="rangeslider__fill"
