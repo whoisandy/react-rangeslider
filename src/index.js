@@ -36,6 +36,7 @@ class Slider extends Component {
 		orientation: PropTypes.string,
 		onChange: PropTypes.func,
 		className: PropTypes.string,
+		disabled: PropTypes.bool
 	}
 
 	static defaultProps = {
@@ -44,6 +45,7 @@ class Slider extends Component {
 		step: 1,
 		value: 0,
 		orientation: 'horizontal',
+		disabled: false
 	}
 
 	state = {
@@ -188,9 +190,11 @@ class Slider extends Component {
   		<div
 	  		ref="slider"
 	  		className={cx('rangeslider ', 'rangeslider-' + orientation, className)}
-	  		onMouseDown={this.handleDrag}
-	  		onClick={this.handleNoop}
-	        onMouseUp={this.handleSliderMouseUp}>
+	  		onMouseDown={this.props.disabled ? function(){} : this.handleDrag}
+	  		onClick={this.props.disabled ? function(){} :this.handleNoop}
+	        onMouseUp={this.props.disabled ? function(){} :this.handleSliderMouseUp}
+	        disabled={this.props.disabled}
+	    >
 	  		<div
 		  		ref="fill"
 		  		className="rangeslider__fill"
@@ -198,9 +202,9 @@ class Slider extends Component {
 	  		<div
 		  		ref="handle"
 		  		className="rangeslider__handle"
-					onMouseDown={this.handleStart}
-					onTouchMove={this.handleDrag}
-					onClick={this.handleNoop}
+					onMouseDown={this.props.disabled ? function(){} :this.handleStart}
+					onTouchMove={this.props.disabled ? function(){} :this.handleDrag}
+					onClick={this.props.disabled ? function(){} :this.handleNoop}
 		  		style={handleStyle} />
   		</div>
 		);
