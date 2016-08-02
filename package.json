@@ -5,10 +5,7 @@
   "main": "lib/index",
   "scripts": {
     "start": "node server.js",
-    "build": "scripts/build.sh",
-    "deploy": "scripts/deploy.sh",
-    "lint": "eslint src",
-    "test": "npm run lint && karma start"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -21,12 +18,12 @@
     "range",
     "react"
   ],
-  "author": "whoisandie",
+  "author": "Kronos Technologies",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/whoisandie/react-rangeslider/issues"
+    "url": "https://github.com/kronostechnologies/react-rangeslider/issues"
   },
-  "homepage": "https://github.com/whoisandie/react-rangeslider#readme",
+  "homepage": "https://github.com/kronostechnologies/react-rangeslider#readme",
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.24",
@@ -41,13 +38,6 @@
     "express": "^4.13.4",
     "gh-pages": "^0.4.0",
     "html-webpack-plugin": "^1.6.1",
-    "karma": "^0.13.10",
-    "karma-chai": "^0.1.0",
-    "karma-chai-plugins": "^0.6.0",
-    "karma-mocha": "^0.2.0",
-    "karma-mocha-reporter": "^1.1.1",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "karma-webpack": "^1.7.0",
     "less": "^2.5.1",
     "less-loader": "^2.2.1",
     "mocha": "^2.3.3",
