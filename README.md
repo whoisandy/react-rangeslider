@@ -1,8 +1,6 @@
 # React Rangeslider [![NPM Package][npm_img]][npm_site]
 > A lightweight responsive react range slider component.
 
-Check out [examples](https://whoisandie.github.io/react-rangeslider).
-
 ## Install
 Install via `npm` (use `--save` to include it in your package.json)
 
@@ -116,7 +114,4 @@ Feel free to contribute. Submit a Pull Request or open an issue for further disc
 - Tests using Enzyme
 
 ## License
-MIT &copy; [whoisandie](http://whoisandie.com)
-
-[npm_img]: https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square
-[npm_site]: https://www.npmjs.org/package/react-rangeslider
+MIT
