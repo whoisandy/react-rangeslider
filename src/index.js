@@ -166,9 +166,15 @@ class Slider extends Component {
   	} else {
   		fillPos = limit - handlePos + grab;
   	}
+	  let fillReturn = 0;
+	  if (this.props.fill > 0 && this.props.fill < this.props.max) {
+		  fillReturn = this.getPositionFromValue(this.props.fill) + grab;
+	  } else if(this.props.fill == this.props.max) {
+		  fillReturn = this.getPositionFromValue(this.props.fill) + ( 2 * grab);
+	  }
 
   	return {
-  		fill: (this.props.fill >= 0) ? (this.getPositionFromValue(this.props.fill)) : fillPos,
+  		fill: (this.props.fill >= 0) ? (fillReturn) : fillPos,
   		handle: handlePos,
   	};
   }
