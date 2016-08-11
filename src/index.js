@@ -166,6 +166,12 @@ class Slider extends Component {
   	} else {
   		fillPos = limit - handlePos + grab;
   	}
+  	/*
+  	The fillReturn variable is manipulated to cover the edge cases.
+  	If this.props.fill is zero, the fillReturn has to be zero.
+  	Between zero and this.props.max, the grab value is added to be accurate with the handle position.
+  	If this.props.fill equals this.props.max, the range slider has to be completely filled, which explains the " + (2 * grab)".
+  	 */
 	  let fillReturn = 0;
 	  if (this.props.fill > 0 && this.props.fill < this.props.max) {
 		  fillReturn = this.getPositionFromValue(this.props.fill) + grab;
