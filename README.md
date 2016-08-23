@@ -110,11 +110,6 @@ Prop   	 			 |  Default      |  Description
 ## Issues
 Feel free to contribute. Submit a Pull Request or open an issue for further discussion.
 
-
-## Todo
-- Ship styles along with component
-- Tests using Enzyme
-
 ## License
 MIT &copy; [whoisandie](http://whoisandie.com)
 
