@@ -59,7 +59,7 @@ export default Volume extends Component {
     };
   }
 
-  handleChange(value) {
+  handleChange = (value) => {
     this.setState({
       value: value
     });
@@ -67,10 +67,14 @@ export default Volume extends Component {
 
   render() {
     return (
-      <Slider
-        value={value}
-        orientation="vertical"
-        onChange={this.handleChange} />
+    	let { value } = this.state;
+    	<div>
+	      <Slider
+	        value={value}
+	        orientation="vertical"
+	        onChange={this.handleChange} />
+	      <div>Value: {value}</div>
+	    </div>
     );
   }
 }
