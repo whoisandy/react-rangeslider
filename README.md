@@ -66,8 +66,8 @@ export default class Volume extends Component {
   }
 
   render() {
+    let { value } = this.state;
     return (
-    	let { value } = this.state;
     	<div>
 	      <Slider
 	        value={value}
