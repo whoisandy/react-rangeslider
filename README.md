@@ -85,7 +85,6 @@ There's also a umd version available at `lib/umd`. The component is available on
 Rangeslider is bundled with a single component, that accepts data and callbacks only as `props`.
 
 ### Component
-
 ```js
 import Slider from 'react-rangeslider'
 
