@@ -101,14 +101,14 @@ import Slider from 'react-rangeslider'
 
 ### Props
 
-Prop   	 			 |  Default      |  Description
----------   	 |  -------      |  -----------
-`min`     		 |  0				   	 |  minimum value the slider can hold
-`max`    			 |  100				   |  maximum value the slider can hold
-`step` 				 |  1          	 |  step in which increments/decrements have to be made
-`orientation`  |  horizontal   |  orientation of the slider
-`value`  			 |  -            |  current value of the slider
-`onChange`  	 |  -            |  function the slider takes, current value of the slider as the first parameter
+Prop   	 			 |  Type      |  Default      |  Description
+---------   	 |  -------   |  -------      |  -----------
+`min`     		 |  number    |  0				   	 |  minimum value the slider can hold
+`max`    			 |  number    |  100				   |  maximum value the slider can hold
+`step` 				 |  number    |  1          	 |  step in which increments/decrements have to be made
+`orientation`  |  string    |  horizontal   |  orientation of the slider
+`value`  			 |  number    |  -            |  current value of the slider
+`onChange`  	 |  function  |  -            |  function the slider takes, current value of the slider as the first parameter
 
 
 ## Issues
