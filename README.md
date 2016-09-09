@@ -91,12 +91,13 @@ import Slider from 'react-rangeslider'
 
 // inside render
 <Slider
-	min={String or Number}
-	max={String or Number}
-	step={String or Number}
+	min={Number}
+	max={Number}
+	step={Number}
 	orientation={String}
   value={Number}
-  onChange={Function} />
+  onChange={Function}
+/>
 ```
 
 ### Props
