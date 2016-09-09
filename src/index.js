@@ -118,7 +118,9 @@ class Slider extends Component {
   	} else {
   		value = max - (step * Math.round(percentage * (max - min) / step) + min);
   	}
-
+		if (value % step > 0) value = parseInt(value / step, 10) * step;
+    if (value > max) value = max;
+    if (value < min) value = min;
   	return value;
   }
 
