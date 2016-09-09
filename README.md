@@ -99,6 +99,8 @@ import Slider from 'react-rangeslider'
 />
 ```
 
+**Note:** Please note the types of the props above.
+
 ### Props
 
 Prop   	 			 |  Type      |  Default      |  Description
