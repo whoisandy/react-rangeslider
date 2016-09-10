@@ -1,44 +1,44 @@
-import React, { Component } from 'react';
-import Slider from '../src';
-import './demo.less';
+import React, { Component } from 'react'
+import Slider from '../src'
+import './demo.less'
 
 class Demo extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor (props, context) {
+    super(props, context)
     this.state = {
       hor: 10,
       ver: 50,
       flo: 10.2,
-      neg: -10,
-    };
+      neg: -10
+    }
   }
 
   handleChangeHor = (value) => {
     this.setState({
-      hor: value,
-    });
+      hor: value
+    })
   }
 
   handleChangeVer = (value) => {
     this.setState({
-      ver: value,
-    });
+      ver: value
+    })
   }
 
   handleChangeNeg = (value) => {
     this.setState({
-      neg: value,
-    });
+      neg: value
+    })
   }
 
   handleChangeFlo = (value) => {
     this.setState({
-      flo: value,
-    });
+      flo: value
+    })
   }
 
-  render() {
-    const { hor, ver, neg, flo } = this.state;
+  render () {
+    const { hor, ver, neg, flo } = this.state
     return (
       <div className="wrapper">
         <header>
@@ -96,8 +96,8 @@ class Demo extends Component {
           <p>Built with &hearts; &#8226; 2015 &copy; <a href="http://whoisandie.com">whoisandie</a></p>
         </footer>
       </div>
-    );
+    )
   }
 }
 
-export default Demo;
+export default Demo

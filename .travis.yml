@@ -1,14 +1,10 @@
 sudo: false
 language: node_js
-cache:
-  directories:
-    - node_modules
 notifications:
   email: false
 node_js:
-  - iojs
-before_install:
-  - npm i -g npm@^2.0.0
+  - '6'
+  - '4'
 script:
   - npm test
 before_script:

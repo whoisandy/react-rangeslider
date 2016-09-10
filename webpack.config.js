@@ -56,8 +56,9 @@ function start() {
       loaders: [
         {
           test: /\.js?$/,
-          loaders: ['react-hot', 'babel?stage=0'],
           include: [paths.demo, paths.src],
+          exclude: /node_modules/,
+          loader: 'babel',
         },
         {
           test: /\.less$/,
@@ -93,7 +94,7 @@ function build() {
         {
           test: /\.js?$/,
           exclude: /node_modules/,
-          loader: 'babel?stage=0',
+          loader: 'babel',
         },
       ],
     },
