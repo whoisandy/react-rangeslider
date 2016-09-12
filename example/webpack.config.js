@@ -14,7 +14,7 @@ var config = {
 
   output: {
     path: process.env.NODE_ENV === 'development' ? __dirname : 'deploy',
-    publicPath: process.env.NODE_ENV === 'development' ? '/static/' : '/',
+    publicPath: process.env.NODE_ENV === 'development' ? '/static/' : '',
     filename: 'bundle.js'
   },
 
@@ -38,6 +38,7 @@ var config = {
   plugins: []
 }
 
+// Dev config
 if (process.env.NODE_ENV === 'development') {
   config.module.loaders.push({
     test: /\.less$/,
@@ -55,12 +56,13 @@ if (process.env.NODE_ENV === 'development') {
   )
 }
 
+// Build config
 if (process.env.NODE_ENV === 'production') {
   config.module.loaders.push([
     {
       test: /\.less$/,
       exclude: /node_modules/,
-      loader: ExtractPlugin.extract('style-loader', 'css-loader', 'less-loader')
+      loader: ExtractPlugin.extract('style-loader', 'css-loader!less-loader')
     }
   ])
   config.plugins.push(
@@ -70,23 +72,21 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
       compress: {
         unused: true,
         dead_code: true,
         warnings: false
       }
     }),
-    // new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractPlugin('style.css'),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new ExtractPlugin('bundle.css'),
     new HtmlPlugin({
       appMountId: 'mount',
       title: 'React RangeSlider',
-      template: 'example/template.ejs',
-      inject: true
+      template: 'example/index.ejs'
     })
   )
 }
-
-console.log(config.plugins)
 
 module.exports = config

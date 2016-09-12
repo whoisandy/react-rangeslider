@@ -6,16 +6,18 @@
   "scripts": {
     "clean:lib": "rimraf ./lib",
     "clean:deploy": "rimraf ./deploy",
-    "lint": "eslint src",
+    "lint": "eslint src example",
     "test": "npm run lint && karma start",
     "start": "cross-env NODE_ENV=development node -r babel-register example/server.js",
     "build:lib": "babel ./src --stage 0 -d ./lib  --ignore ./tests",
     "build:umd": "cross-env NODE_ENV=production webpack ./src/index.js ./lib/umd/ReactRangeslider.js",
     "build:min": "cross-env NODE_ENV=production webpack -p ./src/index.js ./lib/umd/ReactRangeslider.min.js",
     "build:example": "npm run clean:deploy && cross-env NODE_ENV=production webpack -p --config=example/webpack.config.js",
-    "build": "npm run clean:lib && npm run build:lib && npm run build:umd && npm run build:min",
-    "prebuild": "npm test",
-    "deploy": "scripts/deploy.sh"
+    "build": "npm run build:lib && npm run build:umd && npm run build:min",
+    "prebuild": "npm run clean:lib && npm test",
+    "deploy": "npm run build:example && gh-pages -d deploy",
+    "predeploy": "npm run clean:deploy && npm run lint",
+    "postdeploy": "npm run clean:lib && npm run clean:deploy"
   },
   "repository": {
     "type": "git",

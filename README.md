@@ -1,4 +1,4 @@
-# React Rangeslider [![NPM Package][npm_img]][npm_site]
+# React Rangeslider [![NPM Package][npm_img]][npm_site] [![Travis Status][trav_img]][trav_site]
 > A lightweight responsive react range slider component.
 
 Check out [examples](https://whoisandie.github.io/react-rangeslider).
@@ -119,5 +119,7 @@ Feel free to contribute. Submit a Pull Request or open an issue for further disc
 ## License
 MIT &copy; [whoisandie](http://whoisandie.com)
 
+[trav_img]: https://api.travis-ci.org/whoisandie/react-blocks.svg
+[trav_site]: https://travis-ci.org/whoisandie/react-blocks
 [npm_img]: https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square
 [npm_site]: https://www.npmjs.org/package/react-rangeslider
