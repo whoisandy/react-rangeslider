@@ -240,7 +240,7 @@ class Slider extends Component {
     return (
       <div
         ref={(s) => { this.slider = s }}
-        className={cx('rangeslider ', `rangeslider-${orientation}`, className)}
+        className={cx('rangeslider', `rangeslider-${orientation}`, className)}
         onMouseDown={this.handleDrag}
         onTouchEnd={this.handleNoop}
       >

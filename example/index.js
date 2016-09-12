@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Demo from './demo'
+import App from './app'
 
 function render () {
   const mount = document.getElementById('mount')
-  ReactDOM.render(<Demo />, mount)
+  ReactDOM.render(<App />, mount)
 }
 
 render()

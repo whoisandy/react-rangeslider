@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Slider from '../src'
-import './demo.less'
+import Slider from 'react-rangeslider'
+import './app.less'
 
-class Demo extends Component {
+class App extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
@@ -100,4 +100,4 @@ class Demo extends Component {
   }
 }
 
-export default Demo
+export default App
