@@ -1,16 +1,33 @@
 import cx from 'classnames'
 import React, { PropTypes, Component } from 'react'
 
+/**
+ * Capitalize first letter of string
+ * @private
+ * @param  {string} - String
+ * @return {string} - String with first letter capitalized
+ */
 function capitalize (str) {
   return str.charAt(0).toUpperCase() + str.substr(1)
 }
 
-function maxmin (pos, min, max) {
+/**
+ * Clamp position between a range
+ * @param  {number} - Value to be clamped
+ * @param  {number} - Minimum value in range
+ * @param  {number} - Maximum value in range
+ * @return {number} - Clamped value
+ */
+function clamp (pos, min, max) {
   if (pos < min) { return min }
   if (pos > max) { return max }
   return pos
 }
 
+/**
+ * Predefined constants
+ * @type {Object}
+ */
 const constants = {
   orientation: {
     horizontal: {
@@ -45,22 +62,37 @@ class Slider extends Component {
     orientation: 'horizontal'
   }
 
-  state = {
-    limit: 0,
-    grab: 0
+  constructor (props, context) {
+    super(props, context)
+    this.state = {
+      limit: 0,
+      state: 0
+    }
   }
 
-  // Add window resize event listener here
   componentDidMount () {
     window.addEventListener('resize', this.handleUpdate)
     this.handleUpdate()
   }
 
-  // remove window resize event listener here
   componentWillUnmount () {
     window.removeEventListener('resize', this.handleUpdate)
   }
 
+  /**
+   * Prevent default event and bubbling
+   * @param  {Object} e - Event object
+   * @return {void}
+   */
+  handleNoop = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+  }
+
+  /**
+   * Update slider state on change
+   * @return {void}
+   */
   handleUpdate = () => {
     const { orientation } = this.props
     const dimension = capitalize(constants.orientation[orientation].dimension)
@@ -72,11 +104,20 @@ class Slider extends Component {
     })
   }
 
+  /**
+   * Attach event listeners to mousemove/mouseup events
+   * @return {void}
+   */
   handleStart = () => {
     document.addEventListener('mousemove', this.handleDrag)
     document.addEventListener('mouseup', this.handleEnd)
   }
 
+  /**
+   * Handle drag/mousemove event
+   * @param  {Object} e - Event object
+   * @return {void}
+   */
   handleDrag = (e) => {
     this.handleNoop(e)
     const { onChange } = this.props
@@ -86,16 +127,20 @@ class Slider extends Component {
     onChange && onChange(value)
   }
 
+  /**
+   * Detach event listeners to mousemove/mouseup events
+   * @return {void}
+   */
   handleEnd = () => {
     document.removeEventListener('mousemove', this.handleDrag)
     document.removeEventListener('mouseup', this.handleEnd)
   }
 
-  handleNoop = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-  }
-
+  /**
+   * Calculate position of slider based on its value
+   * @param  {number} value - Current value of slider
+   * @return {position} pos - Calculated position of slider based on value
+   */
   getPositionFromValue = (value) => {
     const { limit } = this.state
     const { min, max } = this.props
@@ -107,11 +152,16 @@ class Slider extends Component {
     return pos
   }
 
+  /**
+   * Translate position of slider to slider value
+   * @param  {number} pos - Current position/coordinates of slider
+   * @return {number} value - Slider value
+   */
   getValueFromPosition = (pos) => {
     let value = null
     const { limit } = this.state
     const { orientation, min, max, step } = this.props
-    const percentage = (maxmin(pos, 0, limit) / (limit || 1))
+    const percentage = (clamp(pos, 0, limit) / (limit || 1))
     const diffMaxMin = max - min
     const diffMaxMinStepQuo = diffMaxMin / step
     const profDiffMaxMinStepQuo = step * Math.round(percentage * diffMaxMinStepQuo)
@@ -128,6 +178,11 @@ class Slider extends Component {
     return value
   }
 
+  /**
+   * Calculate position of slider based on value
+   * @param  {Object} e - Event object
+   * @return {number} value - Slider value
+   */
   position = (e) => {
     const { grab } = this.state
     const { orientation } = this.props
@@ -136,8 +191,8 @@ class Slider extends Component {
     const directionStyle = constants.orientation[orientation].direction
     const clientCoordinateStyle = `client${capitalize(coordinateStyle)}`
     const coordinate = !e.touches
-      ? e[clientCoordinateStyle]
-      : e.touches[0][clientCoordinateStyle]
+    ? e[clientCoordinateStyle]
+    : e.touches[0][clientCoordinateStyle]
     const direction = node.getBoundingClientRect()[directionStyle]
 
     const pos = coordinate - direction - grab
@@ -146,6 +201,11 @@ class Slider extends Component {
     return value
   }
 
+  /**
+   * Grab coordinates of slider
+   * @param  {Object} pos - Position object
+   * @return {Object} - Slider fill/handle coordinates
+   */
   coordinates = (pos) => {
     let fillPos = null
     const { limit, grab } = this.state
@@ -153,8 +213,8 @@ class Slider extends Component {
     const value = this.getValueFromPosition(pos)
     const handlePos = this.getPositionFromValue(value)
     const sumHandleposGrab = orientation === 'horizontal'
-      ? handlePos + grab
-      : handlePos
+    ? handlePos + grab
+    : handlePos
 
     if (orientation === 'horizontal') {
       fillPos = sumHandleposGrab

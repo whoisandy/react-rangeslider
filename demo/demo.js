@@ -40,13 +40,13 @@ class Demo extends Component {
   render () {
     const { hor, ver, neg, flo } = this.state
     return (
-      <div className="wrapper">
+      <div className='wrapper'>
         <header>
           <h1>React Rangeslider</h1>
-          <p>A lightweight react component that acts as a HTML5 input range slider polyfill. Shown below are just examples, please refer <a href="http://github.com/whoisandie/react-rangeslider">Github</a> for docs.</p>
+          <p>A lightweight react component that acts as a HTML5 input range slider polyfill. Shown below are just examples, please refer <a href='http://github.com/whoisandie/react-rangeslider'>Github</a> for docs.</p>
         </header>
 
-        <section id="examples">
+        <section id='examples'>
           <h2>Examples</h2>
 
           <h4>Basic Slider</h4>
@@ -56,7 +56,7 @@ class Demo extends Component {
             value={hor}
             onChange={this.handleChangeHor}
           />
-          <div className="value">Value: {hor}</div>
+          <div className='value'>Value: {hor}</div>
           <hr />
 
           <h4>Negative Values</h4>
@@ -66,7 +66,7 @@ class Demo extends Component {
             value={neg}
             onChange={this.handleChangeNeg}
           />
-          <div className="value">Value: {neg}</div>
+          <div className='value'>Value: {neg}</div>
           <hr />
 
           <h4>Floating Point</h4>
@@ -77,7 +77,7 @@ class Demo extends Component {
             value={flo}
             onChange={this.handleChangeFlo}
           />
-          <div className="value">Value: {flo}</div>
+          <div className='value'>Value: {flo}</div>
           <hr />
 
           <h4>Orientation &amp; Custom Styles</h4>
@@ -85,15 +85,15 @@ class Demo extends Component {
             min={0}
             max={100}
             value={ver}
-            orientation="vertical"
+            orientation='vertical'
             onChange={this.handleChangeVer}
           />
-          <div className="value">Value: {ver}</div>
+          <div className='value'>Value: {ver}</div>
         </section>
 
         <footer>
-          <p>Project is under Open Source <a href="http://whoisandie.com">MIT License</a></p>
-          <p>Built with &hearts; &#8226; 2015 &copy; <a href="http://whoisandie.com">whoisandie</a></p>
+          <p>Project is under Open Source <a href='http://whoisandie.com'>MIT License</a></p>
+          <p>Built with &hearts; &#8226; 2015 &copy; <a href='http://whoisandie.com'>whoisandie</a></p>
         </footer>
       </div>
     )
