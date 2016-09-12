@@ -1,4 +1,5 @@
 # Directories to be ignored
+npm-debug.log
 node_modules
 deploy
 lib
