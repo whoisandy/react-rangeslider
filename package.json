@@ -25,12 +25,21 @@
   },
   "keywords": [
     "rangeslider",
+    "range-slider"
     "react-rangeslider",
     "input",
     "range",
     "react"
+    "slider"
   ],
-  "author": "whoisandie",
+  "author": {
+    "name": "Bhargav Anand",
+    "email": "rjn143@gmail.com",
+    "url": "github.com/whoisandie"
+  },
+  "engines": {
+    "node": ">=4"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/whoisandie/react-rangeslider/issues"
