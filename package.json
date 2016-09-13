@@ -17,7 +17,9 @@
     "prebuild": "npm run clean:lib && npm test",
     "deploy": "npm run build:example && gh-pages -d deploy",
     "predeploy": "npm run clean:deploy && npm run lint",
-    "postdeploy": "npm run clean:lib && npm run clean:deploy"
+    "postdeploy": "npm run clean:lib && npm run clean:deploy",
+    "prepublish": "npm run build",
+    "postpublish": "npm run deploy"
   },
   "repository": {
     "type": "git",
