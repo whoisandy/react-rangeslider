@@ -1,3 +1,4 @@
+/* eslint no-debugger: "warn" */
 import cx from 'classnames'
 import React, { PropTypes, Component } from 'react'
 
@@ -66,7 +67,7 @@ class Slider extends Component {
     super(props, context)
     this.state = {
       limit: 0,
-      state: 0
+      grab: 0
     }
   }
 
@@ -162,16 +163,14 @@ class Slider extends Component {
     const { limit } = this.state
     const { orientation, min, max, step } = this.props
     const percentage = (clamp(pos, 0, limit) / (limit || 1))
-    const diffMaxMin = max - min
-    const diffMaxMinStepQuo = diffMaxMin / step
-    const profDiffMaxMinStepQuo = step * Math.round(percentage * diffMaxMinStepQuo)
-    const sumProfDiffMaxMinStepQuo = profDiffMaxMinStepQuo + min
+    const baseVal = step * Math.round(percentage * (max - min) / step)
 
     if (orientation === 'horizontal') {
-      value = sumProfDiffMaxMinStepQuo
+      value = baseVal + min
     } else {
-      value = max - sumProfDiffMaxMinStepQuo
+      value = max - baseVal
     }
+
     if (value >= max) value = max
     if (value <= min) value = min
 
