@@ -51,7 +51,7 @@ module.exports = Volume;
 import React, { Component } from 'react';
 import Slider from 'react-rangeslider';
 
-export default Volume extends Component {
+export default class Volume extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -66,8 +66,8 @@ export default Volume extends Component {
   }
 
   render() {
+    let { value } = this.state;
     return (
-    	let { value } = this.state;
     	<div>
 	      <Slider
 	        value={value}
