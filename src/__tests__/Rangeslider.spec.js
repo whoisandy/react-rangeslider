@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import Slider from '../'
+import Slider from '../Rangeslider'
 
 describe('Rangeslider specs', () => {
   it('should render properly', () => {

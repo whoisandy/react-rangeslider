@@ -1,13 +1,9 @@
 .babelrc
 .editorconfig
 .eslintrc
-.eslintignore
 .gitignore
 .travis.yml
-
-karma.conf.js
 webpack.config.js
 
 example
 src
-tests

@@ -80,7 +80,9 @@
     "jest": "^15.1.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
+    "react-dom": "^15.3.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
@@ -88,9 +90,10 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
-    "classnames": "^2.2.3",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "classnames": "^2.2.3"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0"
   },
   "jest": {
     "testPathDirs": [
