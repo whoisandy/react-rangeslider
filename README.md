@@ -11,12 +11,12 @@ $ npm install react-rangeslider --save
 ```
 
 ## Usage
-React Rangeslider is bundled with a single slider component. You can require them in plain old ES5 syntax or import them in ES6 syntax.
+React-Rangeslider is bundled with a single slider component. You can require them in plain old ES5 syntax or import them in ES6 syntax.
 
 ...plain old ES5
 
 ```js
-var React = require('react');
+...
 var Slider = require('react-rangeslider');
 
 var Volume = React.createClass({
@@ -37,7 +37,8 @@ var Volume = React.createClass({
 			<Slider
         value={value}
         orientation="vertical"
-        onChange={this.handleChange} />
+        onChange={this.handleChange}
+      />
 		);
 	}
 });
@@ -48,7 +49,7 @@ module.exports = Volume;
 ... or use ES6 syntax
 
 ```js
-import React, { Component } from 'react';
+...
 import Slider from 'react-rangeslider';
 
 export default class Volume extends Component {
@@ -70,9 +71,10 @@ export default class Volume extends Component {
     return (
     	<div>
 	      <Slider
-	        value={value}
-	        orientation="vertical"
-	        onChange={this.handleChange} />
+          value={value}
+          orientation="vertical"
+          onChange={this.handleChange}
+        />
 	      <div>Value: {value}</div>
 	    </div>
     );
@@ -82,7 +84,7 @@ export default class Volume extends Component {
 There's also a umd version available at `lib/umd`. The component is available on `window.ReactRangeslider`. To style the slider, please refer the rangeslider styles in `demo/demo.less` file.
 
 ## API
-Rangeslider is bundled with a single component, that accepts data and callbacks only as `props`.
+Rangeslider is bundled as a single component, that accepts data and callbacks only as `props`.
 
 ### Component
 ```js
@@ -90,24 +92,21 @@ import Slider from 'react-rangeslider'
 
 // inside render
 <Slider
-	min={Number}
-	max={Number}
-	step={Number}
-	orientation={String}
+  min={Number}
+  max={Number}
+  step={Number}
+  orientation={String}
   value={Number}
   onChange={Function}
 />
 ```
 
-**Note:** Please note the types of the props above.
-
 ### Props
-
 Prop   	 			 |  Type      |  Default      |  Description
 ---------   	 |  -------   |  -------      |  -----------
-`min`     		 |  number    |  0				   	 |  minimum value the slider can hold
-`max`    			 |  number    |  100				   |  maximum value the slider can hold
-`step` 				 |  number    |  1          	 |  step in which increments/decrements have to be made
+`min`     		 |  number    |  0				   	|  minimum value the slider can hold
+`max`    			 |  number    |  100				  |  maximum value the slider can hold
+`step` 				 |  number    |  1          	|  step in which increments/decrements have to be made
 `orientation`  |  string    |  horizontal   |  orientation of the slider
 `value`  			 |  number    |  -            |  current value of the slider
 `onChange`  	 |  function  |  -            |  function the slider takes, current value of the slider as the first parameter
