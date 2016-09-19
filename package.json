@@ -80,6 +80,7 @@
     "jest": "^15.1.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "react-addons-test-utils": "^15.3.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
@@ -90,5 +91,10 @@
     "classnames": "^2.2.3",
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
+  },
+  "jest": {
+    "testPathDirs": [
+      "<rootDir>/src/"
+    ]
   }
 }

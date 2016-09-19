@@ -5,7 +5,7 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "jasmine": true
+    "jest": true
   },
   "plugins": [
     "react"
