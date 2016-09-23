@@ -2,7 +2,6 @@ const cx = require('classnames');
 const findDOMNode = require('react-dom').findDOMNode;
 const React = require('react');
 const PropTypes = require('react').PropTypes;
-const Component = require('react').Component;
 
 function capitalize(str) {
 	return str.charAt(0).toUpperCase() + str.substr(1);
@@ -30,6 +29,9 @@ const constants = {
 };
 
 let Slider = React.createClass({
+
+	fill_anchor_range: 20,
+
 	getInitialState: function () {
 		return {
 			limit: 0,
@@ -41,6 +43,8 @@ let Slider = React.createClass({
 	componentDidMount: function () {
 		window.addEventListener('resize', this.handleUpdate);
 		this.handleUpdate();
+
+		this.fill_anchor_range = this.props.max * 0.017;
 	},
 
 	// remove window resize event listener here
@@ -70,8 +74,13 @@ let Slider = React.createClass({
 		if (!onChange) {
 			console.warn('No onChange was specified for selected slider.')
 		}
-
 		value = this.position(e);
+		if(this.props.fill) {
+			if(value < this.props.fill + this.fill_anchor_range && value > this.props.fill - this.fill_anchor_range) {
+				value = this.props.fill;
+			}
+		}
+
 		onChange && onChange(value);
 	},
 

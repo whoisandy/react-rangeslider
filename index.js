@@ -56,7 +56,8 @@ let KitchenSink = React.createClass({
 				<Header>
 					Kronos technologies' implementation of React-RangeSlider
 				</Header>
-				<div style={{width: "900px", marginLeft: "300px"}}>
+				original work: <a href="https://github.com/whoisandie/react-rangeslider">https://github.com/whoisandie/react-rangeslider</a>
+				<div style={{width: "900px", marginLeft: "300px", marginTop: "45px"}}>
 					<Panel header="Large slider with fill">
 						<div>
 							<Slider {...this.state.large_slider_with_fill}/>
