@@ -8,6 +8,7 @@ lib=lib
 rm -rf $lib
 rm -rf node_modules/
 npm install
-$babel ./$src --stage 0 -d $lib
+#$babel ./$src --stage 0 -d $lib
+webpack
 
 printf "\nGzip: Minified size `gzip -c $lib/index.js | wc -c | awk {'print $1/1000'}` bytes\n"
