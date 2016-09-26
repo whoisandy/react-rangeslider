@@ -52,6 +52,10 @@ let Slider = React.createClass({
 		window.removeEventListener('resize', this.handleUpdate);
 	},
 
+	showTooltip: function() {
+		//	insert tooltip here
+	},
+
 	handleUpdate: function () {
 		let {orientation} = this.props;
 		let dimension = capitalize(constants.orientation[orientation].dimension);
@@ -205,7 +209,9 @@ let Slider = React.createClass({
 				<div
 					ref="fill"
 					className="rangeslider__fill"
-					style={fillStyle}/>
+					style={fillStyle}
+					onMouseOver={this.showTooltip}
+				/>
 				<div
 					ref="handle"
 					className="rangeslider__handle"
