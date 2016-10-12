@@ -134,6 +134,24 @@ body {
   }
 }
 
+/**
+* Rangeslider - Reverse
+*/
+
+.rangeslider-reverse {
+  &.rangeslider-horizontal {
+    .rangeslider__fill {
+      right: 0;
+    }
+  }
+  &.rangeslider-vertical {
+    .rangeslider__fill {
+      top: 0;
+      bottom: inherit;
+    }
+  }
+}
+
 @media screen and (min-width: 1200px) {
   #mount {
     width: 600px;
