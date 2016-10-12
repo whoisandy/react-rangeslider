@@ -234,13 +234,13 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = {[dimension]: `${coords.fill}px`}
     const handleStyle = {[direction]: `${coords.handle}px`}
-    let labels = null;
+    let labels = null
     let labelKeys = Object.keys(this.props.labels)
 
     if (labelKeys.length > 0) {
-      let items = [];
+      let items = []
 
-      labelKeys = labelKeys.sort((a,b) => reverse ? a-b : b-a)
+      labelKeys = labelKeys.sort((a, b) => reverse ? a - b : b - a)
 
       for (let key of labelKeys) {
         const labelPosition = this.getPositionFromValue(key)
@@ -274,19 +274,19 @@ class Slider extends Component {
         onMouseDown={this.handleDrag}
         onTouchStart={this.handleDrag}
         onTouchEnd={this.handleNoop}>
-          <div
-            className='rangeslider__fill'
-            style={fillStyle} />
+        <div
+          className='rangeslider__fill'
+          style={fillStyle} />
 
-          <div
-            ref={(sh) => { this.handle = sh }}
-            className='rangeslider__handle'
-            onMouseDown={this.handleStart}
-            onTouchEnd={this.handleNoop}
-            onTouchMove={this.handleDrag}
-            style={handleStyle} />
+        <div
+          ref={(sh) => { this.handle = sh }}
+          className='rangeslider__handle'
+          onMouseDown={this.handleStart}
+          onTouchEnd={this.handleNoop}
+          onTouchMove={this.handleDrag}
+          style={handleStyle} />
 
-          {labels}
+        {labels}
 
       </div>
     )
