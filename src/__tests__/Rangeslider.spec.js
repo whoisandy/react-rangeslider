@@ -18,5 +18,6 @@ describe('Rangeslider specs', () => {
     expect(slider.prop('step')).toEqual(1)
     expect(slider.prop('value')).toEqual(0)
     expect(slider.prop('orientation')).toEqual('horizontal')
+    expect(slider.prop('reverse')).toEqual(false)
   })
 })

@@ -21,9 +21,9 @@ class VerticalReversed extends Component {
       <div className='vertical-slider'>
         <h4>Orientation &amp; Custom Styles</h4>
         <Slider
-          min={ 0 }
-          max={ 10 }
-          value={ value }
+          min={0}
+          max={10}
+          value={value}
           orientation='vertical'
           reverse
           onChange={this.handleChange}
@@ -31,8 +31,8 @@ class VerticalReversed extends Component {
         <div className='value'>Value: {value}</div>
         <hr />
       </div>
-    );
+    )
   }
 }
 
-export default VerticalReversed;
+export default VerticalReversed
