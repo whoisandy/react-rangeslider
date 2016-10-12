@@ -33,7 +33,8 @@ class Slider extends Component {
     orientation: PropTypes.string,
     onChange: PropTypes.func,
     className: PropTypes.string,
-    reverse: PropTypes.bool
+    reverse: PropTypes.bool,
+    labels: PropTypes.object
   }
 
   static defaultProps = {
@@ -42,7 +43,8 @@ class Slider extends Component {
     step: 1,
     value: 0,
     orientation: 'horizontal',
-    reverse: false
+    reverse: false,
+    labels: {}
   }
 
   constructor (props, context) {
@@ -106,9 +108,15 @@ class Slider extends Component {
   handleDrag = (e) => {
     this.handleNoop(e)
     const {onChange} = this.props
+    const {target} = e
     if (!onChange) return
 
-    const value = this.position(e)
+    let value = this.position(e)
+    if (target.classList.contains('rangeslider__label') && target.dataset.value) {
+      value = target.dataset.value
+    }
+
+    // const value = target.classList.contains('rangeslider__label') ? 10 : this.position(e)
     onChange && onChange(value)
   }
 
@@ -189,8 +197,10 @@ class Slider extends Component {
    */
   coordinates = (pos) => {
     let fillPos = null
+    let labelPos = null
     const {limit, grab} = this.state
     const {orientation} = this.props
+    const dimension = constants.orientation[orientation].dimension
     const value = this.getValueFromPosition(pos)
     const handlePos = this.getPositionFromValue(value)
     const sumHandleposGrab = orientation === 'horizontal'
@@ -203,9 +213,16 @@ class Slider extends Component {
       fillPos = limit - sumHandleposGrab
     }
 
+    if (this.handle && orientation === 'vertical') {
+      labelPos = handlePos - (this.handle.getBoundingClientRect()[dimension] * 0.75)
+    } else {
+      labelPos = handlePos
+    }
+
     return {
       fill: fillPos,
-      handle: handlePos
+      handle: handlePos,
+      label: labelPos
     }
   }
 
@@ -217,6 +234,38 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = {[dimension]: `${coords.fill}px`}
     const handleStyle = {[direction]: `${coords.handle}px`}
+    let labels = null;
+    let labelKeys = Object.keys(this.props.labels)
+
+    if (labelKeys.length > 0) {
+      let items = [];
+
+      labelKeys = labelKeys.sort((a,b) => reverse ? a-b : b-a)
+
+      for (let key of labelKeys) {
+        const labelPosition = this.getPositionFromValue(key)
+        const labelCoords = this.coordinates(labelPosition)
+        const labelStyle = {[direction]: `${labelCoords.label}px`}
+        items.push((
+          <li
+            className={cx('rangeslider__label')}
+            data-value={key}
+            dangerouslySetInnerHTML={{ __html: this.props.labels[key] }}
+            onMouseDown={this.handleDrag}
+            onTouchStart={this.handleDrag}
+            onTouchEnd={this.handleNoop}
+            style={labelStyle} />
+        ))
+      }
+
+      labels = (
+        <ul
+          ref={(sl) => { this.labels = sl }}
+          className={cx('rangeslider__label-list')}>
+          {items}
+        </ul>
+      )
+    }
 
     return (
       <div
@@ -225,16 +274,20 @@ class Slider extends Component {
         onMouseDown={this.handleDrag}
         onTouchStart={this.handleDrag}
         onTouchEnd={this.handleNoop}>
-        <div
-          className='rangeslider__fill'
-          style={fillStyle} />
-        <div
-          ref={(sh) => { this.handle = sh }}
-          className='rangeslider__handle'
-          onMouseDown={this.handleStart}
-          onTouchEnd={this.handleNoop}
-          onTouchMove={this.handleDrag}
-          style={handleStyle} />
+          <div
+            className='rangeslider__fill'
+            style={fillStyle} />
+
+          <div
+            ref={(sh) => { this.handle = sh }}
+            className='rangeslider__handle'
+            onMouseDown={this.handleStart}
+            onTouchEnd={this.handleNoop}
+            onTouchMove={this.handleDrag}
+            style={handleStyle} />
+
+          {labels}
+
       </div>
     )
   }
