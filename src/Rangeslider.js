@@ -200,7 +200,7 @@ class Slider extends Component {
     let labelPos = null
     const {limit, grab} = this.state
     const {orientation} = this.props
-    const dimension = constants.orientation[orientation].dimension
+    // const dimension = constants.orientation[orientation].dimension
     const value = this.getValueFromPosition(pos)
     const handlePos = this.getPositionFromValue(value)
     const sumHandleposGrab = orientation === 'horizontal'
@@ -214,7 +214,8 @@ class Slider extends Component {
     }
 
     if (this.handle && orientation === 'vertical') {
-      labelPos = handlePos - (this.handle.getBoundingClientRect()[dimension] * 0.75)
+      labelPos = handlePos
+      // labelPos = handlePos - (this.handle.getBoundingClientRect()[dimension] * 0.75)
     } else {
       labelPos = handlePos
     }
@@ -248,6 +249,7 @@ class Slider extends Component {
         const labelStyle = {[direction]: `${labelCoords.label}px`}
         items.push((
           <li
+            key={key}
             className={cx('rangeslider__label')}
             data-value={key}
             dangerouslySetInnerHTML={{ __html: this.props.labels[key] }}
