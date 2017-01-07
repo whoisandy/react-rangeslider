@@ -9,23 +9,17 @@ module.exports = {
     library: 'ReactRangeslider',
     libraryTarget: 'umd'
   },
-
   module: {
     loaders: [
       {
         test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel'
-      }
-    ],
-    rules: [
+      },
       {
         test: /\.less$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          'less-loader'
-        ]
+        exclude: /node_modules/,
+        loader: 'style!css!less'
       }
     ]
   },
