@@ -96,8 +96,8 @@
     "react": "^0.14.0 || ^15.0.0"
   },
   "jest": {
-    "testPathDirs": [
-      "<rootDir>/src/"
-    ]
+    "moduleNameMapper": {
+      ".*\\.less$": "<rootDir>/src/"
+    }
   }
 }

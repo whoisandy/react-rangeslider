@@ -2,7 +2,9 @@
 import cx from 'classnames'
 import React, { PropTypes, Component } from 'react'
 import { capitalize, clamp } from './utils'
+/* eslint-disable no-unused-vars */
 import css from './rangeslider.less'
+/* eslint-enable no-unused-vars */
 
 /**
  * Predefined constants
