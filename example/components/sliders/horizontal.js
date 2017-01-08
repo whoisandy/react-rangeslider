@@ -5,7 +5,8 @@ class Horizontal extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      value: 10
+      value: 10,
+      valueEnd: 0
     }
   }
 
@@ -15,8 +16,15 @@ class Horizontal extends Component {
     })
   }
 
+  handleChangeEnd = (value) => {
+    console.log(value)
+    this.setState({
+      valueEnd: value
+    })
+  }
+
   render () {
-    const { value } = this.state
+    const { value, valueEnd } = this.state
     return (
       <div className='horizontal-slider'>
         <h4>Basic Slider</h4>
@@ -25,8 +33,10 @@ class Horizontal extends Component {
           max={100}
           value={value}
           onChange={this.handleChange}
+          onChangeEnd={this.handleChangeEnd}
         />
         <div className='value'>Value: {value}</div>
+        <div className='value'>ValueEnd: {valueEnd}</div>
         <hr />
       </div>
     )

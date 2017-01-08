@@ -110,7 +110,7 @@ Prop   	 			 |  Type      |  Default      |  Description
 `orientation`  |  string    |  horizontal   |  orientation of the slider
 `value`  			 |  number    |  -            |  current value of the slider
 `onChange`  	 |  function  |  -            |  function the slider takes, current value of the slider as the first parameter
-
+`onChangeEnd`  	 |  function  |  -            |  function the slider takes, end value of the slider as the first parameter
 
 ## Issues
 Feel free to contribute. Submit a Pull Request or open an issue for further discussion.
