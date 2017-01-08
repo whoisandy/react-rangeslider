@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-	"extends": ["standard", "standard-jsx"],
+  "extends": ["standard", "standard-jsx"],
   "env": {
     "es6": true,
     "browser": true,

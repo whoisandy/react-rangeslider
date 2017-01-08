@@ -95,8 +95,10 @@ import Slider from 'react-rangeslider'
   min={Number}
   max={Number}
   step={Number}
-  orientation={String}
-  value={Number}
+	orientation={String}
+  reverse={Boolean}
+	value={Number}
+  labels={Object}
   onChange={Function}
 />
 ```
@@ -108,7 +110,9 @@ Prop   	 			 |  Type      |  Default      |  Description
 `max`    			 |  number    |  100				  |  maximum value the slider can hold
 `step` 				 |  number    |  1          	|  step in which increments/decrements have to be made
 `orientation`  |  string    |  horizontal   |  orientation of the slider
+`reverse`  		 |  boolean   |  false			  |  reverse direction of vertical slider (top-bottom)
 `value`  			 |  number    |  -            |  current value of the slider
+`labels`  	 	 |  object  	|  {}           |  object containing key-value pairs. { 0: 'Low', 50: 'Medium', 100: 'High'}
 `onChange`  	 |  function  |  -            |  function the slider takes, current value of the slider as the first parameter
 
 
