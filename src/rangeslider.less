@@ -5,9 +5,7 @@
   margin: 20px 0;
   position: relative;
   background: #e6e6e6;
-  .rangeslider__fill, .rangeslider__handle {
-    position: absolute;
-  }
+
   &, .rangeslider__fill {
     display: block;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
@@ -52,6 +50,11 @@
   height: 150px;
   max-width: 10px;
   background: none;
+
+  .rangeslider__fill, .rangeslider__handle {
+    position: absolute;
+  }
+
   .rangeslider__fill {
     width: 100%;
     background: #27ae60;
@@ -66,6 +69,65 @@
       box-shadow: none;
     }
   }
+}
+
+/**
+* Rangeslider - Reverse
+*/
+
+.rangeslider-reverse {
+  &.rangeslider-horizontal {
+    .rangeslider__fill {
+      right: 0;
+    }
+  }
+  &.rangeslider-vertical {
+    .rangeslider__fill {
+      top: 0;
+      bottom: inherit;
+    }
+  }
+}
+
+/**
+* Rangeslider - Custom Labels
+*/
+
+
+.rangeslider__label-list {
+
+  .rangeslider-vertical & {
+    position: relative;
+    list-style-type: none;
+    margin: 0 0 0 24px;
+    padding: 0;
+    text-align: left;
+    width: 250px;
+
+    .rangeslider__label {
+      position: absolute;
+
+      &::before {
+        content: '';
+        width: 10px;
+        height: 2px;
+        background: black;
+        position: absolute;
+        left: -14px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+    } // .rangeslider__label
+  } // .rangeslider-vertical
+
+  .rangeslider__label {
+    position: absolute;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
 }
 
 @media screen and (min-width: 1200px) {
