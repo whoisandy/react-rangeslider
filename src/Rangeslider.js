@@ -4,7 +4,6 @@ import React, { PropTypes, Component } from 'react'
 import { capitalize, clamp } from './utils'
 import './rangeslider.less'
 
-
 /**
  * Predefined constants
  * @type {Object}
