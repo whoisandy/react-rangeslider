@@ -1,7 +1,8 @@
 /* eslint no-debugger: "warn" */
 import cx from 'classnames'
-import React, {PropTypes, Component} from 'react'
-import {capitalize, clamp} from './utils'
+import React, { PropTypes, Component } from 'react'
+import { capitalize, clamp } from './utils'
+import './rangeslider.less'
 
 /**
  * Predefined constants
