@@ -1,9 +1,0 @@
-.babelrc
-.editorconfig
-.eslintrc
-.gitignore
-.travis.yml
-webpack.config.js
-
-example
-src
