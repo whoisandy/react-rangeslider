@@ -13,7 +13,7 @@ var config = {
   ] : path.join(__dirname, 'index'),
 
   output: {
-    path: process.env.NODE_ENV === 'development' ? __dirname : 'deploy',
+    path: process.env.NODE_ENV === 'development' ? __dirname : 'public',
     publicPath: process.env.NODE_ENV === 'development' ? '/static/' : '',
     filename: 'bundle.js'
   },
@@ -89,7 +89,7 @@ if (process.env.NODE_ENV === 'production') {
     new HtmlPlugin({
       appMountId: 'mount',
       title: 'React RangeSlider',
-      template: 'example/index.ejs'
+      template: 'docs/index.ejs'
     })
   )
 }
