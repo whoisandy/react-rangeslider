@@ -1,6 +1,7 @@
 'use strict'
 
 var path = require('path')
+var ExtractPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index'),
@@ -19,10 +20,14 @@ module.exports = {
       {
         test: /\.less$/,
         exclude: /node_modules/,
-        loader: 'css-loader!less-loader'
+        loader: ExtractPlugin.extract('style-loader', 'css-loader!less-loader')
       }
     ]
   },
+
+  plugins: [
+    new ExtractPlugin('RangeSlider.css')
+  ],
 
   externals: [
     {
