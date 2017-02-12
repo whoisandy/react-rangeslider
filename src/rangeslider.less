@@ -16,9 +16,6 @@
     cursor: pointer;
     display: inline-block;
     position: absolute;
-    &:active {
-      background: #999;
-    }
   }
 }
 
@@ -39,6 +36,18 @@
     height: 40px;
     border-radius: 40px;
     top: -10px;
+    &:after {
+      content: ' ';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 9px;
+      left: 9px;
+      border-radius: 50%;
+      background-color: #ccc;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3) inset,
+                  0 -1px 3px rgba(0,0,0,0.3) inset;
+    }
   }
 }
 
@@ -65,9 +74,6 @@
     width: 30px;
     height: 10px;
     left: -10px;
-    &:active {
-      box-shadow: none;
-    }
   }
 }
 
