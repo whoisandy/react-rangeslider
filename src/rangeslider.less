@@ -8,7 +8,7 @@
 
   &, .rangeslider__fill {
     display: block;
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
   }
   .rangeslider__handle {
     background: #fff;
@@ -16,6 +16,38 @@
     cursor: pointer;
     display: inline-block;
     position: absolute;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4),
+                0 -1px 3px rgba(0,0,0,0.4);
+    &:hover {
+      .rangeslider__tooltip {
+        opacity: 1;
+      }
+    }
+  }
+  .rangeslider__tooltip {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-weight: normal;
+    font-size: 14px;
+    transition: all 100ms ease-in;
+    border-radius: 4px;
+    display: inline-block;
+    color: white;
+    opacity: 0;
+    span {
+      margin-top: 12px;
+      display: inline-block;
+      line-height: 100%;
+    }
+    &:after {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
   }
 }
 
@@ -23,11 +55,11 @@
 * Rangeslider - Horizontal slider
 */
 .rangeslider-horizontal {
-  height: 20px;
+  height: 16px;
   border-radius: 10px;
   .rangeslider__fill {
     height: 100%;
-    background: #27ae60;
+    background-color: #4CAF50;
     border-radius: 10px;
     top: 0;
   }
@@ -44,9 +76,19 @@
       top: 9px;
       left: 9px;
       border-radius: 50%;
-      background-color: #ccc;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3) inset,
-                  0 -1px 3px rgba(0,0,0,0.3) inset;
+      background-color: #dadada;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4) inset,
+                  0 -1px 3px rgba(0,0,0,0.4) inset;
+    }
+  }
+  .rangeslider__tooltip {
+    top: -55px;
+    &:after {
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid rgba(0, 0, 0, 0.8);
+      left: 12px;
+      bottom: -8px;
     }
   }
 }
@@ -58,7 +100,7 @@
   margin: 20px auto;
   height: 150px;
   max-width: 10px;
-  background: none;
+  background-color: transparent;
 
   .rangeslider__fill, .rangeslider__handle {
     position: absolute;
@@ -66,7 +108,7 @@
 
   .rangeslider__fill {
     width: 100%;
-    background: #27ae60;
+    background-color: #1E88E5;
     box-shadow: none;
     bottom: 0;
   }
@@ -74,6 +116,17 @@
     width: 30px;
     height: 10px;
     left: -10px;
+  }
+  .rangeslider__tooltip {
+    left: -55px;
+    top: -15px;
+    &:after {
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid rgba(0, 0, 0, 0.8);
+      left: 100%;
+      top: 12px;
+    }
   }
 }
 
@@ -96,12 +149,9 @@
 }
 
 /**
-* Rangeslider - Custom Labels
+* Rangeslider - Labels
 */
-
-
 .rangeslider__label-list {
-
   .rangeslider-vertical & {
     position: relative;
     list-style-type: none;
@@ -124,20 +174,14 @@
         transform: translateY(-50%);
         z-index: -1;
       }
-    } // .rangeslider__label
-  } // .rangeslider-vertical
+    }
+  }
 
   .rangeslider__label {
     position: absolute;
     font-size: 14px;
     cursor: pointer;
     display: inline-block;
-  }
-
-}
-
-@media screen and (min-width: 1200px) {
-  #mount {
-    width: 600px;
+    top: 10px;
   }
 }
