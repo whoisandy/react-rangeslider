@@ -32,10 +32,12 @@ class Slider extends Component {
     step: PropTypes.number,
     value: PropTypes.number,
     orientation: PropTypes.string,
-    onChange: PropTypes.func,
-    className: PropTypes.string,
+    tooltip: PropTypes.bool,
     reverse: PropTypes.bool,
-    labels: PropTypes.object
+    labels: PropTypes.object,
+    format: PropTypes.func,
+    onChange: PropTypes.func,
+    onChangeComplete: PropTypes.func
   }
 
   static defaultProps = {
@@ -44,6 +46,7 @@ class Slider extends Component {
     step: 1,
     value: 0,
     orientation: 'horizontal',
+    tooltip: true,
     reverse: false,
     labels: {}
   }
@@ -77,11 +80,21 @@ class Slider extends Component {
   }
 
   /**
+   * Format label/tooltip value
+   * @param  {Number} - value
+   * @return {Formatted Number}
+   */
+  handleFormat = (value) => {
+    const { format } = this.props
+    return format ? format(value) : value
+  }
+
+  /**
    * Update slider state on change
    * @return {void}
    */
   handleUpdate = () => {
-    const {orientation} = this.props
+    const { orientation } = this.props
     const dimension = capitalize(constants.orientation[orientation].dimension)
     const sliderPos = this.slider[`offset${dimension}`]
     const handlePos = this.handle[`offset${dimension}`]
@@ -108,24 +121,26 @@ class Slider extends Component {
    */
   handleDrag = (e) => {
     this.handleNoop(e)
-    const {onChange} = this.props
-    const {target} = e
+    const { onChange } = this.props
+    const { target } = e
     if (!onChange) return
 
     let value = this.position(e)
     if (target.classList.contains('rangeslider__label') && target.dataset.value) {
-      value = target.dataset.value
+      value = parseFloat(target.dataset.value)
     }
 
     // const value = target.classList.contains('rangeslider__label') ? 10 : this.position(e)
-    onChange && onChange(value)
+    onChange && onChange(value, e)
   }
 
   /**
    * Detach event listeners to mousemove/mouseup events
    * @return {void}
    */
-  handleEnd = () => {
+  handleEnd = (e) => {
+    const { onChangeComplete } = this.props
+    onChangeComplete && onChangeComplete(e)
     document.removeEventListener('mousemove', this.handleDrag)
     document.removeEventListener('mouseup', this.handleEnd)
   }
@@ -136,8 +151,8 @@ class Slider extends Component {
    * @return {position} pos - Calculated position of slider based on value
    */
   getPositionFromValue = (value) => {
-    const {limit} = this.state
-    const {min, max} = this.props
+    const { limit } = this.state
+    const { min, max } = this.props
     const diffMaxMin = max - min
     const diffValMin = value - min
     const percentage = diffValMin / diffMaxMin
@@ -153,7 +168,7 @@ class Slider extends Component {
    */
   getValueFromPosition = (pos) => {
     let value = null
-    const {limit} = this.state
+    const { limit } = this.state
     const {orientation, min, max, step} = this.props
     const percentage = (clamp(pos, 0, limit) / (limit || 1))
     const baseVal = step * Math.round(percentage * (max - min) / step)
@@ -176,8 +191,8 @@ class Slider extends Component {
    * @return {number} value - Slider value
    */
   position = (e) => {
-    const {grab} = this.state
-    const {orientation, reverse} = this.props
+    const { grab } = this.state
+    const { orientation, reverse } = this.props
 
     const node = this.slider
     const coordinateStyle = constants.orientation[orientation].coordinate
@@ -198,9 +213,8 @@ class Slider extends Component {
    */
   coordinates = (pos) => {
     let fillPos = null
-    let labelPos = null
-    const {limit, grab} = this.state
-    const {orientation} = this.props
+    const { limit, grab } = this.state
+    const { orientation } = this.props
     // const dimension = constants.orientation[orientation].dimension
     const value = this.getValueFromPosition(pos)
     const handlePos = this.getPositionFromValue(value)
@@ -214,22 +228,22 @@ class Slider extends Component {
       fillPos = limit - sumHandleposGrab
     }
 
-    if (this.handle && orientation === 'vertical') {
-      labelPos = handlePos
-      // labelPos = handlePos - (this.handle.getBoundingClientRect()[dimension] * 0.75)
-    } else {
-      labelPos = handlePos
-    }
+    // if (this.handle && orientation === 'vertical') {
+    //   labelPos = handlePos
+    //   labelPos = handlePos - (this.handle.getBoundingClientRect()[dimension] * 0.75)
+    // } else {
+    //   labelPos = handlePos
+    // }
 
     return {
       fill: fillPos,
       handle: handlePos,
-      label: labelPos
+      label: handlePos
     }
   }
 
   render () {
-    const {value, orientation, className, reverse} = this.props
+    const { value, orientation, className, tooltip, reverse } = this.props
     const dimension = constants.orientation[orientation].dimension
     const direction = reverse ? constants.orientation[orientation].reverseDirection : constants.orientation[orientation].direction
     const position = this.getPositionFromValue(value)
@@ -253,11 +267,12 @@ class Slider extends Component {
             key={key}
             className={cx('rangeslider__label')}
             data-value={key}
-            dangerouslySetInnerHTML={{ __html: this.props.labels[key] }}
             onMouseDown={this.handleDrag}
             onTouchStart={this.handleDrag}
-            onTouchEnd={this.handleNoop}
-            style={labelStyle} />
+            onTouchEnd={this.handleEnd}
+            style={labelStyle}>
+            {this.props.labels[key] }
+          </li>
         ))
       }
 
@@ -275,22 +290,30 @@ class Slider extends Component {
         ref={(s) => { this.slider = s }}
         className={cx('rangeslider', `rangeslider-${orientation}`, {'rangeslider-reverse': reverse}, className)}
         onMouseDown={this.handleDrag}
+        onMouseUp={this.handleEnd}
         onTouchStart={this.handleDrag}
-        onTouchEnd={this.handleNoop}>
+        onTouchEnd={this.handleEnd}>
         <div
           className='rangeslider__fill'
-          style={fillStyle} />
-
+          style={fillStyle}
+        />
         <div
           ref={(sh) => { this.handle = sh }}
           className='rangeslider__handle'
           onMouseDown={this.handleStart}
-          onTouchEnd={this.handleNoop}
           onTouchMove={this.handleDrag}
-          style={handleStyle} />
-
+          onTouchEnd={this.handleEnd}
+          style={handleStyle}
+        >
+          {
+            tooltip && (
+              <div ref={(st) => { this.tooltip = st }} className='rangeslider__tooltip' >
+                <span>{this.handleFormat(value)}</span>
+              </div>
+            )
+          }
+        </div>
         {labels}
-
       </div>
     )
   }
