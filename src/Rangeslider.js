@@ -2,7 +2,6 @@
 import cx from 'classnames'
 import React, { PropTypes, Component } from 'react'
 import { capitalize, clamp } from './utils'
-import './Rangeslider.less'
 
 /**
  * Predefined constants
