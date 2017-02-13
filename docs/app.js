@@ -5,6 +5,7 @@ import Usage from './components/Usage'
 import Install from './components/Install'
 import Examples from './components/Examples'
 import Footer from './components/Footer'
+import 'react-rangeslider/lib/index.css'
 import './app.less'
 
 function App () {
