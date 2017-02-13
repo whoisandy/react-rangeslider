@@ -28,9 +28,14 @@ var config = {
   module: {
     loaders: [
       {
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel'
+      },
+      {
+        test: /\.txt$/,
+        exclude: /node_modules/,
+        loader: 'raw'
       }
     ]
   },

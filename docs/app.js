@@ -1,14 +1,20 @@
 import React from 'react'
-import Header from './components/header'
-import Footer from './components/footer'
-import Sliders from './components/sliders'
+import Header from './components/Header'
+import Features from './components/Features'
+import Usage from './components/Usage'
+import Install from './components/Install'
+import Examples from './components/Examples'
+import Footer from './components/Footer'
 import './app.less'
 
 function App () {
   return (
     <div className='wrapper'>
       <Header />
-      <Sliders />
+      <Features />
+      <Install />
+      <Usage />
+      <Examples />
       <Footer />
     </div>
   )

@@ -9,57 +9,225 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #EEEEEE;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
-  color: #333333;
+  overflow-x: hidden;
+  color: #454545;
 }
 
 #mount{
   margin: 20px auto 0;
   padding: 40px;
   position: relative;
-  hr {
-    height: 1px;
-    margin: 40px 0;
-    background: #ddd;
-    border: none;
+}
+
+hr {
+  height: 1px;
+  margin: 40px 0;
+  background-color: #ccc;
+  border: none;
+}
+h1, h2 {
+  margin: 0 auto 20px;
+  text-shadow: 0 1px 1px #fff;
+  font-weight: 700;
+}
+h1 {
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 36px;
+  color: #37474F;
+}
+h2 {
+  padding-bottom: 14px;
+  font-size: 24px;
+  border-bottom: 1px #cacaca solid;
+  color: #37474F;
+}
+p {
+  margin-bottom: 20px;
+}
+a {
+  color: #1976D2;
+}
+
+header > p {
+  text-align: center;
+}
+
+.block {
+  margin-bottom: 40px;
+  ul {
+    margin: 0;
+    padding: 0 0 0 40px;
   }
-  h1 {
-    margin: 0 auto 20px;
+
+  .github-buttons {
     text-align: center;
-    font-weight: 400;
+  }
+
+  .code {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow-y: auto;
+  }
+  code {
+    font-family: "Roboto Mono", sans-serif;
+  }
+
+  h4, .value {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .value {
+    text-align: center;
+    padding-top: 20px;
     font-size: 24px;
   }
-  h2 {
-    margin: 0 0 20px 0;
-    font-weight: 600;
-    font-size: 20px;
-  }
-  p {
+}
+
+.install {
+  .code {
     margin-bottom: 40px;
   }
+}
+
+.demo-panel {
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px lighten(#37474F, 50%) solid;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  .slider {
+    padding: 40px;
+  }
+}
+
+.demo-panel-title {
+  padding: 10px 20px;
+  background-color: #37474F;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+  h4 {
+    float: left;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+  }
   a {
-    color: blue;
+    font-size: 12px;
+    float: right;
+    color: white;
   }
-  header {
-    text-align: center;
+}
+.demo-panel-content {
+  padding-top: 20px;
+  .code {
+    display: none;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.25);
   }
-  section > div {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    .value {
-      font-size: 16px;
+  &.source {
+    .code {
+      display: block
     }
   }
-  footer {
-    margin: 60px auto 40px;
-    p {
-      margin: 2px 0 0 0;
-      text-align: center;
-      font-size: 12px;
+}
+
+.custom-labels {
+  .rangeslider-horizontal {
+    .rangeslider__label {
+      top: 28px;
     }
+    .rangeslider__tooltip {
+      width: 60px;
+      left: -10px;
+      &:after {
+        left: 22px;
+      }
+    }
+  }
+}
+
+.slider-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider-vertical,
+.slider-horizontal {
+  flex: 1;
+}
+.slider-vertical {
+  .rangeslider-vertical {
+    width: 4px;
+  }
+  .rangeslider__fill {
+    background-color: #ef5350;
+  }
+  .rangeslider__handle {
+    width: 30px;
+    height: 30px;
+    left: -13px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 1px 1px #333;
+  }
+  .rangeslider__tooltip {
+    top: -5px;
+  }
+}
+.slider-horizontal {
+  .rangeslider-horizontal,
+  .rangeslider__fill,
+  .rangeslider__handle {
+    border-radius: 0;
+  }
+  .rangeslider-horizontal {
+    height: 10px;
+  }
+  .rangeslider__fill {
+    background-color: #1E88E5;
+  }
+  .rangeslider__handle {
+    width: 10px;
+    height: 30px;
+    &:after {
+      display: none;
+    }
+  }
+  .rangeslider__tooltip {
+    left: -15px;
+  }
+}
+
+.hearts {
+  color: #c62828;
+}
+
+footer {
+  margin: 60px auto 40px;
+  p {
+    margin-bottom: 4px;
+  }
+  .close {
+    padding-top: 40px;
+    text-align: center;
+    > p {
+      margin-bottom: 0;
+      padding-bottom: 5px;
+      line-height: 14px;
+      font-size: 14px;
+      color: #9E9E9E;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #mount {
+    width: 700px;
   }
 }

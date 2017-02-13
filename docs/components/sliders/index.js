@@ -1,24 +1,5 @@
-import React from 'react'
-import Horizontal from './horizontal'
-import HorizontalCustomLabels from './horizontal-custom-labels'
-import Negative from './negative'
-import Float from './float'
-import Vertical from './vertical'
-import VerticalCustomLabels from './vertical-custom-labels'
-import VerticalReversed from './vertical-reversed'
-
-function Sliders () {
-  return (
-    <section id='examples'>
-      <Horizontal />
-      <HorizontalCustomLabels />
-      <Negative />
-      <Float />
-      <Vertical />
-      <VerticalCustomLabels />
-      <VerticalReversed />
-    </section>
-  )
-}
-
-export default Sliders
+export { default as Horizontal } from './horizontal'
+export { default as Float } from './float'
+export { default as Negative } from './negative'
+export { default as Labels } from './labels'
+export { default as Orientation } from './orientation'

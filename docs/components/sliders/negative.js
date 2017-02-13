@@ -18,16 +18,15 @@ class Negative extends Component {
   render () {
     const { value } = this.state
     return (
-      <div className='negative-slider'>
-        <h4>Orientation &amp; Custom Styles</h4>
+      <div className='slider'>
         <Slider
           min={-20}
           max={0}
+          tooltip={false}
           value={value}
           onChange={this.handleChange}
         />
-        <div className='value'>Value: {value}</div>
-        <hr />
+        <div className='value'>{value}</div>
       </div>
     )
   }

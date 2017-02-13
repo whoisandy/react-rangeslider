@@ -15,19 +15,22 @@ class Horizontal extends Component {
     })
   }
 
+  handleChangeComplete = (e) => {
+    console.log('Change event completed')
+  }
+
   render () {
     const { value } = this.state
     return (
-      <div className='horizontal-slider'>
-        <h4>Basic Slider</h4>
+      <div className='slider'>
         <Slider
           min={0}
           max={100}
           value={value}
           onChange={this.handleChange}
+          onChangeComplete={this.handleChangeComplete}
         />
-        <div className='value'>Value: {value}</div>
-        <hr />
+        <div className='value'>{value}</div>
       </div>
     )
   }
