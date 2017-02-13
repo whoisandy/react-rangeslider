@@ -19,9 +19,9 @@ var config = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.less'],
+    extensions: ['', '.js', '.css', '.less'],
     alias: {
-      'react-rangeslider$': path.join(__dirname, '..', 'src')
+      'react-rangeslider': path.join(__dirname, '..')
     }
   },
 
@@ -31,6 +31,11 @@ var config = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel'
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: 'style!css'
       },
       {
         test: /\.txt$/,
