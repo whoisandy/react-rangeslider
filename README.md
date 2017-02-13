@@ -1,87 +1,85 @@
-# React Rangeslider [![NPM Package][npm_img]][npm_site] [![Travis Status][trav_img]][trav_site]
-> A lightweight responsive react range slider component.
+# React Rangeslider
+[![NPM Package][npm_img]][npm_site] [![Travis Status][trav_img]][trav_site] [![Standard Code Style][std_img]][std_site]
+> A fast & lightweight responsive react slider component.
 
-Check out [examples](https://whoisandie.github.io/react-rangeslider).
+<img src="./docs/slider.png" alt="Slider" />
 
-## Install
-Install via `npm` (use `--save` to include it in your package.json)
+Check out [docs & examples](https://whoisandie.github.io/react-rangeslider).
+
+## Installation
+Using `npm` (use `--save` to include it in your package.json)
 
 ```bash
 $ npm install react-rangeslider --save
 ```
 
-## Usage
-React-Rangeslider is bundled with a single slider component. You can require them in plain old ES5 syntax or import them in ES6 syntax.
+Using `yarn` (use `--dev` to include it in your package.json)
 
-...plain old ES5
-
-```js
-...
-var Slider = require('react-rangeslider');
-
-var Volume = React.createClass({
-	getInitialState: function(){
-		return {
-			value: 10,
-		};
-	}
-
-	handleChange: function(value) {
-		this.setState({
-			value: value,
-		});
-	}
-
-	render: function() {
-		return (
-			<Slider
-        value={value}
-        orientation="vertical"
-        onChange={this.handleChange}
-      />
-		);
-	}
-});
-
-module.exports = Volume;
+```bash
+$ yarn add react-rangeslider --dev
 ```
 
-... or use ES6 syntax
+
+## Usage
+React-Rangeslider is bundled with a single slider component. By default, basic styles are applied, but can be overridden depending on your design requirements.
+
+With a module bundler like webpack that supports either CommonJS or ES2015 modules, use as you would anything else:
 
 ```js
-...
-import Slider from 'react-rangeslider';
+// Using an ES6 transpiler like Babel
+import Slider from 'react-rangeslider'
 
-export default class Volume extends Component {
+// To include the default styles
+import 'react-rangeslider/lib/index.css'
+
+// Not using an ES6 transpiler
+var Slider = require('react-rangeslider')
+```
+
+The UMD build is also available on [unpkg][unpkg]:
+
+```js
+<script src="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.min.js"></script>
+```
+
+You can find the library on `window.ReactRangeslider`. Optionally you can drop in the default styles by adding the stylesheet.
+```css
+<link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.css" />
+```
+
+## Example
+
+```js
+import React, { Component } from 'react'
+import Slider from 'react-rangeslider'
+
+class VolumeSlider extends Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
     this.state = {
-      value: 10 /** Start value **/
-    };
+      volume: 0
+    }
   }
 
-  handleChange = (value) => {
+  handleOnChange = (value) => {
     this.setState({
-      value: value
-    });
+      volume: value
+    })
   }
 
   render() {
-    let { value } = this.state;
+    let { volume } = this.state
     return (
-    	<div>
-	      <Slider
-          value={value}
-          orientation="vertical"
-          onChange={this.handleChange}
-        />
-	      <div>Value: {value}</div>
-	    </div>
-    );
+      <Slider
+        value={volume}
+        orientation="vertical"
+        onChange={this.handleOnChange}
+      />
+    )
   }
 }
 ```
-There's also a umd version available at `lib/umd`. The component is available on `window.ReactRangeslider`. To style the slider, please refer the rangeslider styles in `demo/demo.less` file.
+
 
 ## API
 Rangeslider is bundled as a single component, that accepts data and callbacks only as `props`.
@@ -95,11 +93,14 @@ import Slider from 'react-rangeslider'
   min={Number}
   max={Number}
   step={Number}
-	orientation={String}
+  value={Number}
+  orientation={String}
   reverse={Boolean}
-	value={Number}
+  tooltip={Boolean}
   labels={Object}
+  format={Function}
   onChange={Function}
+  onChangeComplete={Function}
 />
 ```
 
@@ -109,20 +110,37 @@ Prop   	 			 |  Type      |  Default      |  Description
 `min`     		 |  number    |  0				   	|  minimum value the slider can hold
 `max`    			 |  number    |  100				  |  maximum value the slider can hold
 `step` 				 |  number    |  1          	|  step in which increments/decrements have to be made
+`value`        |  number    |               |  current value of the slider
 `orientation`  |  string    |  horizontal   |  orientation of the slider
+`tooltip`      |  boolean   |  true         |  show or hide tooltip
 `reverse`  		 |  boolean   |  false			  |  reverse direction of vertical slider (top-bottom)
-`value`  			 |  number    |  -            |  current value of the slider
-`labels`  	 	 |  object  	|  {}           |  object containing key-value pairs. { 0: 'Low', 50: 'Medium', 100: 'High'}
-`onChange`  	 |  function  |  -            |  function the slider takes, current value of the slider as the first parameter
+`labels`       |  object    |  {}           |  object containing key-value pairs. `{ 0: 'Low', 50: 'Medium', 100: 'High'}`
+`format`     |  function  |               |  function to format and display the value in label or tooltip
+`onChange`  	 |  function  |               |  function gets called whenever the slider handle is being dragged or clicked
+`onChangeComplete`     |  function  |               |  function gets called whenever the user stops dragging the slider handle.
 
+
+## Development
+To work on the project locally, you need to pull its dependencies and run `npm start`.
+
+```bash
+$ npm install
+$ npm start
+```
 
 ## Issues
 Feel free to contribute. Submit a Pull Request or open an issue for further discussion.
 
 ## License
-MIT &copy; [whoisandie](http://whoisandie.com)
+Licensed under MIT License. Copyright © 2015 whoisandie
 
-[trav_img]: https://api.travis-ci.org/whoisandie/react-rangeslider.svg
-[trav_site]: https://travis-ci.org/whoisandie/react-rangeslider
+See [LICENSE](./LICENSE) for more information.
+
+
 [npm_img]: https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square
 [npm_site]: https://www.npmjs.org/package/react-rangeslider
+[trav_img]: https://api.travis-ci.org/whoisandie/react-rangeslider.svg
+[trav_site]: https://travis-ci.org/whoisandie/react-rangeslider
+[std_img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
+[std_site]: http://standardjs.com
+[unpkg]: https://unpkg.com/react-rangeslider/umd/ReactRangeslider.min.js
