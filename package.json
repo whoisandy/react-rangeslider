@@ -90,6 +90,7 @@
     "less-loader": "^2.2.3",
     "marked": "^0.3.6",
     "opn-cli": "^3.1.0",
+    "prop-types": "^15.5.9",
     "raw-loader": "^0.5.1",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
