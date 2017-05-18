@@ -93,6 +93,10 @@ class Slider extends Component {
    * @return {void}
    */
   handleUpdate = () => {
+    if (!this.slider) {
+      // for shallow rendering
+      return
+    }
     const { orientation } = this.props
     const dimension = capitalize(constants.orientation[orientation].dimension)
     const sliderPos = this.slider[`offset${dimension}`]

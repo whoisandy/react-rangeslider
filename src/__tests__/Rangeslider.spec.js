@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+import renderer from 'react-test-renderer'
 import Slider from '../Rangeslider'
 
 describe('Rangeslider specs', () => {
@@ -9,6 +10,13 @@ describe('Rangeslider specs', () => {
     expect(slider.children().length).toEqual(2)
     expect(slider.find('.rangeslider__fill').length).toEqual(1)
     expect(slider.find('.rangeslider__handle').length).toEqual(1)
+  })
+
+  it('should match snapshot', () => {
+    const tree = renderer.create(
+      <Slider />
+    ).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 
   it('should have default props', () => {
