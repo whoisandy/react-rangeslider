@@ -122,6 +122,7 @@ import Slider from 'react-rangeslider'
   handleLabel={String}
   format={Function}
   onChangeStart={Function}
+  fillStyle={Object}
   onChange={Function}
   onChangeComplete={Function}
 />
@@ -141,6 +142,7 @@ Prop   	 			 |  Type      |  Default      |  Description
 `handleLabel`  |  string    |  ''           |  string label to appear inside slider handles
 `format`     |  function  |               |  function to format and display the value in label or tooltip
 `onChangeStart`  	 |  function  |               |  function gets called whenever the user starts dragging the slider handle
+`fillStyle`    | function   |               | optional extra css styles for the slider fill bar
 `onChange`  	 |  function  |               |  function gets called whenever the slider handle is being dragged or clicked
 `onChangeComplete`     |  function  |               |  function gets called whenever the user stops dragging the slider handle.
 
@@ -150,6 +152,7 @@ To work on the project locally, you need to pull its dependencies and run `npm s
 
 ```bash
 $ npm install
+# npm run build
 $ npm start
 ```
 

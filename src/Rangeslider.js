@@ -40,7 +40,8 @@ class Slider extends Component {
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
-    onChangeComplete: PropTypes.func
+    onChangeComplete: PropTypes.func,
+    fillStyle: PropTypes.object
   };
 
   static defaultProps = {
@@ -299,6 +300,7 @@ class Slider extends Component {
     const fillStyle = { [dimension]: `${coords.fill}px` }
     const handleStyle = { [direction]: `${coords.handle}px` }
     let showTooltip = tooltip && active
+    const extFillStyle = this.props.fillStyle
 
     let labelItems = []
     let labelKeys = Object.keys(labels)
@@ -347,7 +349,8 @@ class Slider extends Component {
         aria-valuenow={value}
         aria-orientation={orientation}
       >
-        <div className='rangeslider__fill' style={fillStyle} />
+        <div className='rangeslider__fill' style={Object.assign({}, fillStyle, extFillStyle)} />
+
         <div
           ref={sh => {
             this.handle = sh
