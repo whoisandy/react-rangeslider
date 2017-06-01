@@ -7,10 +7,12 @@ var HtmlPlugin = require('html-webpack-plugin')
 var config = {
   devtool: '#cheap-eval-source-map',
 
-  entry: process.env.NODE_ENV === 'development' ? [
-    'webpack-hot-middleware/client?http://localhost:3000',
-    path.join(__dirname, 'index')
-  ] : path.join(__dirname, 'index'),
+  entry: process.env.NODE_ENV === 'development'
+    ? [
+      'webpack-hot-middleware/client?http://localhost:3000',
+      path.join(__dirname, 'index')
+    ]
+    : path.join(__dirname, 'index'),
 
   output: {
     path: process.env.NODE_ENV === 'development' ? __dirname : 'public',
@@ -21,7 +23,7 @@ var config = {
   resolve: {
     extensions: ['', '.js', '.css', '.less'],
     alias: {
-      'react-rangeslider': path.join(__dirname, '..')
+      'react-rangeslider': path.join(__dirname, '../src/index.js')
     }
   },
 
@@ -46,7 +48,7 @@ var config = {
   },
 
   externals: {
-    'react': 'React',
+    react: 'React',
     'react-dom': 'ReactDOM'
   },
 
@@ -63,7 +65,7 @@ if (process.env.NODE_ENV === 'development') {
   config.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development')
+        NODE_ENV: JSON.stringify('development')
       }
     }),
     new webpack.NoErrorsPlugin(),
@@ -83,7 +85,7 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
