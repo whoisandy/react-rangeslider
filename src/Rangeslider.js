@@ -1,6 +1,7 @@
 /* eslint no-debugger: "warn" */
 import cx from 'classnames'
-import React, { PropTypes, Component } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { capitalize, clamp } from './utils'
 
 /**
