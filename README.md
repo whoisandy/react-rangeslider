@@ -38,18 +38,18 @@ var Slider = require('react-rangeslider')
 
 The UMD build is also available on [unpkg][unpkg]:
 
-```js
+```html
 <script src="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.min.js"></script>
 ```
 
 You can find the library on `window.ReactRangeslider`. Optionally you can drop in the default styles by adding the stylesheet.
-```css
+```html
 <link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.css" />
 ```
 
 ## Example
 
-```js
+```jsx
 import React, { Component } from 'react'
 import Slider from 'react-rangeslider'
 
@@ -85,7 +85,7 @@ class VolumeSlider extends Component {
 Rangeslider is bundled as a single component, that accepts data and callbacks only as `props`.
 
 ### Component
-```js
+```jsx
 import Slider from 'react-rangeslider'
 
 // inside render
