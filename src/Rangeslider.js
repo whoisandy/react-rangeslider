@@ -2,6 +2,7 @@
 import cx from 'classnames'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import ResizeObserver from 'resize-observer-polyfill'
 import { capitalize, clamp } from './utils'
 
 /**
@@ -61,12 +62,9 @@ class Slider extends Component {
   }
 
   componentDidMount () {
-    window.addEventListener('resize', this.handleUpdate)
     this.handleUpdate()
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('resize', this.handleUpdate)
+    const resizeObserver = new ResizeObserver(this.handleUpdate)
+    resizeObserver.observe(this.slider)
   }
 
   /**
