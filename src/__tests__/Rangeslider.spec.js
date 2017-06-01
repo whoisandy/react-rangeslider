@@ -12,13 +12,6 @@ describe('Rangeslider specs', () => {
     expect(slider.find('.rangeslider__handle').length).toEqual(1)
   })
 
-  it('should match snapshot', () => {
-    const tree = renderer.create(
-      <Slider />
-    ).toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
   it('should have default props', () => {
     const slider = mount(<Slider />)
     expect(slider.prop('min')).toEqual(0)
@@ -28,5 +21,17 @@ describe('Rangeslider specs', () => {
     expect(slider.prop('orientation')).toEqual('horizontal')
     expect(slider.prop('reverse')).toEqual(false)
     expect(slider.prop('labels')).toEqual({})
+  })
+
+  it('should render basic slider with defaults', () => {
+    const tree = renderer.create(<Slider />).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('should render slider when props passed in', () => {
+    const tree = renderer
+      .create(<Slider min={10} max={50} value={20} />)
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

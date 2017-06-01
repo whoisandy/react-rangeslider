@@ -1,4 +1,4 @@
-exports[`Rangeslider specs should match snapshot 1`] = `
+exports[`Rangeslider specs should render basic slider with defaults 1`] = `
 <div
   className="rangeslider rangeslider-horizontal"
   onMouseDown={[Function anonymous]}
@@ -26,6 +26,40 @@ exports[`Rangeslider specs should match snapshot 1`] = `
       className="rangeslider__tooltip">
       <span>
         0
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Rangeslider specs should render slider when props passed in 1`] = `
+<div
+  className="rangeslider rangeslider-horizontal"
+  onMouseDown={[Function anonymous]}
+  onMouseUp={[Function anonymous]}
+  onTouchEnd={[Function anonymous]}
+  onTouchStart={[Function anonymous]}>
+  <div
+    className="rangeslider__fill"
+    style={
+      Object {
+        "width": "0px"
+      }
+    } />
+  <div
+    className="rangeslider__handle"
+    onMouseDown={[Function anonymous]}
+    onTouchEnd={[Function anonymous]}
+    onTouchMove={[Function anonymous]}
+    style={
+      Object {
+        "left": "0px"
+      }
+    }>
+    <div
+      className="rangeslider__tooltip">
+      <span>
+        20
       </span>
     </div>
   </div>

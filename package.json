@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/whoisandie/react-rangeslider.git"
+    "url": "https://github.com/whoisandy/react-rangeslider.git"
   },
   "files": [
     "lib",
@@ -45,16 +45,16 @@
   "author": {
     "name": "Bhargav Anand",
     "email": "rjn143@gmail.com",
-    "url": "github.com/whoisandie"
+    "url": "github.com/whoisandy"
   },
   "engines": {
     "node": ">=4"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/whoisandie/react-rangeslider/issues"
+    "url": "https://github.com/whoisandy/react-rangeslider/issues"
   },
-  "homepage": "https://github.com/whoisandie/react-rangeslider#readme",
+  "homepage": "https://github.com/whoisandy/react-rangeslider#readme",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",

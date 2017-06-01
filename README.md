@@ -4,7 +4,7 @@
 
 <img src="./docs/slider.png" alt="Slider" />
 
-Check out [docs & examples](https://whoisandie.github.io/react-rangeslider).
+Check out [docs & examples](https://whoisandy.github.io/react-rangeslider).
 
 ## Installation
 Using `npm` (use `--save` to include it in your package.json)
@@ -132,15 +132,15 @@ $ npm start
 Feel free to contribute. Submit a Pull Request or open an issue for further discussion.
 
 ## License
-Licensed under MIT License. Copyright © 2015 whoisandie
+Licensed under MIT License. Copyright © 2015 whoisandy
 
 See [LICENSE](./LICENSE) for more information.
 
 
 [npm_img]: https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square
 [npm_site]: https://www.npmjs.org/package/react-rangeslider
-[trav_img]: https://api.travis-ci.org/whoisandie/react-rangeslider.svg
-[trav_site]: https://travis-ci.org/whoisandie/react-rangeslider
+[trav_img]: https://api.travis-ci.org/whoisandy/react-rangeslider.svg
+[trav_site]: https://travis-ci.org/whoisandy/react-rangeslider
 [std_img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 [std_site]: http://standardjs.com
 [unpkg]: https://unpkg.com/react-rangeslider/umd/ReactRangeslider.min.js
