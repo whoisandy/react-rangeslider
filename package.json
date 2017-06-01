@@ -11,7 +11,7 @@
     "test": "npm run lint && jest",
     "coverage": "npm test -- --coverage",
     "start": "cross-env NODE_ENV=development node -r babel-register docs/server.js",
-    "build:less": "lessc ./src/Rangeslider.less ./lib/index.css",
+    "build:less": "lessc ./src/rangeslider.less ./lib/index.css",
     "build:lib": "cross-env NODE_ENV=production babel ./src --stage 0 -d ./lib  --ignore __tests__",
     "build:umd": "cross-env NODE_ENV=production webpack ./src/index.js ./umd/ReactRangeslider.js",
     "build:min": "cross-env NODE_ENV=production webpack -p ./src/index.js ./umd/ReactRangeslider.min.js",
