@@ -1,5 +1,5 @@
 # React Rangeslider
-[![NPM Package][npm_img]][npm_site] [![Travis Status][trav_img]][trav_site] [![Standard Code Style][std_img]][std_site]
+[![NPM Package][npm_img]][npm_site] [![Travis Status][trav_img]][trav_site] [![Standard Code Style][std_img]][std_site] [![NPM Status][npm_dm_img]][npm_dm_site]
 > A fast & lightweight react component as a drop in replacement for HTML5 input range slider element.
 
 <img src="./docs/slider.png" alt="Slider" />
@@ -139,6 +139,8 @@ See [LICENSE](./LICENSE) for more information.
 
 [npm_img]: https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square
 [npm_site]: https://www.npmjs.org/package/react-rangeslider
+[npm_dm_img]: http://img.shields.io/npm/dm/react-rangeslider.svg?style=flat-square
+[npm_dm_site]: https://www.npmjs.org/package/react-rangeslider
 [trav_img]: https://api.travis-ci.org/whoisandy/react-rangeslider.svg
 [trav_site]: https://travis-ci.org/whoisandy/react-rangeslider
 [std_img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
