@@ -10,17 +10,17 @@ class HorizontalCustomLabels extends Component {
     }
   }
 
-  handleChangeHorizontal = (value) => {
+  handleChangeHorizontal = value => {
     this.setState({
       horizontal: value
     })
-  }
+  };
 
-  handleChangeVertical = (value) => {
+  handleChangeVertical = value => {
     this.setState({
       vertical: value
     })
-  }
+  };
 
   render () {
     const { horizontal, vertical } = this.state
@@ -33,7 +33,8 @@ class HorizontalCustomLabels extends Component {
     const verticalLabels = {
       10: 'Getting started',
       50: 'Half way',
-      90: 'Almost done'
+      90: 'Almost done',
+      100: 'Complete!'
     }
 
     const formatkg = value => value + ' kg'

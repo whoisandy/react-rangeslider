@@ -11,12 +11,16 @@ import './app.less'
 function App () {
   return (
     <div className='wrapper'>
-      <Header />
-      <Features />
-      <Install />
-      <Usage />
-      <Examples />
-      <Footer />
+      <header>
+        <Header />
+      </header>
+      <section>
+        <Features />
+        <Install />
+        <Usage />
+        <Examples />
+        <Footer />
+      </section>
     </div>
   )
 }

@@ -1,11 +1,5 @@
-import React, { Component} from 'react'
-import {
-  Horizontal,
-  Negative,
-  Float,
-  Labels,
-  Orientation
-} from './sliders'
+import React, { Component } from 'react'
+import { Horizontal, Negative, Float, Labels, Orientation } from './sliders'
 import Demo from './Demo'
 import Codeblock from './Codeblock'
 
@@ -26,19 +20,19 @@ class Examples extends Component {
             {horizontalExample}
           </Codeblock>
         </Demo>
-        <Demo title='Negative values (No Tooltip)'>
+        <Demo title='Negative Values (No Tooltip)'>
           <Negative />
           <Codeblock>
             {negativeExample}
           </Codeblock>
         </Demo>
-        <Demo title='Floating point boundaries'>
+        <Demo title='Floating Point Boundaries'>
           <Float />
           <Codeblock>
             {floatExample}
           </Codeblock>
         </Demo>
-        <Demo title='Custom labels &amp; Formatting'>
+        <Demo title='Custom Labels &amp; Formatting'>
           <Labels />
           <Codeblock>
             {labelsExample}

@@ -3,8 +3,7 @@ import React from 'react'
 function Footer () {
   return (
     <footer className='block'>
-      <section className='block'>
-        <h2>License</h2>
+      <section className='block close'>
         <p>
           The project is under Open Source
           {' '}
@@ -12,8 +11,6 @@ function Footer () {
             MIT License
           </a>
         </p>
-      </section>
-      <section className='block close'>
         <p>
           Built with
           {' '}

@@ -6,8 +6,8 @@ function Features () {
       <h2>Features</h2>
       <ul>
         <li>Touchscreen friendly</li>
-        <li>Recalculates onresize so suitable for use within responsive designs</li>
-        <li>Small and fast</li>
+        <li>Suitable for use within responsive designs</li>
+        <li>Small and fast (2.3Kb Gzipped)</li>
       </ul>
     </section>
   )

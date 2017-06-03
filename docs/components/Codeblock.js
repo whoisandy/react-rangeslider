@@ -23,7 +23,10 @@ ${this.props.children}
     \`\`\``
 
     return (
-      <div className='code' dangerouslySetInnerHTML={{ __html: marked(text) }} />
+      <div
+        className='code hljs'
+        dangerouslySetInnerHTML={{ __html: marked(text) }}
+      />
     )
   }
 }

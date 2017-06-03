@@ -43,6 +43,13 @@ var config = {
         test: /\.txt$/,
         exclude: /node_modules/,
         loader: 'raw'
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000
+        }
       }
     ]
   },
