@@ -1,6 +1,6 @@
 # React Rangeslider
 [![NPM Package][npm_img]][npm_site] [![Travis Status][trav_img]][trav_site] [![Standard Code Style][std_img]][std_site]
-> A fast & lightweight responsive react slider component.
+> A fast & lightweight react component as a drop in replacement for HTML5 input range slider element.
 
 <img src="./docs/slider.png" alt="Slider" />
 
