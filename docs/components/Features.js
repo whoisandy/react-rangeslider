@@ -7,7 +7,7 @@ function Features () {
       <ul>
         <li>Touchscreen friendly</li>
         <li>Suitable for use within responsive designs</li>
-        <li>Small and fast (2.3Kb Gzipped)</li>
+        <li>Small and fast (8.1Kb Gzipped)</li>
       </ul>
     </section>
   )
