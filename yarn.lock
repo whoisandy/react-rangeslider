@@ -1234,7 +1234,7 @@ classnames@^2.2.3:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
-clean-css@3.4.x:
+clean-css@3.4.x, clean-css@^3.0.1:
   version "3.4.23"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.23.tgz#604fbbca24c12feb59b02f00b84f1fb7ded6d001"
   dependencies:
@@ -3393,6 +3393,12 @@ less-loader@^2.2.3:
   resolved "https://registry.yarnpkg.com/less-loader/-/less-loader-2.2.3.tgz#b6d8f8139c8493df09d992a93a00734b08f84528"
   dependencies:
     loader-utils "^0.2.5"
+
+less-plugin-clean-css@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/less-plugin-clean-css/-/less-plugin-clean-css-1.5.1.tgz#cc57af7aa3398957e56decebe63cb60c23429703"
+  dependencies:
+    clean-css "^3.0.1"
 
 less@^2.7.2:
   version "2.7.2"
