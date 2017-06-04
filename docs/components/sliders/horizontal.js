@@ -9,15 +9,19 @@ class Horizontal extends Component {
     }
   }
 
-  handleChange = (value) => {
+  handleChangeStart = () => {
+    console.log('Change event started')
+  };
+
+  handleChange = value => {
     this.setState({
       value: value
     })
-  }
+  };
 
-  handleChangeComplete = (e) => {
+  handleChangeComplete = () => {
     console.log('Change event completed')
-  }
+  };
 
   render () {
     const { value } = this.state
@@ -27,6 +31,7 @@ class Horizontal extends Component {
           min={0}
           max={100}
           value={value}
+          onChangeStart={this.handleChangeStart}
           onChange={this.handleChange}
           onChangeComplete={this.handleChangeComplete}
         />
