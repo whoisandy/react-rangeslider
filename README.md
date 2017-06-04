@@ -56,12 +56,12 @@ var Slider = require('react-rangeslider')
 The UMD build is also available on [unpkg][unpkg]:
 
 ```html
-<script src="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.min.js"></script>
+<script src="https://unpkg.com/react-rangeslider/umd/rangeslider.min.js"></script>
 ```
 
 You can find the library on `window.ReactRangeslider`. Optionally you can drop in the default styles by adding the stylesheet.
 ```html
-<link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.css" />
+<link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/rangeslider.min.css" />
 ```
 Check out [docs & examples](https://whoisandy.github.io/react-rangeslider).
 
