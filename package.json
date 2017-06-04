@@ -2,7 +2,7 @@
   "name": "react-rangeslider",
   "version": "2.0.1",
   "description": "A lightweight react component that acts as a HTML5 input range slider polyfill",
-  "main": "lib/index",
+  "main": "lib/index.js",
   "scripts": {
     "clean:lib": "del lib umd",
     "clean:docs": "del public",
@@ -20,7 +20,7 @@
     "build:docs": "cross-env NODE_ENV=production webpack -p --config=docs/webpack.config.js",
     "build": "npm run build:less && npm run build:lib && npm run build:umd && npm run build:min && npm run build:less:umd && npm run build:less:umd:min",
     "prebuild": "npm run clean:lib && npm test",
-    "docs": "npm run clean:docs && npm run build:docs && cpy favicon.png public/",
+    "docs": "npm run clean:docs && npm run build:docs && cpy docs/favicon.ico public/",
     "deploy": "npm run docs && gh-pages -d public",
     "postpublish": "git push origin master --follow-tags",
     "minor": "npm version minor && npm publish",
