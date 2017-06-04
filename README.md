@@ -1,10 +1,27 @@
-# React Rangeslider
-[![NPM Package][npm_img]][npm_site] [![Travis Status][trav_img]][trav_site] [![Standard Code Style][std_img]][std_site] [![NPM Status][npm_dm_img]][npm_dm_site]
-> A fast & lightweight react component as a drop in replacement for HTML5 input range slider element.
+<p align="center">
+  <a href="https://whoisandy.github.io/react-rangeslider/">
+    <img alt="react-rangeslider" src="./docs/images/rangeslider_dark.png" width="280">
+  </a>
+</p>
 
-<img src="./docs/slider.png" alt="Slider" />
+<p align="center">
+  A fast & lightweight react component as a drop in replacement for HTML5 input range slider element.
+</p>
 
-Check out [docs & examples](https://whoisandy.github.io/react-rangeslider).
+<p align="center">
+  <a href="https://www.npmjs.org/package/react-rangeslider">
+    <img src="https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square">
+  </a>
+  <a href="https://travis-ci.org/whoisandy/react-rangeslider">
+    <img src="https://api.travis-ci.org/whoisandy/react-rangeslider.svg">
+  </a>
+  <a href="http://standardjs.com">
+    <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" />
+  </a>
+  <a href="https://www.npmjs.org/package/react-rangeslider">
+    <img src="http://img.shields.io/npm/dm/react-rangeslider.svg?style=flat-square">
+  </a>
+</p>
 
 ## Installation
 Using `npm` (use `--save` to include it in your package.json)
@@ -20,8 +37,8 @@ $ yarn add react-rangeslider
 ```
 
 
-## Usage
-React-Rangeslider is bundled with a single slider component. By default, basic styles are applied, but can be overridden depending on your design requirements.
+## Getting Started
+React-Rangeslider is bundled with a slider component & default styles which can be overridden depending on your design requirements.
 
 With a module bundler like webpack that supports either CommonJS or ES2015 modules, use as you would anything else:
 
@@ -46,8 +63,9 @@ You can find the library on `window.ReactRangeslider`. Optionally you can drop i
 ```html
 <link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.css" />
 ```
+Check out [docs & examples](https://whoisandy.github.io/react-rangeslider).
 
-## Example
+## Basic Example
 
 ```jsx
 import React, { Component } from 'react'
@@ -132,9 +150,7 @@ $ npm start
 Feel free to contribute. Submit a Pull Request or open an issue for further discussion.
 
 ## License
-Licensed under MIT License. Copyright © 2015 whoisandy
-
-See [LICENSE](./LICENSE) for more information.
+MIT
 
 
 [npm_img]: https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square
