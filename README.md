@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://whoisandy.github.io/react-rangeslider/">
-    <img alt="react-rangeslider" src="./docs/images/rangeslider_dark.png" width="280">
+    <img alt="react-rangeslider" src="https://github.com/whoisandy/react-rangeslider/blob/master/docs/images/rangeslider_dark.png" width="280">
   </a>
 </p>
 
