@@ -12,6 +12,9 @@
   <a href="https://www.npmjs.org/package/react-rangeslider">
     <img src="https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square">
   </a>
+  <a href="https://github.com/whoisandy/react-rangeslider/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/whoisandy/react-rangeslider.svg">
+  </a>
   <a href="https://travis-ci.org/whoisandy/react-rangeslider">
     <img src="https://api.travis-ci.org/whoisandy/react-rangeslider.svg">
   </a>
@@ -157,6 +160,8 @@ MIT
 
 [npm_img]: https://img.shields.io/npm/v/react-rangeslider.svg?style=flat-square
 [npm_site]: https://www.npmjs.org/package/react-rangeslider
+[license_img]: https://img.shields.io/github/license/whoisandy/react-rangeslider.svg
+[license_site]: https://github.com/whoisandy/react-rangeslider/blob/master/LICENSE
 [npm_dm_img]: http://img.shields.io/npm/dm/react-rangeslider.svg?style=flat-square
 [npm_dm_site]: https://www.npmjs.org/package/react-rangeslider
 [trav_img]: https://api.travis-ci.org/whoisandy/react-rangeslider.svg
