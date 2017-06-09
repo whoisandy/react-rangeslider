@@ -158,10 +158,13 @@ class Slider extends Component {
    */
   getPositionFromValue = value => {
     const { limit } = this.state
-    const { min, max } = this.props
+    const { orientation, min, max } = this.props
     const diffMaxMin = max - min
     const diffValMin = value - min
-    const percentage = diffValMin / diffMaxMin
+    const basePercentage = diffValMin / diffMaxMin
+    const percentage = orientation === 'horizontal'
+      ? basePercentage
+      : 1 - basePercentage
     const pos = Math.round(percentage * limit)
 
     return pos
@@ -211,13 +214,12 @@ class Slider extends Component {
 
   /**
    * Grab coordinates of slider
-   * @param  {Object} pos - Position object
+   * @param  {Object} value - Slider value
    * @return {Object} - Slider fill/handle coordinates
    */
-  coordinates = pos => {
+  coordinates = value => {
     const { limit, grab } = this.state
     const { orientation } = this.props
-    const value = this.getValueFromPosition(pos)
     const handlePos = this.getPositionFromValue(value)
     const sumHandleposGrab = orientation === 'horizontal'
       ? handlePos + grab
@@ -239,9 +241,10 @@ class Slider extends Component {
     const direction = reverse
       ? constants.orientation[orientation].reverseDirection
       : constants.orientation[orientation].direction
-    const position = this.getPositionFromValue(value)
-    const coords = this.coordinates(position)
-    const fillStyle = { [dimension]: `${coords.fill}px` }
+    const coords = this.coordinates(value)
+    const fillStyle = { [dimension]: reverse
+      ? `calc(100% - ${coords.fill}px)`
+      : `${coords.fill}px` }
     const handleStyle = { [direction]: `${coords.handle}px` }
     let labels = null
     let labelKeys = Object.keys(this.props.labels)
@@ -252,8 +255,7 @@ class Slider extends Component {
       labelKeys = labelKeys.sort((a, b) => (reverse ? a - b : b - a))
 
       for (let key of labelKeys) {
-        const labelPosition = this.getPositionFromValue(key)
-        const labelCoords = this.coordinates(labelPosition)
+        const labelCoords = this.coordinates(key)
         const labelStyle = { [direction]: `${labelCoords.label}px` }
         items.push(
           <li
