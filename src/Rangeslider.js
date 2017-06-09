@@ -36,6 +36,7 @@ class Slider extends Component {
     tooltip: PropTypes.bool,
     reverse: PropTypes.bool,
     labels: PropTypes.object,
+    handleLabel: PropTypes.string,
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
@@ -50,7 +51,8 @@ class Slider extends Component {
     orientation: 'horizontal',
     tooltip: true,
     reverse: false,
-    labels: {}
+    labels: {},
+    handleLabel: ''
   };
 
   constructor (props, context) {
@@ -318,6 +320,7 @@ class Slider extends Component {
             >
               <span>{this.handleFormat(value)}</span>
             </div>}
+          <p>{this.handleLabel}</p>
         </div>
         {labels}
       </div>
