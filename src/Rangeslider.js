@@ -236,7 +236,7 @@ class Slider extends Component {
   };
 
   render () {
-    const { value, orientation, className, tooltip, reverse } = this.props
+    const { value, orientation, className, tooltip, reverse, handleLabel } = this.props
     const dimension = constants.orientation[orientation].dimension
     const direction = reverse
       ? constants.orientation[orientation].reverseDirection
@@ -320,7 +320,7 @@ class Slider extends Component {
             >
               <span>{this.handleFormat(value)}</span>
             </div>}
-          <p>{this.handleLabel}</p>
+          <p>{handleLabel}</p>
         </div>
         {labels}
       </div>
