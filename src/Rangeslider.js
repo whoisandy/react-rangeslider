@@ -132,7 +132,7 @@ class Slider extends Component {
 
     let value = this.position(e)
     if (
-      target.classList.contains('rangeslider__label') && target.dataset.value
+        target.classList && target.classList.contains('rangeslider__label') && target.dataset.value
     ) {
       value = parseFloat(target.dataset.value)
     }
