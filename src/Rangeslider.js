@@ -132,7 +132,8 @@ class Slider extends Component {
 
     let value = this.position(e)
     if (
-      target.classList.contains('rangeslider__label') && target.dataset.value
+      target.classList.contains('rangeslider__label') &&
+      target.dataset.value
     ) {
       value = parseFloat(target.dataset.value)
     }
@@ -149,6 +150,29 @@ class Slider extends Component {
     onChangeComplete && onChangeComplete(e)
     document.removeEventListener('mousemove', this.handleDrag)
     document.removeEventListener('mouseup', this.handleEnd)
+  };
+
+  /**
+   * Support for key events on the slider handle
+   * @param  {Object} e - Event object
+   * @return {void}
+   */
+  handleKeyDown = e => {
+    const { keyCode } = e
+    const { value, onChange, min, max, step } = this.props
+
+    switch (keyCode) {
+      case 38:
+      case 39:
+        e.preventDefault()
+        onChange(value + step > max ? max : value + step, e)
+        break
+      case 37:
+      case 40:
+        e.preventDefault()
+        onChange(value - step < min ? min : value - step, e)
+        break
+    }
   };
 
   /**
@@ -219,12 +243,12 @@ class Slider extends Component {
     const { orientation } = this.props
     const value = this.getValueFromPosition(pos)
     const handlePos = this.getPositionFromValue(value)
-    const sumHandleposGrab = orientation === 'horizontal'
-      ? handlePos + grab
-      : handlePos
-    const fillPos = orientation === 'horizontal'
-      ? sumHandleposGrab
-      : limit - sumHandleposGrab
+    const sumHandleposGrab =
+      orientation === 'horizontal' ? handlePos + grab : handlePos
+    const fillPos =
+      orientation === 'horizontal'
+        ? sumHandleposGrab
+        : limit - sumHandleposGrab
 
     return {
       fill: fillPos,
@@ -234,7 +258,15 @@ class Slider extends Component {
   };
 
   render () {
-    const { value, orientation, className, tooltip, reverse } = this.props
+    const {
+      value,
+      orientation,
+      className,
+      tooltip,
+      reverse,
+      min,
+      max
+    } = this.props
     const dimension = constants.orientation[orientation].dimension
     const direction = reverse
       ? constants.orientation[orientation].reverseDirection
@@ -297,6 +329,10 @@ class Slider extends Component {
         onMouseUp={this.handleEnd}
         onTouchStart={this.handleDrag}
         onTouchEnd={this.handleEnd}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
+        aria-orientation={orientation}
       >
         <div className='rangeslider__fill' style={fillStyle} />
         <div
@@ -307,9 +343,11 @@ class Slider extends Component {
           onMouseDown={this.handleStart}
           onTouchMove={this.handleDrag}
           onTouchEnd={this.handleEnd}
+          onKeyDown={this.handleKeyDown}
           style={handleStyle}
+          tabIndex={0}
         >
-          {tooltip &&
+          {tooltip && (
             <div
               ref={st => {
                 this.tooltip = st
@@ -317,7 +355,8 @@ class Slider extends Component {
               className='rangeslider__tooltip'
             >
               <span>{this.handleFormat(value)}</span>
-            </div>}
+            </div>
+          )}
         </div>
         {labels}
       </div>
