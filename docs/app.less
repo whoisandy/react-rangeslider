@@ -319,6 +319,19 @@ section {
 
 .custom-labels {
   .rangeslider-horizontal {
+    .rangeslider__handle {
+      width: 34px;
+      height: 34px;
+      border-radius: 30px;
+      top: -12px;
+      text-align: center;
+      p {
+        margin-top: 4px;
+      }
+    }
+    .rangeslider__handle:after {
+      position: initial;
+    }
     .rangeslider__label {
       top: 28px;
     }
@@ -328,6 +341,14 @@ section {
       &:after {
         left: 22px;
       }
+    }
+  }
+  .rangeslider-vertical {
+    .rangeslider__handle {
+      width: 34px;
+      height: 25px;
+      left: -12px;
+      text-align: center;
     }
   }
 }

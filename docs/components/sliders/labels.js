@@ -48,6 +48,7 @@ class HorizontalCustomLabels extends Component {
           value={horizontal}
           labels={horizontalLabels}
           format={formatkg}
+          handleLabel={horizontal}
           onChange={this.handleChangeHorizontal}
         />
         <div className='value'>{formatkg(horizontal)}</div>
@@ -56,7 +57,9 @@ class HorizontalCustomLabels extends Component {
           value={vertical}
           orientation='vertical'
           labels={verticalLabels}
+          handleLabel={vertical}
           format={formatPc}
+
           onChange={this.handleChangeVertical}
         />
         <div className='value'>{formatPc(vertical)}</div>
