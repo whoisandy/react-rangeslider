@@ -261,7 +261,7 @@ class Slider extends Component {
             className={cx('rangeslider__label')}
             data-value={key}
             onMouseDown={this.handleDrag}
-            onTouchStart={this.handleDrag}
+            onTouchStart={this.handleStart}
             onTouchEnd={this.handleEnd}
             style={labelStyle}
           >
@@ -295,7 +295,7 @@ class Slider extends Component {
         )}
         onMouseDown={this.handleDrag}
         onMouseUp={this.handleEnd}
-        onTouchStart={this.handleDrag}
+        onTouchStart={this.handleStart}
         onTouchEnd={this.handleEnd}
       >
         <div className='rangeslider__fill' style={fillStyle} />
