@@ -25,13 +25,11 @@ module.exports = {
     ]
   },
 
-  plugins: [
-    new ExtractPlugin('RangeSlider.css')
-  ],
+  plugins: [new ExtractPlugin('RangeSlider.css')],
 
   externals: [
     {
-      'react': {
+      react: {
         root: 'React',
         commonjs2: 'react',
         commonjs: 'react',

@@ -13,8 +13,8 @@ import 'react-rangeslider/lib/index.css'
 var Slider = require('react-rangeslider')
 `
 
-    const umdJs = `<script src="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.min.js"></script>`
-    const umdCss = `<link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/ReactRangeslider.css" />`
+    const umdJs = `<script src="https://unpkg.com/react-rangeslider/umd/rangeslider.min.js"></script>`
+    const umdCss = `<link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/rangeslider.min.css" />`
 
     return (
       <section className='block'>
