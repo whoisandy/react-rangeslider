@@ -20,14 +20,12 @@
     display: inline-block;
     position: absolute;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 -1px 3px rgba(0, 0, 0, 0.4);
-    &:hover,
-    &:focus {
-      .rangeslider__tooltip {
-        opacity: 1;
-      }
+    .rangeslider__active {
+      opacity: 1;
     }
   }
-  .rangeslider__tooltip {
+
+  .rangeslider__handle-tooltip {
     width: 40px;
     height: 40px;
     text-align: center;
@@ -39,7 +37,8 @@
     border-radius: 4px;
     display: inline-block;
     color: white;
-    opacity: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
     span {
       margin-top: 12px;
       display: inline-block;
@@ -62,7 +61,6 @@
   border-radius: 10px;
   .rangeslider__fill {
     height: 100%;
-    // background-color: #4CAF50;
     background-color: #7cb342;
     border-radius: 10px;
     top: 0;
@@ -71,7 +69,8 @@
     width: 30px;
     height: 30px;
     border-radius: 30px;
-    top: -10px;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
     &:after {
       content: ' ';
       position: absolute;
@@ -85,14 +84,15 @@
         0 -1px 3px rgba(0, 0, 0, 0.4) inset;
     }
   }
-  .rangeslider__tooltip {
+  .rangeslider__handle-tooltip {
     top: -55px;
     &:after {
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
       border-top: 8px solid rgba(0, 0, 0, 0.8);
-      left: 12px;
+      left: 50%;
       bottom: -8px;
+      transform: translate3d(-50%, 0, 0);
     }
   }
 }
@@ -123,9 +123,10 @@
     left: -10px;
     box-shadow: none;
   }
-  .rangeslider__tooltip {
-    left: -55px;
-    top: -15px;
+  .rangeslider__handle-tooltip {
+    left: -100%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
     &:after {
       border-top: 8px solid transparent;
       border-bottom: 8px solid transparent;
@@ -157,7 +158,8 @@
 /**
 * Rangeslider - Labels
 */
-.rangeslider__label-list {
+.rangeslider__labels {
+  position: relative;
   .rangeslider-vertical & {
     position: relative;
     list-style-type: none;
@@ -165,9 +167,12 @@
     padding: 0;
     text-align: left;
     width: 250px;
+    height: 100%;
+    left: 10px;
 
-    .rangeslider__label {
+    .rangeslider__label-item {
       position: absolute;
+      transform: translate3d(0, -50%, 0);
 
       &::before {
         content: '';
@@ -183,11 +188,12 @@
     }
   }
 
-  .rangeslider__label {
+  .rangeslider__label-item {
     position: absolute;
     font-size: 14px;
     cursor: pointer;
     display: inline-block;
     top: 10px;
+    transform: translate3d(-50%, 0, 0);
   }
 }
