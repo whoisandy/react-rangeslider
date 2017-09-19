@@ -319,15 +319,28 @@ section {
 
 .custom-labels {
   .rangeslider-horizontal {
-    .rangeslider__label {
-      top: 28px;
-    }
-    .rangeslider__tooltip {
-      width: 60px;
-      left: -10px;
+    .rangeslider__handle {
+      width: 34px;
+      height: 34px;
+      border-radius: 30px;
+      text-align: center;
       &:after {
-        left: 22px;
+        position: initial;
       }
+    }
+    .rangeslider__label {
+      top: 18px;
+    }
+    .rangeslider__handle-tooltip {
+      width: 60px;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+    }
+    .rangeslider__handle-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
     }
   }
 }
@@ -356,9 +369,6 @@ section {
     background-color: #fff;
     box-shadow: 0 1px 1px #333;
   }
-  .rangeslider__tooltip {
-    top: -5px;
-  }
 }
 .slider-horizontal {
   .rangeslider-horizontal,
@@ -378,9 +388,6 @@ section {
     &:after {
       display: none;
     }
-  }
-  .rangeslider__tooltip {
-    left: -15px;
   }
 }
 

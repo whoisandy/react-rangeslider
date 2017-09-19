@@ -1,5 +1,9 @@
 exports[`Rangeslider specs should render basic slider with defaults 1`] = `
 <div
+  aria-orientation="horizontal"
+  aria-valuemax={100}
+  aria-valuemin={0}
+  aria-valuenow={0}
   className="rangeslider rangeslider-horizontal"
   onMouseDown={[Function anonymous]}
   onMouseUp={[Function anonymous]}
@@ -14,6 +18,7 @@ exports[`Rangeslider specs should render basic slider with defaults 1`] = `
     } />
   <div
     className="rangeslider__handle"
+    onKeyDown={[Function anonymous]}
     onMouseDown={[Function anonymous]}
     onTouchEnd={[Function anonymous]}
     onTouchMove={[Function anonymous]}
@@ -21,19 +26,24 @@ exports[`Rangeslider specs should render basic slider with defaults 1`] = `
       Object {
         "left": "0px"
       }
-    }>
+    }
+    tabIndex={0}>
     <div
-      className="rangeslider__tooltip">
-      <span>
-        0
-      </span>
+      className="rangeslider__handle-label">
+      
     </div>
   </div>
+  <ul
+    className="rangeslider__labels" />
 </div>
 `;
 
 exports[`Rangeslider specs should render slider when props passed in 1`] = `
 <div
+  aria-orientation="horizontal"
+  aria-valuemax={50}
+  aria-valuemin={10}
+  aria-valuenow={20}
   className="rangeslider rangeslider-horizontal"
   onMouseDown={[Function anonymous]}
   onMouseUp={[Function anonymous]}
@@ -48,6 +58,7 @@ exports[`Rangeslider specs should render slider when props passed in 1`] = `
     } />
   <div
     className="rangeslider__handle"
+    onKeyDown={[Function anonymous]}
     onMouseDown={[Function anonymous]}
     onTouchEnd={[Function anonymous]}
     onTouchMove={[Function anonymous]}
@@ -55,13 +66,14 @@ exports[`Rangeslider specs should render slider when props passed in 1`] = `
       Object {
         "left": "0px"
       }
-    }>
+    }
+    tabIndex={0}>
     <div
-      className="rangeslider__tooltip">
-      <span>
-        20
-      </span>
+      className="rangeslider__handle-label">
+      
     </div>
   </div>
+  <ul
+    className="rangeslider__labels" />
 </div>
 `;
