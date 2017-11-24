@@ -120,6 +120,7 @@ import Slider from 'react-rangeslider'
   tooltip={Boolean}
   labels={Object}
   handleLabel={String}
+  tabIndex={Number}
   format={Function}
   onChangeStart={Function}
   onChange={Function}
@@ -139,6 +140,7 @@ Prop   	 			 |  Type      |  Default      |  Description
 `reverse`  		 |  boolean   |  false			  |  reverse direction of vertical slider (top-bottom)
 `labels`       |  object    |  {}           |  object containing key-value pairs. `{ 0: 'Low', 50: 'Medium', 100: 'High'}`
 `handleLabel`  |  string    |  ''           |  string label to appear inside slider handles
+`tabIndex`     |  number    |  1            |  tabIndex passed to the slider handle.
 `format`     |  function  |               |  function to format and display the value in label or tooltip
 `onChangeStart`  	 |  function  |               |  function gets called whenever the user starts dragging the slider handle
 `onChange`  	 |  function  |               |  function gets called whenever the slider handle is being dragged or clicked
