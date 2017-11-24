@@ -37,11 +37,11 @@ class Slider extends Component {
     reverse: PropTypes.bool,
     labels: PropTypes.object,
     handleLabel: PropTypes.string,
+    tabIndex: PropTypes.number,
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
-    onChangeComplete: PropTypes.func,
-    tabIndex: PropTypes.number
+    onChangeComplete: PropTypes.func
   };
 
   static defaultProps = {
