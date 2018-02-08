@@ -14,7 +14,7 @@
     "build:less": "lessc ./src/Rangeslider.less ./lib/index.css",
     "build:less:umd": "lessc ./src/Rangeslider.less ./umd/rangeslider.css",
     "build:less:umd:min": "lessc --clean-css ./src/Rangeslider.less ./umd/rangeslider.min.css",
-    "build:lib": "cross-env NODE_ENV=production babel ./src --stage 0 -d ./lib  --ignore __tests__",
+    "build:lib": "cross-env NODE_ENV=production babel ./src --stage 0 -d ./lib --copy-files  --ignore __tests__,rangeslider.less",
     "build:umd": "cross-env NODE_ENV=production webpack ./src/index.js ./umd/rangeslider.js",
     "build:min": "cross-env NODE_ENV=production webpack -p ./src/index.js ./umd/rangeslider.min.js",
     "build:docs": "cross-env NODE_ENV=production webpack -p --config=docs/webpack.config.js",
@@ -120,5 +120,6 @@
     "moduleNameMapper": {
       ".*\\.less$": "<rootDir>/src/"
     }
-  }
+  },
+  "typings": "lib/index.d.ts"
 }
