@@ -168,9 +168,9 @@ class Slider extends Component {
    */
   handleKeyDown = e => {
     const { value, min, max, step, onChange } = this.props
-    
+
     if (!onChange) return
-    
+
     const { keyCode } = e
     let sliderValue
 
@@ -186,7 +186,7 @@ class Slider extends Component {
       default:
         return
     }
-    
+
     e.preventDefault()
     onChange(sliderValue, e)
   };
