@@ -28,8 +28,9 @@ export function clamp (value, min, max) {
  * @category Lang
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- */ 
-export function isObject(value) {
+ */
+export function isObject (value) {
   const type = typeof value
+  // eslint-disable-next-line
   return value != null && (type == 'object' || type == 'function')
 }

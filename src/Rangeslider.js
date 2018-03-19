@@ -1,9 +1,9 @@
 /* eslint no-debugger: "warn" */
-import cx from "classnames";
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import ResizeObserver from "resize-observer-polyfill";
-import { capitalize, clamp, isObject } from "./utils";
+import cx from 'classnames'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import ResizeObserver from 'resize-observer-polyfill'
+import { capitalize, clamp, isObject } from './utils'
 
 /**
  * Predefined constants
@@ -12,19 +12,19 @@ import { capitalize, clamp, isObject } from "./utils";
 const constants = {
   orientation: {
     horizontal: {
-      dimension: "width",
-      direction: "left",
-      reverseDirection: "right",
-      coordinate: "x"
+      dimension: 'width',
+      direction: 'left',
+      reverseDirection: 'right',
+      coordinate: 'x'
     },
     vertical: {
-      dimension: "height",
-      direction: "top",
-      reverseDirection: "bottom",
-      coordinate: "y"
+      dimension: 'height',
+      direction: 'top',
+      reverseDirection: 'bottom',
+      coordinate: 'y'
     }
   }
-};
+}
 
 class Slider extends Component {
   static propTypes = {
@@ -55,44 +55,45 @@ class Slider extends Component {
     onChangeComplete: PropTypes.func,
     mode: PropTypes.string,
     className: PropTypes.string
-  };
+  }
 
   static defaultProps = {
     min: 0,
     max: 100,
     step: 1,
     value: 0,
-    orientation: "horizontal",
+    orientation: 'horizontal',
     tooltip: true,
     reverse: false,
     labels: {},
-    handleLabel: "",
-    mode: "single"
-  };
+    handleLabel: '',
+    mode: 'single'
+  }
 
-  constructor(props, context) {
-    super(props, context);
+  constructor (props, context) {
+    super(props, context)
 
     this.state = {
       active: false,
       limit: 0,
       grab: 0,
-      activeEl: "end",
+      activeEl: 'end',
       cachedValues: props.value
-    };
+    }
   }
 
-  componentDidMount() {
-    this.handleUpdate();
-    const resizeObserver = new ResizeObserver(this.handleUpdate);
-    resizeObserver.observe(this.slider);
+  componentDidMount () {
+    this.handleUpdate()
+    const resizeObserver = new ResizeObserver(this.handleUpdate)
+    resizeObserver.observe(this.slider)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.value !== nextProps.value)
+  componentWillReceiveProps (nextProps) {
+    if (this.props.value !== nextProps.value) {
       this.setState({
         cachedValues: nextProps.value
-      });
+      })
+    }
   }
 
   /**
@@ -101,9 +102,9 @@ class Slider extends Component {
    * @return {Formatted Number}
    */
   handleFormat = value => {
-    const { format } = this.props;
-    return format ? format(value) : value;
-  };
+    const { format } = this.props
+    return format ? format(value) : value
+  }
 
   /**
    * Update slider state on change
@@ -112,37 +113,37 @@ class Slider extends Component {
   handleUpdate = () => {
     if (!this.slider) {
       // for shallow rendering
-      return;
+      return
     }
-    const { orientation } = this.props;
-    const dimension = capitalize(constants.orientation[orientation].dimension);
-    const sliderPos = this.slider[`offset${dimension}`];
-    const handlePos = this.end[`offset${dimension}`];
+    const { orientation } = this.props
+    const dimension = capitalize(constants.orientation[orientation].dimension)
+    const sliderPos = this.slider[`offset${dimension}`]
+    const handlePos = this.end[`offset${dimension}`]
     this.setState({
       limit: sliderPos - handlePos,
       grab: handlePos / 2
-    });
-  };
+    })
+  }
 
   /**
    * Attach event listeners to mousemove/mouseup events
    * @return {void}
    */
   handleStart = e => {
-    e.stopPropagation();
-    const { onChangeStart } = this.props;
-    document.addEventListener("mousemove", this.handleDrag);
-    document.addEventListener("mouseup", this.handleEnd);
+    e.stopPropagation()
+    const { onChangeStart } = this.props
+    document.addEventListener('mousemove', this.handleDrag)
+    document.addEventListener('mouseup', this.handleEnd)
     this.setState(
       {
         active: true,
-        activeEl: document.activeElement === this.start ? "start" : "end"
+        activeEl: document.activeElement === this.start ? 'start' : 'end'
       },
       () => {
-        onChangeStart && onChangeStart(e);
+        onChangeStart && onChangeStart(e)
       }
-    );
-  };
+    )
+  }
 
   /**
    * Handle drag/mousemove event
@@ -150,43 +151,43 @@ class Slider extends Component {
    * @return {void}
    */
   handleDrag = e => {
-    e.stopPropagation();
-    const { onChange } = this.props;
-    const { target: { className, classList, dataset } } = e;
-    if (!onChange || className === "rangeslider__labels") return;
+    e.stopPropagation()
+    const { onChange } = this.props
+    const { target: { className, classList, dataset } } = e
+    if (!onChange || className === 'rangeslider__labels') return
 
-    let value = this.position(e);
+    let value = this.position(e)
 
     if (
       classList &&
-      classList.contains("rangeslider__label-item") &&
+      classList.contains('rangeslider__label-item') &&
       dataset.value
     ) {
-      value = parseFloat(dataset.value);
+      value = parseFloat(dataset.value)
     }
 
-    this.updateValue(value, e);
-  };
+    this.updateValue(value, e)
+  }
 
   /**
    * Detach event listeners to mousemove/mouseup events
    * @return {void}
    */
   handleEnd = e => {
-    e.stopPropagation();
-    const { onChangeComplete } = this.props;
+    e.stopPropagation()
+    const { onChangeComplete } = this.props
     this.setState(
       {
         active: false,
-        activeEl: document.activeElement === this.start ? "start" : "end"
+        activeEl: document.activeElement === this.start ? 'start' : 'end'
       },
       () => {
-        onChangeComplete && onChangeComplete(e);
+        onChangeComplete && onChangeComplete(e)
       }
-    );
-    document.removeEventListener("mousemove", this.handleDrag);
-    document.removeEventListener("mouseup", this.handleEnd);
-  };
+    )
+    document.removeEventListener('mousemove', this.handleDrag)
+    document.removeEventListener('mouseup', this.handleEnd)
+  }
 
   /**
    * Support for key events on the slider handle
@@ -194,57 +195,57 @@ class Slider extends Component {
    * @return {void}
    */
   handleKeyDown = e => {
-    e.preventDefault();
-    const { keyCode } = e;
-    const { value, min, max, step, onChange } = this.props;
+    e.preventDefault()
+    const { keyCode } = e
+    const { value, min, max, step } = this.props
     const changedValue =
-      value.start || value.end ? value[this.state.activeEl] : value;
-    let sliderValue;
+      value.start || value.end ? value[this.state.activeEl] : value
+    let sliderValue
 
     switch (keyCode) {
       case 38:
       case 39:
-        sliderValue = changedValue + step > max ? max : changedValue + step;
-        this.updateValue(sliderValue, e);
-        break;
+        sliderValue = changedValue + step > max ? max : changedValue + step
+        this.updateValue(sliderValue, e)
+        break
       case 37:
       case 40:
-        sliderValue = changedValue - step < min ? min : changedValue - step;
-        this.updateValue(sliderValue, e);
-        break;
+        sliderValue = changedValue - step < min ? min : changedValue - step
+        this.updateValue(sliderValue, e)
+        break
     }
-  };
+  }
 
   updateValue = (value, e) => {
-    const { onChange, mode, min, max } = this.props;
-    if (mode === "single") {
-      onChange && onChange(value, e);
+    const { onChange, mode, min, max } = this.props
+    if (mode === 'single') {
+      onChange && onChange(value, e)
     } else {
       const isHandlerClicked =
         document.activeElement === this.start ||
-        document.activeElement === this.end;
+        document.activeElement === this.end
       const values = activeEl => ({
         start:
-          activeEl === "start"
+          activeEl === 'start'
             ? clamp(value, min, this.state.cachedValues.end)
             : this.state.cachedValues.start,
         end:
-          activeEl === "end"
+          activeEl === 'end'
             ? clamp(value, this.state.cachedValues.start, max)
             : this.state.cachedValues.end
-      });
+      })
       this.setState(
         {
           activeEl: isHandlerClicked
-            ? document.activeElement === this.start ? "start" : "end"
+            ? document.activeElement === this.start ? 'start' : 'end'
             : this.state.activeEl
         },
         () => {
-          onChange && onChange(values(this.state.activeEl), e);
+          onChange && onChange(values(this.state.activeEl), e)
         }
-      );
+      )
     }
-  };
+  }
 
   /**
    * Calculate position of slider based on its value
@@ -252,17 +253,17 @@ class Slider extends Component {
    * @return {position} pos - Calculated position of slider based on value
    */
   getPositionFromValue = value => {
-    const { limit } = this.state;
-    const { min, max } = this.props;
-    const diffMaxMin = max - min;
-    const calcPos = val => Math.round((val - min) / diffMaxMin * limit);
+    const { limit } = this.state
+    const { min, max } = this.props
+    const diffMaxMin = max - min
+    const calcPos = val => Math.round((val - min) / diffMaxMin * limit)
     return isObject(value)
       ? {
-          start: clamp(calcPos(value.start), min, calcPos(value.end)),
-          end: clamp(calcPos(value.end), calcPos(value.start), limit)
-        }
-      : calcPos(value);
-  };
+        start: clamp(calcPos(value.start), min, calcPos(value.end)),
+        end: clamp(calcPos(value.end), calcPos(value.start), limit)
+      }
+      : calcPos(value)
+  }
 
   /**
    * Translate position of slider to slider value
@@ -270,28 +271,28 @@ class Slider extends Component {
    * @return {number} or {object} value - Slider value
    */
   getValueFromPosition = pos => {
-    const { limit } = this.state;
-    const { orientation, min, max, step } = this.props;
+    const { limit } = this.state
+    const { orientation, min, max, step } = this.props
     const calcBaseVal = position =>
       step *
-      Math.round(clamp(position, 0, limit) / (limit || 1) * (max - min) / step);
+      Math.round(clamp(position, 0, limit) / (limit || 1) * (max - min) / step)
     const calcValue = base =>
-      clamp(orientation === "horizontal" ? base + min : max - base, min, max);
+      clamp(orientation === 'horizontal' ? base + min : max - base, min, max)
     return isObject(pos)
       ? {
-          start: clamp(
+        start: clamp(
             calcValue(calcBaseVal(pos.start)),
             min,
             calcValue(calcBaseVal(pos.end))
           ),
-          end: clamp(
+        end: clamp(
             calcValue(calcBaseVal(pos.end)),
             calcValue(calcBaseVal(pos.start)),
             max
           )
-        }
-      : calcValue(calcBaseVal(pos));
-  };
+      }
+      : calcValue(calcBaseVal(pos))
+  }
 
   /**
    * Calculate position of slider based on value
@@ -299,26 +300,26 @@ class Slider extends Component {
    * @return {number} value - Slider value
    */
   position = e => {
-    const { grab } = this.state;
-    const { orientation, reverse } = this.props;
+    const { grab } = this.state
+    const { orientation, reverse } = this.props
 
-    const node = this.slider;
-    const coordinateStyle = constants.orientation[orientation].coordinate;
+    const node = this.slider
+    const coordinateStyle = constants.orientation[orientation].coordinate
     const directionStyle = reverse
       ? constants.orientation[orientation].reverseDirection
-      : constants.orientation[orientation].direction;
-    const clientCoordinateStyle = `client${capitalize(coordinateStyle)}`;
+      : constants.orientation[orientation].direction
+    const clientCoordinateStyle = `client${capitalize(coordinateStyle)}`
     const coordinate = !e.touches
       ? e[clientCoordinateStyle]
-      : e.touches[0][clientCoordinateStyle];
-    const direction = node.getBoundingClientRect()[directionStyle];
+      : e.touches[0][clientCoordinateStyle]
+    const direction = node.getBoundingClientRect()[directionStyle]
     const pos = reverse
       ? direction - coordinate - grab
-      : coordinate - direction - grab;
-    const value = this.getValueFromPosition(pos);
+      : coordinate - direction - grab
+    const value = this.getValueFromPosition(pos)
 
-    return value;
-  };
+    return value
+  }
 
   /**
    * Grab coordinates of slider
@@ -326,18 +327,18 @@ class Slider extends Component {
    * @return {Object} - Slider fill/handle coordinates
    */
   coordinates = pos => {
-    const { limit, grab } = this.state;
-    const { orientation, min, max } = this.props;
-    const value = this.getValueFromPosition(pos);
-    const position = this.getPositionFromValue(value);
+    const { limit, grab } = this.state
+    const { orientation, min } = this.props
+    const value = this.getValueFromPosition(pos)
+    const position = this.getPositionFromValue(value)
     const calcHandlePos = val =>
-      orientation === "horizontal" ? val + grab : val;
+      orientation === 'horizontal' ? val + grab : val
     const calcFillPos = val =>
-      orientation === "horizontal" ? val : limit - val;
+      orientation === 'horizontal' ? val : limit - val
     // N.B. the lable value is only calculated when the param is number, as it takes array key
     if (isObject(pos)) {
-      const startHandlePos = calcHandlePos(position.start);
-      const endHandlePos = calcHandlePos(position.end);
+      const startHandlePos = calcHandlePos(position.start)
+      const endHandlePos = calcHandlePos(position.end)
       return {
         fill: [
           Math.abs(endHandlePos - startHandlePos),
@@ -347,35 +348,35 @@ class Slider extends Component {
           start: clamp(startHandlePos, min, endHandlePos),
           end: clamp(endHandlePos, startHandlePos, limit + 2 * grab)
         }
-      };
+      }
     }
     return {
       fill: [calcFillPos(calcHandlePos(position))],
       handle: calcHandlePos(position),
       label: calcHandlePos(position)
-    };
-  };
+    }
+  }
 
   renderLabels = labels => (
     <ul
       ref={sl => {
-        this.labels = sl;
+        this.labels = sl
       }}
-      className={cx("rangeslider__labels")}
+      className={cx('rangeslider__labels')}
     >
       {labels}
     </ul>
-  );
+  )
 
   renderHandler = (value, refString, handleStyle, showTooltip, handleLabel) => (
     <div
       ref={sh => {
-        this[refString] = sh;
+        this[refString] = sh
       }}
       key={refString}
       tabIndex={0}
-      role="button"
-      className="rangeslider__handle"
+      role='button'
+      className='rangeslider__handle'
       onMouseDown={this.handleStart}
       onMouseUp={this.handleEnd}
       onTouchMove={this.handleDrag}
@@ -386,35 +387,35 @@ class Slider extends Component {
       {showTooltip[refString] ? (
         <div
           ref={st => {
-            this.tooltip = st;
+            this.tooltip = st
           }}
-          className="rangeslider__handle-tooltip"
+          className='rangeslider__handle-tooltip'
         >
           <span>{this.handleFormat(value)}</span>
         </div>
       ) : null}
-      <div className="rangeslider__handle-label">{handleLabel[refString]}</div>
+      <div className='rangeslider__handle-label'>{handleLabel[refString]}</div>
     </div>
-  );
+  )
 
   renderDoubleHandler = (value, handleStyle, showTooltip, handleLabel) => [
     this.renderHandler(
       value.start,
-      "start",
+      'start',
       handleStyle.start,
       showTooltip,
       handleLabel
     ),
     this.renderHandler(
       value.end,
-      "end",
+      'end',
       handleStyle.end,
       showTooltip,
       handleLabel
     )
-  ];
+  ]
 
-  render() {
+  render () {
     const {
       value,
       orientation,
@@ -426,46 +427,46 @@ class Slider extends Component {
       max,
       handleLabel,
       mode
-    } = this.props;
-    const { active, activeEl } = this.state;
-    const dimension = constants.orientation[orientation].dimension;
+    } = this.props
+    const { active, activeEl } = this.state
+    const dimension = constants.orientation[orientation].dimension
     const direction = reverse
       ? constants.orientation[orientation].reverseDirection
-      : constants.orientation[orientation].direction;
-    const position = this.getPositionFromValue(value);
-    const coords = this.coordinates(position);
+      : constants.orientation[orientation].direction
+    const position = this.getPositionFromValue(value)
+    const coords = this.coordinates(position)
     const fillStyle = {
       [dimension]: `${coords.fill[0]}px`,
       [direction]: `${coords.fill[1] || 0}px`
-    };
+    }
     const handleStyle =
-      mode === "single"
+      mode === 'single'
         ? { [direction]: `${coords.handle}px` }
         : {
-            start: { [direction]: `${coords.handle.start}px` },
-            end: { [direction]: `${coords.handle.end}px` }
-          };
+          start: { [direction]: `${coords.handle.start}px` },
+          end: { [direction]: `${coords.handle.end}px` }
+        }
 
     let showTooltip = {
-      start: tooltip && active && activeEl === "start",
-      end: tooltip && active && activeEl === "end"
+      start: tooltip && active && activeEl === 'start',
+      end: tooltip && active && activeEl === 'end'
     }
 
-    let labelItems = [];
-    let labelKeys = Object.keys(labels);
+    let labelItems = []
+    let labelKeys = Object.keys(labels)
 
     if (labelKeys.length > 0) {
-      labelKeys = labelKeys.sort((a, b) => (reverse ? a - b : b - a));
+      labelKeys = labelKeys.sort((a, b) => (reverse ? a - b : b - a))
 
       for (let key of labelKeys) {
-        const labelPosition = this.getPositionFromValue(Number(key));
-        const labelCoords = this.coordinates(labelPosition);
-        const labelStyle = { [direction]: `${labelCoords.label}px` };
+        const labelPosition = this.getPositionFromValue(Number(key))
+        const labelCoords = this.coordinates(labelPosition)
+        const labelStyle = { [direction]: `${labelCoords.label}px` }
 
         labelItems.push(
           <li
             key={key}
-            className={cx("rangeslider__label-item")}
+            className={cx('rangeslider__label-item')}
             data-value={key}
             onMouseDown={this.handleDrag}
             onTouchStart={this.handleStart}
@@ -474,19 +475,19 @@ class Slider extends Component {
           >
             {this.props.labels[key]}
           </li>
-        );
+        )
       }
     }
 
     return (
       <div
         ref={s => {
-          this.slider = s;
+          this.slider = s
         }}
         className={cx(
-          "rangeslider",
+          'rangeslider',
           `rangeslider-${orientation}`,
-          { "rangeslider-reverse": reverse },
+          { 'rangeslider-reverse': reverse },
           className
         )}
         onMouseDown={this.handleDrag}
@@ -497,11 +498,11 @@ class Slider extends Component {
         aria-valuenow={value}
         aria-orientation={orientation}
       >
-        <div className="rangeslider__fill" style={fillStyle} />
-        {mode === "single"
+        <div className='rangeslider__fill' style={fillStyle} />
+        {mode === 'single'
           ? this.renderHandler(
               value,
-              "end",
+              'end',
               handleStyle,
               showTooltip.end,
               handleLabel
@@ -514,8 +515,8 @@ class Slider extends Component {
             )}
         {labels ? this.renderLabels(labelItems) : null}
       </div>
-    );
+    )
   }
 }
 
-export default Slider;
+export default Slider

@@ -1,5 +1,6 @@
 # Directories to be ignored
 .DS_Store
+.vscode
 npm-debug.log
 favicon.png
 node_modules
