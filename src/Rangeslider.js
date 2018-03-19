@@ -491,6 +491,7 @@ class Slider extends Component {
           className
         )}
         onMouseDown={this.handleDrag}
+        onMouseUp={this.handleEnd}
         onTouchStart={this.handleStart}
         onTouchEnd={this.handleEnd}
         aria-valuemin={min}

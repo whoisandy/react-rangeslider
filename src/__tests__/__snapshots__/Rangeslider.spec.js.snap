@@ -13,6 +13,7 @@ exports[`Rangeslider specs should render basic slider with defaults 1`] = `
     className="rangeslider__fill"
     style={
       Object {
+        "left": "0px",
         "width": "0px"
       }
     } />
@@ -20,8 +21,10 @@ exports[`Rangeslider specs should render basic slider with defaults 1`] = `
     className="rangeslider__handle"
     onKeyDown={[Function anonymous]}
     onMouseDown={[Function anonymous]}
+    onMouseUp={[Function anonymous]}
     onTouchEnd={[Function anonymous]}
     onTouchMove={[Function anonymous]}
+    role="button"
     style={
       Object {
         "left": "0px"
@@ -29,9 +32,7 @@ exports[`Rangeslider specs should render basic slider with defaults 1`] = `
     }
     tabIndex={0}>
     <div
-      className="rangeslider__handle-label">
-      
-    </div>
+      className="rangeslider__handle-label" />
   </div>
   <ul
     className="rangeslider__labels" />
@@ -53,6 +54,7 @@ exports[`Rangeslider specs should render slider when props passed in 1`] = `
     className="rangeslider__fill"
     style={
       Object {
+        "left": "0px",
         "width": "0px"
       }
     } />
@@ -60,8 +62,10 @@ exports[`Rangeslider specs should render slider when props passed in 1`] = `
     className="rangeslider__handle"
     onKeyDown={[Function anonymous]}
     onMouseDown={[Function anonymous]}
+    onMouseUp={[Function anonymous]}
     onTouchEnd={[Function anonymous]}
     onTouchMove={[Function anonymous]}
+    role="button"
     style={
       Object {
         "left": "0px"
@@ -69,9 +73,7 @@ exports[`Rangeslider specs should render slider when props passed in 1`] = `
     }
     tabIndex={0}>
     <div
-      className="rangeslider__handle-label">
-      
-    </div>
+      className="rangeslider__handle-label" />
   </div>
   <ul
     className="rangeslider__labels" />
