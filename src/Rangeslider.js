@@ -382,7 +382,8 @@ class Slider extends Component {
       onTouchMove={this.handleDrag}
       onTouchEnd={this.handleEnd}
       onKeyDown={this.handleKeyDown}
-      style={handleStyle}
+      style={{...handleStyle,
+        ...{zIndex: `${this.state.activeEl === refString ? 1 : 0}`}}}
     >
       {showTooltip[refString] ? (
         <div

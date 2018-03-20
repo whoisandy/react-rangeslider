@@ -27,7 +27,8 @@ exports[`Rangeslider specs should render basic slider with defaults 1`] = `
     role="button"
     style={
       Object {
-        "left": "0px"
+        "left": "0px",
+        "zIndex": "1"
       }
     }
     tabIndex={0}>
@@ -68,7 +69,8 @@ exports[`Rangeslider specs should render slider when props passed in 1`] = `
     role="button"
     style={
       Object {
-        "left": "0px"
+        "left": "0px",
+        "zIndex": "1"
       }
     }
     tabIndex={0}>
