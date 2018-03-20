@@ -77,8 +77,7 @@ class Slider extends Component {
       active: false,
       limit: 0,
       grab: 0,
-      activeEl: 'end',
-      cachedValues: props.value
+      activeEl: 'end'
     }
   }
 
@@ -86,14 +85,6 @@ class Slider extends Component {
     this.handleUpdate()
     const resizeObserver = new ResizeObserver(this.handleUpdate)
     resizeObserver.observe(this.slider)
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (this.props.value !== nextProps.value) {
-      this.setState({
-        cachedValues: nextProps.value
-      })
-    }
   }
 
   /**
@@ -156,17 +147,17 @@ class Slider extends Component {
     const { target: { className, classList, dataset } } = e
     if (!onChange || className === 'rangeslider__labels') return
 
-    let value = this.position(e)
+    let sliderValue = this.position(e)
 
     if (
       classList &&
       classList.contains('rangeslider__label-item') &&
       dataset.value
     ) {
-      value = parseFloat(dataset.value)
+      sliderValue = parseFloat(dataset.value)
     }
 
-    this.updateValue(value, e)
+    this.updateValue(sliderValue, e)
   }
 
   /**
@@ -178,8 +169,7 @@ class Slider extends Component {
     const { onChangeComplete } = this.props
     this.setState(
       {
-        active: false,
-        activeEl: document.activeElement === this.start ? 'start' : 'end'
+        active: false
       },
       () => {
         onChangeComplete && onChangeComplete(e)
@@ -216,10 +206,10 @@ class Slider extends Component {
     }
   }
 
-  updateValue = (value, e) => {
-    const { onChange, mode, min, max } = this.props
+  updateValue = (sliderValue, e) => {
+    const { onChange, mode, min, max, value } = this.props
     if (mode === 'single') {
-      onChange && onChange(value, e)
+      onChange && onChange(sliderValue, e)
     } else {
       const isHandlerClicked =
         document.activeElement === this.start ||
@@ -227,12 +217,12 @@ class Slider extends Component {
       const values = activeEl => ({
         start:
           activeEl === 'start'
-            ? clamp(value, min, this.state.cachedValues.end)
-            : this.state.cachedValues.start,
+            ? clamp(sliderValue, min, value.end)
+            : value.start,
         end:
           activeEl === 'end'
-            ? clamp(value, this.state.cachedValues.start, max)
-            : this.state.cachedValues.end
+            ? clamp(sliderValue, value.start, max)
+            : value.end
       })
       this.setState(
         {
@@ -382,6 +372,7 @@ class Slider extends Component {
       onTouchMove={this.handleDrag}
       onTouchEnd={this.handleEnd}
       onKeyDown={this.handleKeyDown}
+      onKeyUp={this.handleEnd}
       style={{...handleStyle,
         ...{zIndex: `${this.state.activeEl === refString ? 1 : 0}`}}}
     >
