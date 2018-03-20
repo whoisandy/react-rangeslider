@@ -18,3 +18,19 @@ export function capitalize (str) {
 export function clamp (value, min, max) {
   return Math.min(Math.max(value, min), max)
 }
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ */
+export function isObject (value) {
+  const type = typeof value
+  // eslint-disable-next-line
+  return value != null && (type == 'object' || type == 'function')
+}
