@@ -251,11 +251,13 @@ class Slider extends Component {
    */
   coordinates = pos => {
     const { limit, grab } = this.state
-    const { orientation } = this.props
+    const { orientation, reverse } = this.props
     const value = this.getValueFromPosition(pos)
     const position = this.getPositionFromValue(value)
-    const handlePos = orientation === 'horizontal' ? position + grab : position
-    const fillPos = orientation === 'horizontal'
+    const handlePos = orientation === 'horizontal' && !reverse
+      ? position + grab
+      : (reverse ? position - grab : position)
+    const fillPos = orientation === 'horizontal' && !reverse
       ? handlePos
       : limit - handlePos
 
