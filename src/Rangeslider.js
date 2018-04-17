@@ -254,8 +254,8 @@ class Slider extends Component {
     const { orientation, reverse } = this.props
     const value = this.getValueFromPosition(pos)
     const position = this.getPositionFromValue(value)
-    const handlePos = orientation === 'horizontal' && !reverse 
-      ? position + grab 
+    const handlePos = orientation === 'horizontal' && !reverse
+      ? position + grab
       : (reverse ? position - grab : position)
     const fillPos = orientation === 'horizontal' && !reverse
       ? handlePos
