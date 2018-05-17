@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Rangeslider specs should render basic slider with defaults 1`] = `
 <div
   aria-orientation="horizontal"
@@ -5,36 +7,41 @@ exports[`Rangeslider specs should render basic slider with defaults 1`] = `
   aria-valuemin={0}
   aria-valuenow={0}
   className="rangeslider rangeslider-horizontal"
-  onMouseDown={[Function anonymous]}
-  onMouseUp={[Function anonymous]}
-  onTouchEnd={[Function anonymous]}
-  onTouchStart={[Function anonymous]}>
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+>
   <div
     className="rangeslider__fill"
     style={
       Object {
-        "width": "0px"
-      }
-    } />
-  <div
-    className="rangeslider__handle"
-    onKeyDown={[Function anonymous]}
-    onMouseDown={[Function anonymous]}
-    onTouchEnd={[Function anonymous]}
-    onTouchMove={[Function anonymous]}
-    style={
-      Object {
-        "left": "0px"
+        "width": "0px",
       }
     }
-    tabIndex={0}>
+  />
+  <div
+    className="rangeslider__handle"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    style={
+      Object {
+        "left": "0px",
+      }
+    }
+    tabIndex={0}
+  >
     <div
-      className="rangeslider__handle-label">
+      className="rangeslider__handle-label"
+    >
       
     </div>
   </div>
   <ul
-    className="rangeslider__labels" />
+    className="rangeslider__labels"
+  />
 </div>
 `;
 
@@ -45,35 +52,40 @@ exports[`Rangeslider specs should render slider when props passed in 1`] = `
   aria-valuemin={10}
   aria-valuenow={20}
   className="rangeslider rangeslider-horizontal"
-  onMouseDown={[Function anonymous]}
-  onMouseUp={[Function anonymous]}
-  onTouchEnd={[Function anonymous]}
-  onTouchStart={[Function anonymous]}>
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+>
   <div
     className="rangeslider__fill"
     style={
       Object {
-        "width": "0px"
-      }
-    } />
-  <div
-    className="rangeslider__handle"
-    onKeyDown={[Function anonymous]}
-    onMouseDown={[Function anonymous]}
-    onTouchEnd={[Function anonymous]}
-    onTouchMove={[Function anonymous]}
-    style={
-      Object {
-        "left": "0px"
+        "width": "0px",
       }
     }
-    tabIndex={0}>
+  />
+  <div
+    className="rangeslider__handle"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    style={
+      Object {
+        "left": "0px",
+      }
+    }
+    tabIndex={0}
+  >
     <div
-      className="rangeslider__handle-label">
+      className="rangeslider__handle-label"
+    >
       
     </div>
   </div>
   <ul
-    className="rangeslider__labels" />
+    className="rangeslider__labels"
+  />
 </div>
 `;

@@ -72,14 +72,15 @@
     "cross-env": "^2.0.1",
     "css-loader": "^0.25.0",
     "del-cli": "^0.2.1",
-    "enzyme": "^2.4.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^3.5.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-config-standard-jsx": "^3.0.0",
     "eslint-config-standard-react": "^4.0.0",
     "eslint-loader": "^1.0.0",
     "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
@@ -89,20 +90,20 @@
     "gh-pages": "^0.11.0",
     "highlight.js": "^9.9.0",
     "html-webpack-plugin": "^2.22.0",
-    "jest": "^15.1.1",
+    "jest": "^22.4.3",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "less-plugin-clean-css": "^1.5.1",
     "marked": "^0.3.6",
     "opn-cli": "^3.1.0",
-    "prop-types": "^15.5.9",
+    "prettier": "1.12.1",
+    "prop-types": "^15.6.1",
     "raw-loader": "^0.5.1",
-    "react": "^15.3.1",
-    "react-addons-test-utils": "^15.3.1",
-    "react-dom": "^15.3.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-ga": "^2.2.0",
     "react-github-button": "^0.1.11",
-    "react-test-renderer": "^15.5.4",
+    "react-test-renderer": "^16.3.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
     "webpack": "^1.13.0",
@@ -110,13 +111,14 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
-    "classnames": "^2.2.3",
-    "resize-observer-polyfill": "^1.4.2"
+    "classnames": "^2.2.5",
+    "resize-observer-polyfill": "^1.5.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js",
     "moduleNameMapper": {
       ".*\\.less$": "<rootDir>/src/"
     }
