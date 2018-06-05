@@ -305,10 +305,10 @@ class Slider extends Component {
     let labelItems = []
     let labelKeys = Object.keys(labels)
 
-    const handleDrag = (this.props.disabled ? false : this.handleDrag)
-    const handleStart = (this.props.disabled ? false : this.handleStart)
-    const handleEnd = (this.props.disabled ? false : this.handleEnd)
-    const handleKeyDown = (this.props.disabled ? false : this.handleKeyDown)
+    const handleDrag = (this.props.disabled ? undefined : this.handleDrag)
+    const handleStart = (this.props.disabled ? undefined : this.handleStart)
+    const handleEnd = (this.props.disabled ? undefined : this.handleEnd)
+    const handleKeyDown = (this.props.disabled ? undefined : this.handleKeyDown)
 
     if (labelKeys.length > 0) {
       labelKeys = labelKeys.sort((a, b) => (reverse ? a - b : b - a))
