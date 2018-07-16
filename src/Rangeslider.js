@@ -59,7 +59,7 @@ class Slider extends Component {
     super(props, context)
 
     this.state = {
-      active: false,
+      active: true,
       limit: 0,
       grab: 0
     }
@@ -151,7 +151,7 @@ class Slider extends Component {
     const { onChangeComplete } = this.props
     this.setState(
       {
-        active: false
+        active: true
       },
       () => {
         onChangeComplete && onChangeComplete(e)
