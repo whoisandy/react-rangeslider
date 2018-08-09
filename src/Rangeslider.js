@@ -299,7 +299,7 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
     if (this.props.color) {
-      fillStyle['backgroundColor'] = this.props.color;
+      fillStyle['backgroundColor'] = this.props.color
     }
     const handleStyle = { [direction]: `${coords.handle}px` }
     let showTooltip = tooltip && active
