@@ -40,7 +40,8 @@ class Slider extends Component {
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
-    onChangeComplete: PropTypes.func
+    onChangeComplete: PropTypes.func,
+    color: PropTypes.string
   };
 
   static defaultProps = {
@@ -297,6 +298,10 @@ class Slider extends Component {
     const position = this.getPositionFromValue(value)
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
+    if (this.props.color) {
+      fillStyle['backgroundColor'] = this.props.color;
+      console.log("set color: ", this.props.color);
+    }
     const handleStyle = { [direction]: `${coords.handle}px` }
     let showTooltip = tooltip && active
 
