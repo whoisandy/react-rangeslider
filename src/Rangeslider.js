@@ -300,7 +300,6 @@ class Slider extends Component {
     const fillStyle = { [dimension]: `${coords.fill}px` }
     if (this.props.color) {
       fillStyle['backgroundColor'] = this.props.color;
-      console.log("set color: ", this.props.color);
     }
     const handleStyle = { [direction]: `${coords.handle}px` }
     let showTooltip = tooltip && active
