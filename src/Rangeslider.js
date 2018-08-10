@@ -40,7 +40,8 @@ class Slider extends Component {
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
-    onChangeComplete: PropTypes.func
+    onChangeComplete: PropTypes.func,
+    color: PropTypes.string
   };
 
   static defaultProps = {
@@ -297,6 +298,9 @@ class Slider extends Component {
     const position = this.getPositionFromValue(value)
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
+    if (this.props.color) {
+      fillStyle['backgroundColor'] = this.props.color
+    }
     const handleStyle = { [direction]: `${coords.handle}px` }
     let showTooltip = tooltip && active
 
@@ -347,7 +351,8 @@ class Slider extends Component {
         aria-valuenow={value}
         aria-orientation={orientation}
       >
-        <div className='rangeslider__fill' style={fillStyle} />
+        {this.props.color && <div style={fillStyle} /> }
+        {!this.props.color && <div className='rangeslider__fill' style={fillStyle} /> }
         <div
           ref={sh => {
             this.handle = sh

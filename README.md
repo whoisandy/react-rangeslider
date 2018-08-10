@@ -143,6 +143,7 @@ Prop   	 			 |  Type      |  Default      |  Description
 `onChangeStart`  	 |  function  |               |  function gets called whenever the user starts dragging the slider handle
 `onChange`  	 |  function  |               |  function gets called whenever the slider handle is being dragged or clicked
 `onChangeComplete`     |  function  |               |  function gets called whenever the user stops dragging the slider handle.
+`color`      |  string   |           |  set the color of the slider to override the default 
 
 
 ## Development
