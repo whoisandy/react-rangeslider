@@ -351,7 +351,8 @@ class Slider extends Component {
         aria-valuenow={value}
         aria-orientation={orientation}
       >
-        <div className='rangeslider__fill' style={fillStyle} />
+        {this.props.color && <div style={fillStyle} /> }
+        {!this.props.color && <div className='rangeslider__fill' style={fillStyle} /> }
         <div
           ref={sh => {
             this.handle = sh
