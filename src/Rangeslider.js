@@ -197,7 +197,7 @@ class Slider extends Component {
     const diffMaxMin = max - min
     const diffValMin = value - min
     const percentage = diffValMin / diffMaxMin
-    const pos = Math.round(percentage * limit)
+    const pos = Math.floor(percentage * limit)
 
     return pos
   };
@@ -211,7 +211,11 @@ class Slider extends Component {
     const { limit } = this.state
     const { orientation, min, max, step } = this.props
     const percentage = clamp(pos, 0, limit) / (limit || 1)
-    const baseVal = step * Math.round(percentage * (max - min) / step)
+    let baseVal = step * Math.round(percentage * (max - min) / step)
+    const baseValRaw = step * percentage * (max - min) / step
+    if ((max - (baseVal + min) < step) && baseValRaw > baseVal) {
+      baseVal = max - min
+    }
     const value = orientation === 'horizontal' ? baseVal + min : max - baseVal
 
     return clamp(value, min, max)
