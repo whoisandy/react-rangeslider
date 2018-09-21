@@ -1,7 +1,7 @@
 /* eslint no-debugger: "warn" */
 import cx from 'classnames'
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 import { capitalize, clamp } from './utils'
 
@@ -55,7 +55,7 @@ class Slider extends Component {
     handleLabel: ''
   };
 
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -65,7 +65,7 @@ class Slider extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.handleUpdate()
     const resizeObserver = new ResizeObserver(this.handleUpdate)
     resizeObserver.observe(this.slider)
@@ -148,13 +148,26 @@ class Slider extends Component {
    * @return {void}
    */
   handleEnd = e => {
-    const { onChangeComplete } = this.props
     this.setState(
       {
         active: false
       },
       () => {
-        onChangeComplete && onChangeComplete(e)
+        e.stopPropagation()
+        const { onChangeComplete } = this.props
+        const { target: { className, classList, dataset } } = e
+        if (!onChangeComplete || className === 'rangeslider__labels') return
+
+        let value = this.position(e)
+
+        if (
+          classList &&
+          classList.contains('rangeslider__label-item') &&
+          dataset.value
+        ) {
+          value = parseFloat(dataset.value)
+        }
+        onChangeComplete && onChangeComplete(e, value)
       }
     )
     document.removeEventListener('mousemove', this.handleDrag)
@@ -277,7 +290,7 @@ class Slider extends Component {
     </ul>
   );
 
-  render () {
+  render() {
     const {
       value,
       orientation,
@@ -366,7 +379,7 @@ class Slider extends Component {
                 this.tooltip = st
               }}
               className='rangeslider__handle-tooltip'
-              >
+            >
               <span>{this.handleFormat(value)}</span>
             </div>
             : null}
