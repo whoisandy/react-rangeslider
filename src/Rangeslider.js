@@ -133,7 +133,6 @@ class Slider extends Component {
     if (!onChange || className === 'rangeslider__labels') return
 
     let value = this.position(e)
-    
     if (
       classList &&
       classList.contains('rangeslider__label-item') &&
