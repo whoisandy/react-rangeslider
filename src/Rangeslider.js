@@ -40,7 +40,6 @@ class Slider extends Component {
     handleLabel: PropTypes.string,
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
-    onChangePosition: PropTypes.func,
     onChange: PropTypes.func,
     onChangeComplete: PropTypes.func
   };
@@ -129,13 +128,11 @@ class Slider extends Component {
    */
   handleDrag = e => {
     e.stopPropagation()
-    const { onChange, onChangePosition } = this.props
+    const { onChange } = this.props
     const { target: { className, classList, dataset } } = e
     if (!onChange || className === 'rangeslider__labels') return
 
     let value = this.position(e)
-
-    onChangePosition && onChangePosition(value)
     
     if (
       classList &&
