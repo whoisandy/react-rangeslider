@@ -34,11 +34,13 @@ class Slider extends Component {
     value: PropTypes.number,
     orientation: PropTypes.string,
     tooltip: PropTypes.bool,
+    alwaysShowTooltip: PropTypes.bool,
     reverse: PropTypes.bool,
     labels: PropTypes.object,
     handleLabel: PropTypes.string,
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
+    onChangePosition: PropTypes.func,
     onChange: PropTypes.func,
     onChangeComplete: PropTypes.func
   };
@@ -50,6 +52,7 @@ class Slider extends Component {
     value: 0,
     orientation: 'horizontal',
     tooltip: true,
+    alwaysShowTooltip: false,
     reverse: false,
     labels: {},
     handleLabel: ''
@@ -126,12 +129,14 @@ class Slider extends Component {
    */
   handleDrag = e => {
     e.stopPropagation()
-    const { onChange } = this.props
+    const { onChange, onChangePosition } = this.props
     const { target: { className, classList, dataset } } = e
     if (!onChange || className === 'rangeslider__labels') return
 
     let value = this.position(e)
 
+    onChangePosition && onChangePosition(value)
+    
     if (
       classList &&
       classList.contains('rangeslider__label-item') &&
@@ -283,6 +288,7 @@ class Slider extends Component {
       orientation,
       className,
       tooltip,
+      alwaysShowTooltip,
       reverse,
       labels,
       min,
@@ -298,7 +304,7 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
     const handleStyle = { [direction]: `${coords.handle}px` }
-    let showTooltip = tooltip && active
+    let showTooltip = (tooltip && active) || alwaysShowTooltip
 
     let labelItems = []
     let labelKeys = Object.keys(labels)
