@@ -1,7 +1,10 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { configure, shallow, mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import renderer from 'react-test-renderer'
 import Slider from '../Rangeslider'
+
+configure({ adapter: new Adapter() })
 
 describe('Rangeslider specs', () => {
   it('should render properly', () => {

@@ -40,7 +40,8 @@ class Slider extends Component {
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
-    onChangeComplete: PropTypes.func
+    onChangeComplete: PropTypes.func,
+    alwaysActive: PropTypes.bool
   };
 
   static defaultProps = {
@@ -52,7 +53,8 @@ class Slider extends Component {
     tooltip: true,
     reverse: false,
     labels: {},
-    handleLabel: ''
+    handleLabel: '',
+    alwaysActive: false
   };
 
   constructor (props, context) {
@@ -69,6 +71,13 @@ class Slider extends Component {
     this.handleUpdate()
     const resizeObserver = new ResizeObserver(this.handleUpdate)
     resizeObserver.observe(this.slider)
+    document.addEventListener('mousemove', this.handleDrag)
+    document.addEventListener('mouseup', this.handleEnd)
+  }
+
+  componentWillMount () {
+    document.removeEventListener('mousemove', this.handleDrag)
+    document.removeEventListener('mouseup', this.handleEnd)
   }
 
   /**
@@ -106,9 +115,8 @@ class Slider extends Component {
    * @return {void}
    */
   handleStart = e => {
+    this.mouseDown = true
     const { onChangeStart } = this.props
-    document.addEventListener('mousemove', this.handleDrag)
-    document.addEventListener('mouseup', this.handleEnd)
     this.setState(
       {
         active: true
@@ -124,8 +132,15 @@ class Slider extends Component {
    * @param  {Object} e - Event object
    * @return {void}
    */
-  handleDrag = e => {
+  handleDrag = (e, isProgressBarCliked) => {
     e.stopPropagation()
+    if (!this.mouseDown && !isProgressBarCliked) return
+
+    if (isProgressBarCliked) {
+      this.mouseDown = true
+      this.setState({ active: true })
+    }
+
     const { onChange } = this.props
     const { target: { className, classList, dataset } } = e
     if (!onChange || className === 'rangeslider__labels') return
@@ -154,11 +169,10 @@ class Slider extends Component {
         active: false
       },
       () => {
+        this.mouseDown = false
         onChangeComplete && onChangeComplete(e)
       }
     )
-    document.removeEventListener('mousemove', this.handleDrag)
-    document.removeEventListener('mouseup', this.handleEnd)
   };
 
   /**
@@ -287,7 +301,8 @@ class Slider extends Component {
       labels,
       min,
       max,
-      handleLabel
+      handleLabel,
+      alwaysActive
     } = this.props
     const { active } = this.state
     const dimension = constants.orientation[orientation].dimension
@@ -298,7 +313,7 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
     const handleStyle = { [direction]: `${coords.handle}px` }
-    let showTooltip = tooltip && active
+    let showTooltip = tooltip && (active || alwaysActive)
 
     let labelItems = []
     let labelKeys = Object.keys(labels)
@@ -338,7 +353,7 @@ class Slider extends Component {
           { 'rangeslider-reverse': reverse },
           className
         )}
-        onMouseDown={this.handleDrag}
+        onMouseDown={e => this.handleDrag(e, true)}
         onMouseUp={this.handleEnd}
         onTouchStart={this.handleStart}
         onTouchEnd={this.handleEnd}
