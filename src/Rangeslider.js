@@ -52,6 +52,7 @@ class Slider extends Component {
     tooltip: true,
     reverse: false,
     labels: {},
+    buffers: [],
     handleLabel: ''
   };
 
@@ -127,7 +128,9 @@ class Slider extends Component {
   handleDrag = e => {
     e.stopPropagation()
     const { onChange } = this.props
-    const { target: { className, classList, dataset } } = e
+    const {
+      target: { className, classList, dataset }
+    } = e
     if (!onChange || className === 'rangeslider__labels') return
 
     let value = this.position(e)
@@ -211,7 +214,7 @@ class Slider extends Component {
     const { limit } = this.state
     const { orientation, min, max, step } = this.props
     const percentage = clamp(pos, 0, limit) / (limit || 1)
-    const baseVal = step * Math.round(percentage * (max - min) / step)
+    const baseVal = step * Math.round((percentage * (max - min)) / step)
     const value = orientation === 'horizontal' ? baseVal + min : max - baseVal
 
     return clamp(value, min, max)
@@ -255,15 +258,30 @@ class Slider extends Component {
     const value = this.getValueFromPosition(pos)
     const position = this.getPositionFromValue(value)
     const handlePos = orientation === 'horizontal' ? position + grab : position
-    const fillPos = orientation === 'horizontal'
-      ? handlePos
-      : limit - handlePos
+    const fillPos =
+      orientation === 'horizontal' ? handlePos : limit - handlePos
 
     return {
       fill: fillPos,
       handle: handlePos,
       label: handlePos
     }
+  };
+
+  renderBuffer = buffer => {
+    const startPos = this.getPositionFromValue(buffer.start)
+    const endPos = this.getPositionFromValue(buffer.end)
+    const width = endPos - startPos || 0
+    return (
+      <div
+        className='rangeslider__buffer'
+        style={{
+          width: width,
+          left: startPos
+        }}
+        key={`${width}-${startPos}`}
+      />
+    )
   };
 
   renderLabels = labels => (
@@ -285,6 +303,7 @@ class Slider extends Component {
       tooltip,
       reverse,
       labels,
+      buffers,
       min,
       max,
       handleLabel
@@ -348,6 +367,7 @@ class Slider extends Component {
         aria-orientation={orientation}
       >
         <div className='rangeslider__fill' style={fillStyle} />
+        {buffers.map(buffer => this.renderBuffer(buffer))}
         <div
           ref={sh => {
             this.handle = sh
@@ -360,16 +380,16 @@ class Slider extends Component {
           style={handleStyle}
           tabIndex={0}
         >
-          {showTooltip
-            ? <div
+          {showTooltip ? (
+            <div
               ref={st => {
                 this.tooltip = st
               }}
               className='rangeslider__handle-tooltip'
-              >
+            >
               <span>{this.handleFormat(value)}</span>
             </div>
-            : null}
+          ) : null}
           <div className='rangeslider__handle-label'>{handleLabel}</div>
         </div>
         {labels ? this.renderLabels(labelItems) : null}

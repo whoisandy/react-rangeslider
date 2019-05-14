@@ -138,6 +138,7 @@ Prop   	 			 |  Type      |  Default      |  Description
 `tooltip`      |  boolean   |  true         |  show or hide tooltip
 `reverse`  		 |  boolean   |  false			  |  reverse direction of vertical slider (top-bottom)
 `labels`       |  object    |  {}           |  object containing key-value pairs. `{ 0: 'Low', 50: 'Medium', 100: 'High'}`
+`buffers`       |  array    |  []           |  array containing key-value pairs of start and end. `[{start:0, end: 50}]`
 `handleLabel`  |  string    |  ''           |  string label to appear inside slider handles
 `format`     |  function  |               |  function to format and display the value in label or tooltip
 `onChangeStart`  	 |  function  |               |  function gets called whenever the user starts dragging the slider handle
