@@ -71,6 +71,15 @@ class Slider extends Component {
     resizeObserver.observe(this.slider)
   }
 
+  componentWillUnmount () {
+    this.clearEventListener()
+  }
+
+  clearEventListener = () => {
+    document.removeEventListener('mousemove', this.handleDrag)
+    document.removeEventListener('mouseup', this.handleEnd)
+  }
+
   /**
    * Format label/tooltip value
    * @param  {Number} - value
@@ -157,8 +166,7 @@ class Slider extends Component {
         onChangeComplete && onChangeComplete(e)
       }
     )
-    document.removeEventListener('mousemove', this.handleDrag)
-    document.removeEventListener('mouseup', this.handleEnd)
+    this.clearEventListener()
   };
 
   /**
