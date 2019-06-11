@@ -306,7 +306,8 @@ class Slider extends Component {
     if (labelKeys.length > 0) {
       labelKeys = labelKeys.sort((a, b) => (reverse ? a - b : b - a))
 
-      for (let key of labelKeys) {
+      for (var lki = 0, len = labelKeys.length; lki < len; lki++) {
+        const key = labelKeys[lki];
         const labelPosition = this.getPositionFromValue(key)
         const labelCoords = this.coordinates(labelPosition)
         const labelStyle = { [direction]: `${labelCoords.label}px` }
