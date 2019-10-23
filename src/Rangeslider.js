@@ -36,7 +36,7 @@ class Slider extends Component {
     tooltip: PropTypes.bool,
     reverse: PropTypes.bool,
     labels: PropTypes.object,
-    handleLabel: PropTypes.string,
+    handleLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
