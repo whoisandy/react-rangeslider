@@ -106,9 +106,12 @@ class Slider extends Component {
    * @return {void}
    */
   handleStart = e => {
-    const { onChangeStart } = this.props
-    document.addEventListener('mousemove', this.handleDrag)
-    document.addEventListener('mouseup', this.handleEnd)
+    const { onChangeStart } = this.props;
+    document.addEventListener('mousemove', this.handleDrag);
+    document.addEventListener('mouseup', this.handleEnd);
+    document.addEventListener('touchmove', _this.handleDrag);
+    document.addEventListener('touchend', _this.handleEnd);
+
     this.setState(
       {
         active: true
@@ -157,8 +160,10 @@ class Slider extends Component {
         onChangeComplete && onChangeComplete(e)
       }
     )
-    document.removeEventListener('mousemove', this.handleDrag)
-    document.removeEventListener('mouseup', this.handleEnd)
+    document.removeEventListener('mousemove', this.handleDrag);
+    document.removeEventListener('mouseup', this.handleEnd);
+    document.removeEventListener('touchmove', _this.handleDrag);
+    document.removeEventListener('touchend', _this.handleEnd);
   };
 
   /**
