@@ -34,6 +34,7 @@ class Slider extends Component {
     value: PropTypes.number,
     orientation: PropTypes.string,
     tooltip: PropTypes.bool,
+    tooltipAlways: PropTypes.bool,
     reverse: PropTypes.bool,
     labels: PropTypes.object,
     handleLabel: PropTypes.string,
@@ -50,6 +51,7 @@ class Slider extends Component {
     value: 0,
     orientation: 'horizontal',
     tooltip: true,
+    tooltipAlways: false,
     reverse: false,
     labels: {},
     handleLabel: ''
@@ -283,6 +285,7 @@ class Slider extends Component {
       orientation,
       className,
       tooltip,
+      tooltipAlways,
       reverse,
       labels,
       min,
@@ -298,7 +301,7 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
     const handleStyle = { [direction]: `${coords.handle}px` }
-    let showTooltip = tooltip && active
+    let showTooltip = (tooltip && active) || (tooltip && tooltipAlways)
 
     let labelItems = []
     let labelKeys = Object.keys(labels)
