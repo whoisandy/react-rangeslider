@@ -118,6 +118,7 @@ import Slider from 'react-rangeslider'
   orientation={String}
   reverse={Boolean}
   tooltip={Boolean}
+  tooltipAlways={Boolean}
   labels={Object}
   handleLabel={String}
   format={Function}
@@ -136,6 +137,7 @@ Prop   	 			 |  Type      |  Default      |  Description
 `value`        |  number    |               |  current value of the slider
 `orientation`  |  string    |  horizontal   |  orientation of the slider
 `tooltip`      |  boolean   |  true         |  show or hide tooltip
+`tooltipAlways`      |  boolean   |  false         |  always show the tooltip
 `reverse`  		 |  boolean   |  false			  |  reverse direction of vertical slider (top-bottom)
 `labels`       |  object    |  {}           |  object containing key-value pairs. `{ 0: 'Low', 50: 'Medium', 100: 'High'}`
 `handleLabel`  |  string    |  ''           |  string label to appear inside slider handles
