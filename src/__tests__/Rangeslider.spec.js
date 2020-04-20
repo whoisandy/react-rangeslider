@@ -3,6 +3,10 @@ import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 import Slider from '../Rangeslider'
 
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
+
 describe('Rangeslider specs', () => {
   it('should render properly', () => {
     const slider = shallow(<Slider />)
