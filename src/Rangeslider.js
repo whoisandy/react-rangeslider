@@ -40,7 +40,9 @@ class Slider extends Component {
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
-    onChangeComplete: PropTypes.func
+    onChangeComplete: PropTypes.func,
+    tabIndex: PropTypes.number,
+
   };
 
   static defaultProps = {
