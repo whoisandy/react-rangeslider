@@ -40,7 +40,9 @@ class Slider extends Component {
     format: PropTypes.func,
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
-    onChangeComplete: PropTypes.func
+    onChangeComplete: PropTypes.func,
+    tabIndex: PropTypes.number,
+
   };
 
   static defaultProps = {
@@ -52,7 +54,9 @@ class Slider extends Component {
     tooltip: true,
     reverse: false,
     labels: {},
-    handleLabel: ''
+    handleLabel: '',
+    tabIndex: 0
+
   };
 
   constructor (props, context) {
@@ -287,7 +291,8 @@ class Slider extends Component {
       labels,
       min,
       max,
-      handleLabel
+      handleLabel,
+      tabIndex
     } = this.props
     const { active } = this.state
     const dimension = constants.orientation[orientation].dimension
@@ -358,7 +363,7 @@ class Slider extends Component {
           onTouchEnd={this.handleEnd}
           onKeyDown={this.handleKeyDown}
           style={handleStyle}
-          tabIndex={0}
+          tabIndex={tabIndex}
         >
           {showTooltip
             ? <div
