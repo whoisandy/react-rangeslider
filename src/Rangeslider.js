@@ -28,6 +28,7 @@ const constants = {
 
 class Slider extends Component {
   static propTypes = {
+    ariaLabel: PropTypes.string,
     min: PropTypes.number,
     max: PropTypes.number,
     step: PropTypes.number,
@@ -288,7 +289,8 @@ class Slider extends Component {
       labels,
       min,
       max,
-      handleLabel
+      handleLabel,
+      ariaLabel
     } = this.props
     const { active } = this.state
     const dimension = constants.orientation[orientation].dimension
@@ -343,6 +345,7 @@ class Slider extends Component {
         onMouseUp={this.handleEnd}
         onTouchStart={this.handleStart}
         onTouchEnd={this.handleEnd}
+        aria-label={ariaLabel}
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={value}
