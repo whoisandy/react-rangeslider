@@ -28,6 +28,7 @@ const constants = {
 
 class Slider extends Component {
   static propTypes = {
+    ariaLabel: PropTypes.string,
     min: PropTypes.number,
     max: PropTypes.number,
     step: PropTypes.number,
@@ -167,7 +168,6 @@ class Slider extends Component {
    * @return {void}
    */
   handleKeyDown = e => {
-    e.preventDefault()
     const { keyCode } = e
     const { value, min, max, step, onChange } = this.props
     let sliderValue
@@ -175,11 +175,13 @@ class Slider extends Component {
     switch (keyCode) {
       case 38:
       case 39:
+        e.preventDefault()
         sliderValue = value + step > max ? max : value + step
         onChange && onChange(sliderValue, e)
         break
       case 37:
       case 40:
+        e.preventDefault()
         sliderValue = value - step < min ? min : value - step
         onChange && onChange(sliderValue, e)
         break
@@ -287,7 +289,8 @@ class Slider extends Component {
       labels,
       min,
       max,
-      handleLabel
+      handleLabel,
+      ariaLabel
     } = this.props
     const { active } = this.state
     const dimension = constants.orientation[orientation].dimension
@@ -342,6 +345,7 @@ class Slider extends Component {
         onMouseUp={this.handleEnd}
         onTouchStart={this.handleStart}
         onTouchEnd={this.handleEnd}
+        aria-label={ariaLabel}
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={value}
