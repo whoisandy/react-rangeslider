@@ -167,7 +167,6 @@ class Slider extends Component {
    * @return {void}
    */
   handleKeyDown = e => {
-    e.preventDefault()
     const { keyCode } = e
     const { value, min, max, step, onChange } = this.props
     let sliderValue
@@ -175,11 +174,13 @@ class Slider extends Component {
     switch (keyCode) {
       case 38:
       case 39:
+        e.preventDefault()
         sliderValue = value + step > max ? max : value + step
         onChange && onChange(sliderValue, e)
         break
       case 37:
       case 40:
+        e.preventDefault()
         sliderValue = value - step < min ? min : value - step
         onChange && onChange(sliderValue, e)
         break
