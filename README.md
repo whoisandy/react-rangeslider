@@ -30,13 +30,13 @@
 Using `npm` (use `--save` to include it in your package.json)
 
 ```bash
-$ npm install react-rangeslider --save
+$ npm install react-rangeslider-flex --save
 ```
 
-Using `yarn` (this command also adds react-rangeslider to your package.json dependencies)
+Using `yarn` (this command also adds react-rangeslider-flex to your package.json dependencies)
 
 ```bash
-$ yarn add react-rangeslider
+$ yarn add react-rangeslider-flex
 ```
 
 
@@ -47,27 +47,14 @@ With a module bundler like webpack that supports either CommonJS or ES2015 modul
 
 ```js
 // Using an ES6 transpiler like Babel
-import Slider from 'react-rangeslider'
+import Slider from 'react-rangeslider-flex'
 
 // To include the default styles
-import 'react-rangeslider/lib/index.css'
+import 'react-rangeslider-flex/lib/index.css'
 
 // Not using an ES6 transpiler
 var Slider = require('react-rangeslider')
 ```
-
-The UMD build is also available on [unpkg][unpkg]:
-
-```html
-<script src="https://unpkg.com/react-rangeslider/umd/rangeslider.min.js"></script>
-```
-
-You can find the library on `window.ReactRangeslider`. Optionally you can drop in the default styles by adding the stylesheet.
-```html
-<link rel="stylesheet" href="https://unpkg.com/react-rangeslider/umd/rangeslider.min.css" />
-```
-Check out [docs & examples](https://whoisandy.github.io/react-rangeslider).
-
 ## Basic Example
 
 ```jsx
@@ -107,7 +94,7 @@ Rangeslider is bundled as a single component, that accepts data and callbacks on
 
 ### Component
 ```jsx
-import Slider from 'react-rangeslider'
+import Slider from 'react-rangeslider-flex'
 
 // inside render
 <Slider
